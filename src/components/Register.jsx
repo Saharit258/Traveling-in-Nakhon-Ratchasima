@@ -4,6 +4,13 @@ import { Form, Alert, Button } from 'react-bootstrap'
 import { useUserAuth } from "../context/UserAuthContext";
 import Nav from '../navigation/Nav'
 
+import { auth } from '../database/firebase';
+
+import {
+    createUserWithEmailAndPassword,
+    signOut as firebaseSignOut
+} from "firebase/auth";
+
 import { collection, addDoc } from 'firebase/firestore'; // Remove unnecessary import
 import { firestore } from '../database/firebase'
 
@@ -30,7 +37,7 @@ function Register() {
 
         try {
             // Sign up the user
-            const userCredential = await signUp(email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
             // After successful signup, add user data to Firestore
@@ -52,27 +59,6 @@ function Register() {
             console.error("Error", err);
         }
     };
-
-        //     try {
-        //         const userCredential = await createUserWithEmailAndPassword(email, password);
-        //         const user = userCredential.user;
-
-        //         const userData = {
-        //             Name: name, // Assuming 'firstname' is defined elsewhere in your code
-        //         };
-
-        //         // Create a new subcollection for the user profiles and set the user data as a document within it
-        //         const userProfilesCollectionRef = collection(database, 'users', user.uid, 'profiles');
-        //         const userProfileDocRef = doc(userProfilesCollectionRef, user.uid);
-
-        //         await setDoc(userProfileDocRef, userData);
-        //         localStorage.setItem(this.storageKey, this.encodeData({ user: userCredential.user }));
-        //         console.log('Registration successful');
-        //         alert('Registration successful');
-        //     } catch (error) {
-        //         console.error("Error", error);
-        //     }
-        // };
 
     return (
         <>
