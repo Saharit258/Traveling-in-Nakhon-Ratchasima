@@ -11,12 +11,17 @@ import {
     signOut as firebaseSignOut
 } from "firebase/auth";
 
-import { collection, addDoc } from 'firebase/firestore'; // Remove unnecessary import
+import { collection, addDoc, doc, setDoc } from 'firebase/firestore'; // Remove unnecessary import
 import { firestore } from '../database/firebase'
 
 function Register() {
 
     const storageKey = 'users';
+
+    function encodeData(data) {
+        const jsonData = JSON.stringify(data);
+        return btoa(jsonData);
+     }
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -45,14 +50,14 @@ function Register() {
                 Name: name, // Assuming 'firstname' is defined elsewhere in your code
             };
             
-            const userProfilesCollectionRef = collection(database, 'users', user.uid, 'profiles');
+            const userProfilesCollectionRef = collection(firestore, 'users', user.uid, 'profiles');
             const userProfileDocRef = doc(userProfilesCollectionRef, user.uid);
 
             await setDoc(userProfileDocRef, userData);
-            localStorage.setItem(this.storageKey, this.encodeData({ user: userCredential.user }));
+            localStorage.setItem(storageKey, encodeData({ user: userCredential.user }));
 
             console.log("User registered successfully with ID: ", user.id);
-            // navigate("/"); // Redirect to home page
+            navigate("/"); // Redirect to home page
             alert("สมัครสมาชิกเสร็จสิ้น");
         } catch (err) {
             setError(err.message);
