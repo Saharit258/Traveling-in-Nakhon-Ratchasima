@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.menubar {
+    background-color: black;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+}
+
+.manu {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
