@@ -21,7 +21,7 @@ function Register() {
     function encodeData(data) {
         const jsonData = JSON.stringify(data);
         return btoa(jsonData);
-     }
+    }
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
