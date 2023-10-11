@@ -2,17 +2,33 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 .menubar {
-    background-color: black;
+    background-color: #333; /* เปลี่ยนสีพื้นหลังเป็นสีเข้มๆ */
     padding: 1rem;
     text-align: center;
     display: flex;
+    justify-content: space-between; /* จัดวางเนื้อหาไปทางสองข้าง */
 }
 
-.manu {
-    color: #ffffff;
+.manu, .manu-log {
+    color: #fff;
     text-decoration: none;
     margin: 0 1rem;
+}
+
+.manu-log {
+    margin-left: auto; /* จัดวางไปทางขวา */
+}
+
+.manu-a {
+    color: #666565b3;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+/* เพิ่ม hover effect สำหรับลิงค์ */
+.manu:hover, .manu-log:hover, .manu-a:hover {
+    color: #ffcc00; /* สีเหลืองเมื่อ hover */
 }

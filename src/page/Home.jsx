@@ -4,21 +4,34 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { Button } from 'react-bootstrap';
 import Nav from '../navigation/Nav'
 
-import { collection, addDoc, getDocs, QuerySnapshot } from 'firebase/firestore';
+import { collection, getDocs, doc } from 'firebase/firestore';
 import { firestore } from '../database/firebase'
 
-
 function Home() {
-
     const { logOut, user } = useUserAuth();
     const [todos, setTodos] = useState([]);
-
-    console.log(user);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const checkAuthStatus = () => {
+            if (!user) {
+                // ถ้ายังไม่ได้เข้าสู่ระบบ
+                setIsAuthenticated(false);
+                navigate('/');  // หรือไปที่หน้า login ตามที่คุณต้องการ
+            } else {
+                // ถ้าเข้าสู่ระบบแล้ว
+                setIsAuthenticated(true);
+                fetchPost();  // เมื่อมีการเข้าสู่ระบบแล้วให้ดึงข้อมูล
+            }
+        };
+
+        checkAuthStatus();
+    }, [user, navigate]);
+
     const handleLogout = async () => { 
-        try{
+        try {
             await logOut();
             navigate('/');
         } catch (err) {
@@ -27,33 +40,39 @@ function Home() {
     }
 
     const fetchPost = async () => {
-        await getDocs(collection(firestore, "todos"))
-                    .then((querySnapshot) => {
-                        const newData = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
-                        setTodos(newData);
-                        console.log(todos, newData);
-                    })
+        const userDocRef = doc(firestore, 'users', user.uid);
+        const profilesCollectionRef = collection(userDocRef, 'profiles');
+        try {
+            const querySnapshot = await getDocs(profilesCollectionRef);
+            const userProfileData = [];
+
+            querySnapshot.forEach((doc) => {
+                userProfileData.push(doc.data());
+            });
+            setTodos(userProfileData);  // กำหนดข้อมูลให้กับ state
+        } catch (err) {
+            console.error("Error", err);
+        }
     }
-
-    useEffect(() => {
-        fetchPost();
-    }, []);
-
 
     return (
         <div>
             <Nav />
             <h2>Welcome to home page</h2>
-            <p>Hi, {user?.email}</p>
-  
-            <div>
-            {todos?.map((todo, i) =>(
-                    <p key={i}>{todo.todo}</p>
-                ))}
-            </div>
-
+            {isAuthenticated ? (
+                <>
+                    <p>Hi, {user?.email}</p>
+                    <div>
+                        {todos?.map((todo, i) => (
+                            <p key={i}>{todo.Name}</p>
+                        ))}
+                    </div>
+                </>
+            ) : (
+                <p>Please log in to access this page</p>
+            )}
         </div>
     )
 }
 
-export default Home
+export default Home;

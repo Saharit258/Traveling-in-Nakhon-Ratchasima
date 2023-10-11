@@ -28,7 +28,6 @@ function Register() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
-    const { signUp } = useUserAuth();
     let navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -37,6 +36,11 @@ function Register() {
 
         if (password !== confirmPassword) {
             setError("รหัสผ่านและรหัสยืนยันไม่ตรงกัน");
+            return;
+        }         
+        
+        if (password.length < 8) {
+            setError("รหัสผ่านไม่ครบ 8 ตัว");
             return;
         }
 

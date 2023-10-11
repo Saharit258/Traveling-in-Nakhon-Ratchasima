@@ -1,0 +1,30 @@
+/* เพิ่มสไตล์นี้ในไฟล์ CSS ของคุณ */
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .profile-img {
+    width: 150px; /* ปรับขนาดรูปภาพตามที่ต้องการ */
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover; /* ให้รูปภาพทำเต็มพื้นที่ */
+    border: 2px solid #fff; /* เพิ่มกรอบขอบข้างนอก */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงานิดหน่อย */
+  }
+
+  .profile-img:hover {
+    transform: scale(1.1);
+  }
+  
+  .profile-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* เพิ่มสไตล์เพิ่มเติมตามต้องการ */
+  

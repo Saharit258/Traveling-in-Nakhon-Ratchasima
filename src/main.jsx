@@ -15,6 +15,10 @@ import Home from './page/Home.jsx'
 import Booking from './page/Booking.jsx'
 import Todo from './page/Todo.jsx'
 import Profile from './page/Profile.jsx'
+import Famous from './page/Famous.jsx'
+import Community from './page/Community.jsx'
+
+import Addcommunity from './page/manupage/Addcommunity.jsx'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +44,18 @@ const router = createBrowserRouter([
   {
     path: "/Profile",
     element: <Profile />,
+  },
+  {
+    path: "/Famous",
+    element: <Famous />,
+  },
+  {
+    path: "/Community",
+    element: <Community />,
+  },
+  {
+    path: "/Addcommunity",
+    element: <Addcommunity />,
   },
 ])
 

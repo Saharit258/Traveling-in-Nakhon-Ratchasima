@@ -1,0 +1,71 @@
+/* เพิ่มสไตล์นี้ในไฟล์ Community.css ของคุณ */
+
+.box-community {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .box-community-rox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .community-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .community-email {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .community-subject {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .community-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .community-vdo {
+    margin-top: 5px;
+    width: 100%; /* ทำให้ iframe มีความกว้างเต็ม */
+    height: 400px; /* ปรับความสูงตามที่คุณต้องการ */
+    border: none; /* ลบเส้นขอบ */
+    border-radius: 8px; /* เพิ่มขอบมนเล็กน้อย */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเล็กน้อย */
+  }
+  
+  .community-button-add{
+    margin-top: 20px;
+    margin-left: 85%;
+  }
+
+  .community-button-add:hover { 
+    transform: scale(1.05);
+  }
+  
+  .community-time{
+    font-size: 10px;
+  }
+
+  .profile-imgg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  } 

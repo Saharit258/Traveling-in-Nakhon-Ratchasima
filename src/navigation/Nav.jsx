@@ -22,14 +22,41 @@ function Nav() {
     }
 
   return (
-    <nav className='menubar'>
-        <Link className='manu' to="/">Hame</Link>
-        <Link className='manu' to="/Booking">Booking</Link>
-        <Link className='manu' to="/Todo">Todo</Link>
-        <Link className='manu' to="/Profile">Profile</Link>
-        <Link className='manu' to="/Login">Login</Link>
-        <Link className='manu' to="/Register">Register</Link>
-        <a onClick={handleLogout}>{user?.email}</a>
+        <nav className='menubar'>
+        <Link className='manu' to='/'>
+            Hame
+        </Link>
+        <Link className='manu' to='/Booking'>
+            Booking
+        </Link>
+        {/* <Link className='manu' to="/Todo">Todo</Link> */}
+        <Link className='manu' to='/Famous'>
+            Famous
+        </Link>
+        <Link className='manu' to='/Community'>
+            Community
+        </Link>
+        <Link className='manu' to='/Profile'>
+            Profile
+        </Link>
+        <div className='manu-log'>
+            {user?.email ? (
+            <>
+                <a className='manu-a' onClick={handleLogout}>
+                {user.email}
+                </a>
+            </>
+            ) : (
+            <>
+                <Link className='manu' to='/Login'>
+                Login
+                </Link>
+                <Link className='manu' to='/Register'>
+                Register
+                </Link>
+            </>
+            )}
+        </div>
     </nav>
   )
 }

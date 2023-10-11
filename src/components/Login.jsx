@@ -16,6 +16,17 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
+
+        if (password.length < 8) {
+            setError("รหัสผ่านไม่ครบ 8 ตัว");
+            return;
+        }
+
+        if (!/^[^A-Za-z]+$/.test(password)) {
+            setError("รหัสผ่านต้องไม่มีตัวอักษร A-Z หรือ a-z");
+            return;
+        }
+
         try {
             await logIn(email, password);
             navigate("/");

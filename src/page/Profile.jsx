@@ -1,96 +1,74 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserAuth } from "../context/UserAuthContext";
+import { Button } from 'react-bootstrap';
 import Nav from '../navigation/Nav'
-import { collection, addDoc, getDocs, QuerySnapshot, doc } from 'firebase/firestore';
+import '../pagecss/Profile.css'
+
+import { collection, getDocs, doc } from 'firebase/firestore';
 import { firestore } from '../database/firebase'
 
-import { auth } from '../database/firebase';
-
 function Profile() {
-
+  const { logOut, user } = useUserAuth();
   const [todos, setTodos] = useState([]);
-  const [userData, setUserData] = useState([]);
-  const [userProfile, setUserProfile] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const storageKey = 'users';
-
-  function encodeData(data) {
-      const jsonData = JSON.stringify(data);
-      return btoa(jsonData);
-  }
-
-  function decodeData(encodedData) {
-    const jsonData = atob(encodedData);
-    return JSON.parse(jsonData);
-  }
-
-  function getAuthStatus() {
-    const encodedData = localStorage.getItem(storageKey);
-    if (encodedData) {
-        const decodedData = decodeData(encodedData);
-        if (decodedData && decodedData.user) {
-            return decodedData.user; // return user data with decoded data
-        }
-    }
-    return null; // if not found user
-  }
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const user = getAuthStatus();
-    setUserData(user); // เพิ่มการตั้งค่าข้อมูลผู้ใช้ใน state ใหม่
-  }, [auth]);
+      const checkAuthStatus = () => {
+          if (!user) {
+              // ถ้ายังไม่ได้เข้าสู่ระบบ
+              setIsAuthenticated(false);
+              navigate('/');  // หรือไปที่หน้า login ตามที่คุณต้องการ
+          } else {
+              // ถ้าเข้าสู่ระบบแล้ว
+              setIsAuthenticated(true);
+              fetchPost();  // เมื่อมีการเข้าสู่ระบบแล้วให้ดึงข้อมูล
+          }
+      };
 
-  const fetchPost = async () => {
-    const userDocRef = doc(database, 'users', this.uid);
-    const profilesCollectionRef = collection(userDocRef, 'profiles');
-      try{
-        const querySnapshot = await getDocs(profilesCollectionRef);
-        const userProfileData = [];
-    
-        querySnapshot.forEach((doc) => {
-          userProfileData.push(doc.data());
-        });
-    
-        // บันทึกข้อมูลใน Session Storage
-        sessionStorage.setItem('userProfile', JSON.stringify(userProfileData));
-    
-        return userProfileData;
-      }catch (err) {
-        setError(err.message);
-        console.error("Error", err);
-    }
+      checkAuthStatus();
+  }, [user, navigate]);
+
+  const handleLogout = async () => { 
+      try {
+          await logOut();
+          navigate('/');
+      } catch (err) {
+          console.log(err.message);
+      }
   }
 
-    useEffect(() => {
-        fetchPost();
-    }, []);
+  const fetchPost = async () => {
+      const userDocRef = doc(firestore, 'users', user.uid);
+      const profilesCollectionRef = collection(userDocRef, 'profiles');
+      try {
+          const querySnapshot = await getDocs(profilesCollectionRef);
+          const userProfileData = [];
 
-    useEffect(() => {
-      if (userData && userData.uid) {
-  
-        console.log('User UID:', userData.uid);
-        getProfile(userData.uid)
+          querySnapshot.forEach((doc) => {
+              userProfileData.push(doc.data());
+          });
+          setTodos(userProfileData);  // กำหนดข้อมูลให้กับ state
+      } catch (err) {
+          console.error("Error", err);
       }
-    }, [userData]);
-  
-    const getProfile = async (uid) => {
-      const Uprofile = new fetchPost(uid);
-      const userProfile = await Uprofile.getProfile()
-      setUserProfile(userProfile)
-    }
-  
-    console.log(userProfile)
+  }
 
   return (
     <>
-    <Nav/>
-    <div>Profile
-    <div className='flex flex-row align-middle gap-2'>
-                  <p className='profile-name'>{userProfile[0].Name}</p>
-                  <img src={userProfile[0].Profile} alt={userProfile[0].Name} className='profile-img' />
-                </div>
-    </div>
+      <Nav />
+      <div className='profile-container'>
+          {todos?.map((todo, i) => (
+          <div className='flex flex-row align-middle gap-2'>
+            <img src={todo.Profile} className='profile-img' />
+            <p className='profile-name' key={i}>{todo.Name}</p>
+          </div>
+        ))}
+      </div>
     </>
-  )
+  );
 }
 
-export default Profile
+export default Profile;
