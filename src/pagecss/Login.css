@@ -1,0 +1,60 @@
+/* ส่วนของ box-login */
+.box-login {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 100px;
+  }
+  
+  /* ปรับแต่งขอบของ Input Fields */
+  .form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* ปรับแต่งสีของปุ่ม Sign In */
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* กำหนดสีของลิงก์ Sign Up */
+  .link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    color: #0056b3;
+  }
+  
+  /* ปรับแต่งสีของ error message */
+  .errer-login {
+    color: #1919fc;
+  }
+  
+  /* ปรับแต่งสีของ Alert */
+  .alert {
+    border: 1px solid #ff0000;
+    background-color: #ffebeb;
+    color: #ff0000;
+    border-radius: 5px;
+  }
+  

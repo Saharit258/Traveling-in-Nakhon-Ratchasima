@@ -17,6 +17,10 @@ import Todo from './page/Todo.jsx'
 import Profile from './page/Profile.jsx'
 import Famous from './page/Famous.jsx'
 import Community from './page/Community.jsx'
+import Promotion from './page/Promotion.jsx'
+import Sightseeing from './page/Sightseeing.jsx'
+import Bookinghistory from './page/ฺBookinghistory.jsx'
+import Reportproblem from './page/Reportproblem.jsx'
 
 import Addcommunity from './page/manupage/Addcommunity.jsx'
 
@@ -56,6 +60,22 @@ const router = createBrowserRouter([
   {
     path: "/Addcommunity",
     element: <Addcommunity />,
+  },
+  {
+    path: "/Promotion",
+    element: <Promotion />,
+  },
+  {
+    path: "/Sightseeing",
+    element: <Sightseeing />,
+  },
+  {
+    path: "/Bookinghistory",
+    element: <Bookinghistory />,
+  },
+  {
+    path: "/Reportproblem",
+    element: <Reportproblem />,
   },
 ])
 

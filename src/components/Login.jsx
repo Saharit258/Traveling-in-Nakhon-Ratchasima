@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { Form, Alert, Button } from 'react-bootstrap'
 import { useUserAuth } from "../context/UserAuthContext";
-import Nav from '../navigation/Nav'
+import Nav from '../navigation/Nav';
+import '../pagecss/Login.css'
+import Swal from 'sweetalert2'
 
 function Login() {
 
@@ -19,16 +21,31 @@ function Login() {
 
         if (password.length < 8) {
             setError("รหัสผ่านไม่ครบ 8 ตัว");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'รหัสผ่านไม่ครบ 8 ตัว',
+              })
             return;
         }
 
         if (!/^[^A-Za-z]+$/.test(password)) {
             setError("รหัสผ่านต้องไม่มีตัวอักษร A-Z หรือ a-z");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'รหัสผ่านต้องไม่มีตัวอักษร A-Z หรือ a-z',
+              })
             return;
         }
 
         try {
             await logIn(email, password);
+            Swal.fire({
+                icon: 'success',
+                title: 'เข้าสู่ระบบ',
+                showConfirmButton: false,
+              })    
             navigate("/");
         } catch(err) {
             setError(err.message);
@@ -41,36 +58,39 @@ function Login() {
         <>
         <Nav/>
         <div>
-            <div className="row">
-                <div className="col-md-6 mx-auto">
-                    <h2 className="mb-3">Log in</h2>
-                    {error && <Alert variant='danger'>{error}</Alert>}
+            <div className="row-login">
+            <Form onSubmit={handleSubmit}>
+                    <div className="box-login">
+                        <h2 className="errer-login">เข้าสู่ระบบ</h2>
+                        {error && <Alert variant='danger'>{error}</Alert>}
 
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId='formBasicEmail'>
-                            <Form.Control 
-                                type='email'
-                                placeholder='Email address'
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
+                        <Form.Group className="email-login" controlId='formBasicEmail'>
+                        <Form.Control 
+                            className="form-control"
+                            type='email'
+                            placeholder='อีเมล'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId='formBasicPassword'>
-                            <Form.Control 
-                                type='password'
-                                placeholder='Password'
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+                        <Form.Group className="password-login" controlId='formBasicPassword'>
+                        <Form.Control 
+                            className="form-control"
+                            type='password'
+                            placeholder='รหัสผ่าน'
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                         </Form.Group>
 
-                        <div className="d-grid gap-2">
-                            <Button variant="primary" type="submit">Sign In</Button>
+                        <div className="button-login">
+                        <Button className="button" variant="primary" type="submit">เข้าสู่ระบบ</Button>
                         </div>
-                    </Form>
-                    <div className="p-4 box mt-3 text-center">
-                        Don't have an account? <Link to="/Register"> Sign Up</Link>
+                        <div className="login-to-register">
+                        ยังไม่มีบัญชี? <Link to="/Register" className="link"> สมัครสมาชิค</Link>
+                        </div>
                     </div>
-                </div>
+                    </Form>
+
             </div>
         </div>
         </>

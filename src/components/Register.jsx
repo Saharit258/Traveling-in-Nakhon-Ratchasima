@@ -3,6 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Form, Alert, Button } from 'react-bootstrap'
 import { useUserAuth } from "../context/UserAuthContext";
 import Nav from '../navigation/Nav'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import '../pagecss/LR.css'
+import Swal from 'sweetalert2'
 
 import { auth } from '../database/firebase';
 
@@ -24,6 +28,9 @@ function Register() {
     }
 
     const [name, setName] = useState("");
+    const [phonenumber, setPhonenumber] = useState("");
+    const [birthday, setBirthday] = useState("");
+    const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -36,11 +43,31 @@ function Register() {
 
         if (password !== confirmPassword) {
             setError("รหัสผ่านและรหัสยืนยันไม่ตรงกัน");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'รหัสผ่านและรหัสยืนยันไม่ตรงกัน',
+              })
             return;
         }         
         
         if (password.length < 8) {
             setError("รหัสผ่านไม่ครบ 8 ตัว");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'รหัสผ่านไม่ครบ 8 ตัว',
+              })
+            return;
+        }
+
+        if (!/^[^A-Za-z]+$/.test(password)) {
+            setError("รหัสผ่านต้องไม่มีตัวอักษร A-Z หรือ a-z");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'รหัสผ่านต้องไม่มีตัวอักษร A-Z หรือ a-z',
+              })
             return;
         }
 
@@ -52,12 +79,13 @@ function Register() {
 
             // After successful signup, add user data to Firestore
             const userData = {
-                Name: name,
-                Email: email, 
-                Profile: profile_image,
-                Phonenumber : "",
-                Birthday : "",
-                Address : "",              
+                name: name,
+                email: email, 
+                profile: profile_image,
+                phonenumber : phonenumber,
+                birthday : birthday,
+                address : address,
+                usertype : "User",               
             };
             
             const userProfilesCollectionRef = collection(firestore, 'users', user.uid, 'profiles');
@@ -68,7 +96,11 @@ function Register() {
 
             console.log("User registered successfully with ID: ", user.id);
             navigate("/"); // Redirect to home page
-            alert("สมัครสมาชิกเสร็จสิ้น");
+            Swal.fire({
+                icon: 'success',
+                title: 'สมัครสมาชิกเสร็จสิ้น',
+                showConfirmButton: false,
+              })  
         } catch (err) {
             setError(err.message);
             console.error("Error", err);
@@ -80,51 +112,82 @@ function Register() {
             <Nav />
             <div>
                 <div className="row">
-                    <div className="col-md-6 mx-auto">
-                        <h2 className="mb-3">Register</h2>
-                        {error && <Alert variant='danger'>{error}</Alert>}
+                <Form onSubmit={handleSubmit}>
+                        <div className="box-register">
+                            <h2 className="errer-login">สมัครสมาชิค</h2>
+                            {error && <Alert variant='danger'>{error}</Alert>}
 
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId='formBasicName'>
-                                <Form.Control
-                                    type='text' // Changed to 'text' for the name field
-                                    placeholder='Name'
-                                    onChange={(e) => setName(e.target.value)}
-                                />
+                            <Form.Group className="register-name" controlId='formBasicName'>
+                            <Form.Control
+                                className="form-control"
+                                type='Name'
+                                placeholder='ชื่อ-นามสกุล'
+                                onChange={(e) => setName(e.target.value)}
+                            />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId='formBasicEmail'>
-                                <Form.Control
-                                    type='email'
-                                    placeholder='Email address'
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
+                            <Form.Group className="register-phone" controlId='formBasicName'>
+                            <Form.Control
+                                className="form-control"
+                                type='Phonenumber'
+                                placeholder='เบอร์โทรศัพท์'
+                                onChange={(e) => setPhonenumber(e.target.value)}
+                            />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId='formBasicPassword'>
-                                <Form.Control
-                                    type='password'
-                                    placeholder='Password'
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
+                            <Form.Group className="register-birthday" controlId='formBasicName'>
+                            <Form.Control
+                                type="date"
+                                onChange={(e) => setBirthday(e.target.value)}
+                                dateFormat="MM/dd/yyyy"
+                                placeholderText='Birthday'
+                            />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId='formBasicConfirmPassword'>
-                                <Form.Control
-                                    type='password'
-                                    placeholder='Confirm Password'
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
+                            <Form.Group className="register-add" controlId='formBasicName'>
+                            <Form.Control
+                                className="form-control"
+                                type='Address'
+                                placeholder='ที่อยู่ปัจจุบัน'
+                                onChange={(e) => setAddress(e.target.value)}
+                            />
                             </Form.Group>
 
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit">Sign Up</Button>
+                            <Form.Group className="register-email" controlId='formBasicEmail'>
+                            <Form.Control
+                                className="form-control"
+                                type='email'
+                                placeholder='อีเมล'
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            </Form.Group>
+
+                            <Form.Group className="register-password" controlId='formBasicPassword'>
+                            <Form.Control
+                                className="form-control"
+                                type='password'
+                                placeholder='รหัสผ่าน'
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            </Form.Group>
+
+                            <Form.Group className="register-confirm" controlId='formBasicConfirmPassword'>
+                            <Form.Control
+                                className="form-control"
+                                type='password'
+                                placeholder='Confirm Password'
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                            </Form.Group>
+
+                            <div className="button-submit-signup">
+                            <Button variant="primary" type="submit">ลงชื่อเข้าใช้</Button>
                             </div>
-                        </Form>
-                        <div className="p-4 box mt-3 text-center">
-                            Already have an account? <Link to="/Login">Log in</Link>
+                            <div className="button-to-login">
+                               มีบัญชีอยู่แล้ว? <Link to="/Login" className="link">เข้าสู่ระบบ</Link>
+                            </div>
                         </div>
-                    </div>
+                    </Form>
                 </div>
             </div>
         </>

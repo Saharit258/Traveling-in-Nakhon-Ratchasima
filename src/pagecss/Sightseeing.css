@@ -1,0 +1,52 @@
+.box-Sightseeing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* ระยะห่างภายใน box */
+    border-radius: 10px; /* ความโค้งของเส้นขอบของ box */
+  }
+  
+  .box-Sightseeing-rox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /* ระยะห่างระหว่างรายการ Sightseeing-card */
+  }
+  
+  .Sightseeing-card {
+    background-color: #fff;
+    padding: 20px; /* ระยะห่างภายใน Sightseeing-card */
+    border-radius: 10px; /* ความโค้งขอบของ Sightseeing-card */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เงาสำหรับ Sightseeing-card */
+    width: 900px; /* กำหนดความกว้างของ Sightseeing-card */
+    margin-bottom: 20px; /* ระยะห่างระหว่าง Sightseeing-card */
+  }
+  
+  .Sightseeing-h3 {
+    font-size: 24px; /* ขนาดตัวอักษรสำหรับรายการ Sightseeing-h3 */
+    margin: 0;
+  }
+  
+  .Sightseeing-a {
+    margin: 5px 0;
+  }
+  
+  .Sightseeing-a a {
+    color: #007bff; /* สีลิงก์ */
+    text-decoration: none;
+  }
+  
+  .Sightseeing-a a:hover {
+    text-decoration: underline; /* ลักษณะการเมื่อเมาส์ไฟล์ลิงก์ */
+  }
+  
+  @media (max-width: 768px) {
+    .box-Sightseeing-rox {
+      flex-direction: column;
+    }
+  
+    .Sightseeing-card {
+      width: 100%; /* กำหนดความกว้างของ Sightseeing-card ให้เต็มจอแสดงข้อมูล */
+    }
+  }
+  

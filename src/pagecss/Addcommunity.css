@@ -1,0 +1,65 @@
+/* เพิ่ม style ในไฟล์ CSS ของคุณ */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* สีพื้นหลังทั่วไป */
+  }
+  
+  .box {
+    background-color: #fff; /* สีพื้นหลังกล่อง */
+    border-radius: 10px;
+    height: 350px; /* กำหนดความสูง */
+    width: 700px;
+    padding: 20px; /* เพิ่ม Padding สำหรับขอบของกล่อง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาใต้กล่อง */
+  }
+  
+  /* เพิ่ม margin-top เพื่อให้กล่องห่างจากส่วนบนของหน้าจอ */
+  
+  h1 {
+    text-align: center;
+    color: #007bff; /* สีข้อความหัวเรื่อง */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* สีปุ่มส่วนใหญ่ */
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* สีปุ่มเมื่อ hover */
+  }
+  
+  /* ปรับแต่ง style ของกล่อง */
+  .box {
+    max-width: 400px; /* กำหนดความกว้างสูงสุดของกล่อง */
+    margin: 50px auto; /* จัดตำแหน่งกล่องให้อยู่กลางหน้าจอ */
+  }
+
+  .addcom-subject{
+    margin-top: 10px;
+  }
+
+  .addcom-photo{
+    margin-top: 10px;
+  }
+
+  .addcom-VDO{
+    margin-top: 10px;
+  }
+  
+  .addcom-map{
+    margin-top: 10px;
+  }
+
+  .addcom-button {
+    margin-top: 10px;
+    text-align: center; /* ให้ปุ่มอยู่ตรงกลาง */
+  }

@@ -1,34 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import { useUserAuth } from "../context/UserAuthContext";
 import { Button } from 'react-bootstrap';
 import Nav from '../navigation/Nav'
 
 import { collection, getDocs, doc } from 'firebase/firestore';
-import { firestore } from '../database/firebase'
+import { auth, firestore } from '../database/firebase'
+import { onAuthStateChanged } from "firebase/auth";
 
 function Home() {
-    const { logOut, user } = useUserAuth();
     const [todos, setTodos] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const checkAuthStatus = () => {
-            if (!user) {
-                // ถ้ายังไม่ได้เข้าสู่ระบบ
-                setIsAuthenticated(false);
-                navigate('/');  // หรือไปที่หน้า login ตามที่คุณต้องการ
-            } else {
-                // ถ้าเข้าสู่ระบบแล้ว
-                setIsAuthenticated(true);
-                fetchPost();  // เมื่อมีการเข้าสู่ระบบแล้วให้ดึงข้อมูล
-            }
-        };
-
-        checkAuthStatus();
-    }, [user, navigate]);
 
     const handleLogout = async () => { 
         try {
@@ -55,6 +39,35 @@ function Home() {
         }
     }
 
+    useEffect(() => {
+        // const checkAuthStatus = () => {
+        //     if (!user) {
+        //         // ถ้ายังไม่ได้เข้าสู่ระบบ
+        //         setIsAuthenticated(false);
+        //         navigate('/');  // หรือไปที่หน้า login ตามที่คุณต้องการ
+        //     } else {
+        //         // ถ้าเข้าสู่ระบบแล้ว
+        //         setIsAuthenticated(true);
+        //         fetchPost();  // เมื่อมีการเข้าสู่ระบบแล้วให้ดึงข้อมูล
+        //     }
+        // };
+
+        // checkAuthStatus();
+
+        onAuthStateChanged(auth, async(user) => {
+            if (user) {
+                // has sign in
+                setIsAuthenticated(true);
+                fetchPost();
+                setUser(user);
+            } else {
+                // has sign out
+                setIsAuthenticated(false);
+                navigate("/");
+            }
+        })
+    }, [user]);
+
     return (
         <div>
             <Nav />
@@ -64,7 +77,7 @@ function Home() {
                     <p>Hi, {user?.email}</p>
                     <div>
                         {todos?.map((todo, i) => (
-                            <p key={i}>{todo.Name}</p>
+                            <p key={i}>{todo.name}</p>
                         ))}
                     </div>
                 </>

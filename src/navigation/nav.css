@@ -1,34 +1,91 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* nav.css */
 
 .menubar {
-    background-color: #333; /* เปลี่ยนสีพื้นหลังเป็นสีเข้มๆ */
-    padding: 1rem;
-    text-align: center;
     display: flex;
-    justify-content: space-between; /* จัดวางเนื้อหาไปทางสองข้าง */
-}
-
-.manu, .manu-log {
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(255, 134, 20);
+    padding: 10px 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo img {
+    max-width: 50px; /* ปรับขนาดให้เล็กลง เช่น 50px, 40px, 30% เป็นต้น */
+    height: auto; /* คงความสัดส่วน */
+  }
+  
+  .menubar a {
+    color: #ffffff; /* สีข้อความเมนู */
+    text-decoration: none; /* เอา underline ออก */
+    margin: 0 10px;
+  }
+  
+  .menubar-log {
+    display: flex;
+    align-items: center;
+  }
+  
+  .manu-log a {
+    color: #010101; /* สีข้อความลิงก์ Log in */
+    text-decoration: none; /* เอา underline ออก */
+    margin-left: auto; /* จัดตำแหน่งลิงก์ Log in ทางขวา */
+  }
+  
+  .login-register-container {
+    display: flex;
+    justify-content: space-between; /* จัดการตำแหน่งแนวนอน */
+    width: 100%; /* ทำให้เต็มความกว้างของพ่อแม่ */
+  }
+  
+  .login-button,
+  .register-button {
+    flex: 1; /* ทำให้ทั้งสองช่องใช้พื้นที่เท่ากัน */
+    padding: 10px 20px;
+    width: 130px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    border: 2px solid #fff;
+    border-radius: 5px;
     color: #fff;
+    background-color: rgba(64, 255, 0, 0.762); /* สีพื้นหลังที่มีความโปร่งแสง */
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .login-button:hover,
+  .register-button:hover {
+    background: rgb(248,255,4);
+    background: linear-gradient(90deg, rgba(248,255,4,1) 0%, rgba(190,235,39,1) 45%, rgba(0,255,65,1) 100%);
+    color: #fff;
+  }
+  
+  .box-nav-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-nav-container {
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    padding: 10px; /* ระยะห่างภายในกล่องครอบ */
+    border-radius: 10px; /* ความโค้งของเส้นขอบของกล่องครอบ */
+    margin-right: 10px; /* ระยะห่างระหว่างกล่องครอบและข้อความ */
+    border: 1.2px solid #000000; /* เส้นสีดำตีรอบกล่อง */
+  }
+  
+  .profile-nav {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 1.2px solid #727272; /* เส้นสีดำตีรอบกล่อง */
+  }
+  
+  .name-manu-log {
     text-decoration: none;
-    margin: 0 1rem;
-}
-
-.manu-log {
-    margin-left: auto; /* จัดวางไปทางขวา */
-}
-
-.manu-a {
-    color: #666565b3;
-    text-decoration: none;
-    margin: 0 1rem;
-}
-
-/* เพิ่ม hover effect สำหรับลิงค์ */
-.manu:hover, .manu-log:hover, .manu-a:hover {
-    color: #ffcc00; /* สีเหลืองเมื่อ hover */
-}
+    margin-top: 10px;
+    color: black;
+    font-weight: bold;
+  }
+  

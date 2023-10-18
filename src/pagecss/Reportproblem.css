@@ -1,0 +1,112 @@
+/* Bookinghistory.css */
+.problem-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .problem-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* สีพื้นหลังของการ์ด Profile */
+    color: white; /* สีข้อความของการ์ด Profile */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -200px;
+  }
+  
+  .problem-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .problem-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+  }
+  
+  hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ddd; /* สีเส้นใต้รายการเมนู */
+    margin: 10px 0;
+  }
+  
+  .manu {
+    font-size: 16px;
+    text-decoration: none;
+    color: #1877f2; /* สีข้อความของเมนู */
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #1153c9;
+  }
+    
+    
+    .problem {
+        display: flex;
+        justify-content: center; /* จัดให้เรียงตรงกลางตามแนวนอน */
+        align-items: center; /* จัดให้เรียงตรงกลางตามแนวตั้ง */
+        min-height: 100vh; /* ความสูงขั้นต่ำเท่ากับความสูงของหน้าจอ */
+    }
+
+   .problem-taxt {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: -300px;
+  }
+  
+  .problem-box-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* จัดให้อยู่ตรงกลางใน .problem-box-card */
+    margin-top: -100px;
+    margin-right: 200px;
+    width: 800px;
+    height: 500px;
+  }
+  
+  .problem-box-card h2 {
+    font-size: 24px; /* ขนาดตัวอักษรใหญ่ขึ้น */
+    margin: 0; /* กำหนดระยะห่างด้านบนและด้านล่างให้เป็น 0 เพื่อลบระยะห่างเริ่มต้น */
+  }
+  
+  .problem-box-card Form {
+    margin-top: 20px; /* กำหนดระยะห่างด้านบนของฟอร์ม */
+  }
+  
+  /* สไตล์ของปุ่ม Add */
+  .problem-box-card .d-grid gap-2 button {
+    background-color: #007bff; /* สีพื้นหลังของปุ่ม */
+    color: #fff; /* สีข้อความในปุ่ม */
+    border: none;
+    border-radius: 5px; /* มีความโค้งมนตรัสให้ปุ่ม */
+    padding: 10px 20px; /* ปรับขนาดของปุ่ม */
+  }
+  
+  .problem-box-card .d-grid gap-2 button:hover {
+    background-color: #0056b3; /* เปลี่ยนสีเมื่อโฮเวอร์ */
+  }
+  
