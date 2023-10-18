@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './nav.css';
 import { useUserAuth } from '../context/UserAuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-import logoImage from '../assets/subway.png';
+import logoImage from '../assets/logoapp.png';
 
 import { collection, getDocs, doc } from 'firebase/firestore';
 import { firestore } from '../database/firebase'
@@ -93,7 +93,7 @@ function Nav() {
               เข้าสู่ระบบ
             </Link>
             <Link className='manu register-button' to='/Register'>
-              สมัครสมาชิค
+              สมัครสมาชิก
             </Link>
           </div>
         )}

@@ -100,7 +100,7 @@ function Profile() {
               console.log('I was closed by the timer')
             }
           })
-          fetchPost();
+  
     } catch (err) {
       console.log("Error:", err);
     }

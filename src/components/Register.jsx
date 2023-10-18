@@ -175,7 +175,7 @@ function Register() {
                             <Form.Control
                                 className="form-control"
                                 type='password'
-                                placeholder='Confirm Password'
+                                placeholder='ยืนยันรหัสผ่าน'
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             />
                             </Form.Group>
