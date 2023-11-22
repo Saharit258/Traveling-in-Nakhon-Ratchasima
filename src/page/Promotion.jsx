@@ -27,14 +27,12 @@ function Promotion() {
     <>
       <Nav />
       <div className='box-Promotion'>
-        <div>
-          <div className='box-Promotion-rox'>
-            {profiles?.map((profile, i) => (
-              <div key={i} className='Promotion-card'>
-                <h3 className='Promotion-h3'>{profile.name}</h3>
-                <p>{profile?.Description}</p>
-              </div>
-            ))}
+        <div className="box-Promotion-layer">
+          <div className="layer1">
+            <div className="layer1-box">โปรโมชันและสิทธิพิเศษ</div>
+          </div>
+          <div className="layer2">
+            <div className="layer1-box">โปรโมชันและสิทธิพิเศษ</div>
           </div>
         </div>
       </div>

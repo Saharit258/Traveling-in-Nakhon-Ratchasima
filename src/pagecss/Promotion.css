@@ -1,0 +1,7 @@
+.box-Promotion{
+    display: flex;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+    align-items: center;
+    justify-content: center;
+    margin: auto; /* ทำให้อยู่กลางจอ */
+}
