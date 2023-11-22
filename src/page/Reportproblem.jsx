@@ -4,7 +4,8 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { collection, addDoc, getDocs, doc } from 'firebase/firestore';
 import { Form, Button } from 'react-bootstrap';
 import Nav from '../navigation/Nav'
-import '../pagecss/ฺBookinghistory.css'
+import Manuprofile from './manupage/manuprofile'
+import '../pagecss/Bookinghistory.css'
 import '../pagecss/Reportproblem.css'
 import Swal from 'sweetalert2'
 import NavProfile from '../navigation/NavProfile'
@@ -84,24 +85,14 @@ function Reportproblem() {
   return (
     <>
       <Nav />
+      <Manuprofile/>
       <div className='problem-container'>
-          <div className='problem-card'>
-            <img src={todos[0]?.profile} className='problem-img' alt='Profile' />
-            <p className='problem-name'>{todos[0]?.name}</p>
-            <hr></hr>
-            <Link className='manu' to='/Profile'>บัญชีของฉัน</Link>
-            <Link className='manu' to='/'>คูปองของฉัน</Link>
-            <Link className='manu' to='/Reportproblem'>แจ้งปัญหา</Link>
-            <hr></hr>
-            <button onClick={Logout}>ออกจากระบบ</button>
-          </div>
-          <div className="problem">
             <div className="problem-box-card">
                 <h2 className="problem-taxt">แจ้งปัญหา</h2>
                 <Form onSubmit={addProblems}>
                             <Form.Group className="mb-3" controlId='formBasicName'>
                                 <Form.Control
-                                    type='text' // Changed to 'text' for the name field
+                                    type='text'
                                     placeholder='เรื่อง'
                                     onChange={(e) => setProblem(e.target.value)}
                                 />
@@ -109,7 +100,8 @@ function Reportproblem() {
 
                             <Form.Group className="mb-3" controlId='formBasicEmail'>
                                 <Form.Control
-                                    type='text'
+                                    as="textarea"
+                                    rows={8}
                                     placeholder='รายระเอียด'
                                     onChange={(e) => setProblemsusubject(e.target.value)}
                                 />
@@ -121,7 +113,6 @@ function Reportproblem() {
                         </Form>
                 </div>
           </div>
-        </div>
     </>
   );
 }

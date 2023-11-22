@@ -1,0 +1,42 @@
+.profile-container-manu {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+
+.profile-card-manu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* สีพื้นหลังของการ์ด Profile */
+    color: black; /* สีข้อความของการ์ด Profile */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* จัดข้อความกลางหน้า */
+  }
+
+.profile-img-manu {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+.profile-name-profile-card-manu{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+.manu-manu {
+    font-size: 16px;
+    text-decoration: none;
+    color: #1877f2; /* สีข้อความของเมนู */
+    margin: 10px 0;
+  }
+
+.card-profile-end:hover {
+  background-color: red;
+}  

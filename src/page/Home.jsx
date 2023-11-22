@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Nav from '../navigation/Nav'
+import Cursor from '../page/manupage/cursor'
+import '../pagecss/Home.css';
 
 import { collection, getDocs, doc } from 'firebase/firestore';
 import { auth, firestore } from '../database/firebase'
@@ -71,19 +73,25 @@ function Home() {
     return (
         <div>
             <Nav />
-            <h2>Welcome to home page</h2>
-            {isAuthenticated ? (
-                <>
-                    <p>Hi, {user?.email}</p>
-                    <div>
-                        {todos?.map((todo, i) => (
-                            <p key={i}>{todo.name}</p>
-                        ))}
+
+                <div className="body-smoke">
+                    <div className="smoke">
+                        <span className="smoke-span">T</span>
+                        <span className="smoke-span">R</span>
+                        <span className="smoke-span">A</span>
+                        <span className="smoke-span">V</span>
+                        <span className="smoke-span">E</span>
+                        <span className="smoke-span">L</span>
+                        <span className="smoke-span">I</span>
+                        <span className="smoke-span">N</span>
+                        <span className="smoke-span">K</span>
+                        <span className="smoke-span">O</span>
+                        <span className="smoke-span">R</span>
+                        <span className="smoke-span">A</span>
+                        <span className="smoke-span">T</span>
                     </div>
-                </>
-            ) : (
-                <p>Please log in to access this page</p>
-            )}
+                </div>
+            <Cursor/>
         </div>
     )
 }

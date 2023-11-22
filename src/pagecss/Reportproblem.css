@@ -1,9 +1,13 @@
 /* Bookinghistory.css */
 .problem-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+      display: flex;
+      flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+      align-items: center;
+      justify-content: center;
+      gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
+      margin: auto; /* ทำให้อยู่กลางจอ */
+      margin-top: -330px;
+      margin-left: 200px;
   }
   
   .problem-card {
@@ -15,7 +19,6 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: -200px;
   }
   
   .problem-img {
@@ -60,14 +63,6 @@
   button:hover {
     background-color: #1153c9;
   }
-    
-    
-    .problem {
-        display: flex;
-        justify-content: center; /* จัดให้เรียงตรงกลางตามแนวนอน */
-        align-items: center; /* จัดให้เรียงตรงกลางตามแนวตั้ง */
-        min-height: 100vh; /* ความสูงขั้นต่ำเท่ากับความสูงของหน้าจอ */
-    }
 
    .problem-taxt {
     font-size: 24px;
@@ -85,7 +80,7 @@
     margin-top: -100px;
     margin-right: 200px;
     width: 800px;
-    height: 500px;
+    height: auto;
   }
   
   .problem-box-card h2 {

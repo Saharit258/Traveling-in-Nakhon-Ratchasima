@@ -19,7 +19,7 @@ import Famous from './page/Famous.jsx'
 import Community from './page/Community.jsx'
 import Promotion from './page/Promotion.jsx'
 import Sightseeing from './page/Sightseeing.jsx'
-import Bookinghistory from './page/ฺBookinghistory.jsx'
+import Bookinghistory from './page/Bookinghistory.jsx'
 import Reportproblem from './page/Reportproblem.jsx'
 
 import Addcommunity from './page/manupage/Addcommunity.jsx'

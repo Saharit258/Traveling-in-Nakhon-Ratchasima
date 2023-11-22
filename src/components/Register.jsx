@@ -32,6 +32,7 @@ function Register() {
     const [birthday, setBirthday] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
+    const [sex, setSex] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
@@ -85,6 +86,7 @@ function Register() {
                 phonenumber : phonenumber,
                 birthday : birthday,
                 address : address,
+                sex: sex,
                 usertype : "User",               
             };
             
@@ -95,12 +97,12 @@ function Register() {
             localStorage.setItem(storageKey, encodeData({ user: userCredential.user }));
 
             console.log("User registered successfully with ID: ", user.id);
-            navigate("/"); // Redirect to home page
             Swal.fire({
                 icon: 'success',
                 title: 'สมัครสมาชิกเสร็จสิ้น',
                 showConfirmButton: false,
               })  
+            navigate("/"); // Redirect to home page
         } catch (err) {
             setError(err.message);
             console.error("Error", err);
@@ -125,6 +127,26 @@ function Register() {
                                 onChange={(e) => setName(e.target.value)}
                             />
                             </Form.Group>
+
+                            <Form.Group className="register-name" controlId='formBasicName'>
+                                    <Form.Check
+                                        type="radio"
+                                        label="เพศชาย"
+                                        name="sex"
+                                        value="male"
+                                        id="maleRadio"
+                                        onChange={(e) => setSex(e.target.value)}
+                                    />
+                                    <Form.Check
+                                        type="radio"
+                                        label="เพศหญิง"
+                                        name="sex"
+                                        value="female"
+                                        id="femaleRadio"
+                                        onChange={(e) => setSex(e.target.value)}
+                                    />
+                                </Form.Group>
+
 
                             <Form.Group className="register-phone" controlId='formBasicName'>
                             <Form.Control
@@ -157,7 +179,7 @@ function Register() {
                             <Form.Control
                                 className="form-control"
                                 type='email'
-                                placeholder='อีเมล'
+                                placeholder='อีเมล ชื่อ@gmail.com'
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             </Form.Group>
@@ -166,7 +188,7 @@ function Register() {
                             <Form.Control
                                 className="form-control"
                                 type='password'
-                                placeholder='รหัสผ่าน'
+                                placeholder='รหัสผ่าน ต้องเป็นตัวเลข 0-9 และไม่น้อยกว่า8ตัว'
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             </Form.Group>

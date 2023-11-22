@@ -1,35 +1,23 @@
-/* Profile.css */
-.profile-container {
+.profile-container-card{
   display: flex;
-  justify-content: space-between;
+  flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
   align-items: center;
-  padding: 20px;
+  justify-content: center;
+  gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
+  margin: auto; /* ทำให้อยู่กลางจอ */
+  margin-top: -430px;
 }
 
-.profile-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ffffff; /* สีพื้นหลังของการ์ด Profile */
-  color: black; /* สีข้อความของการ์ด Profile */
+.profile-container-card-bar{
+  justify-content: space-between; /* จัดตำแหน่งให้ในส่วนซ้ายและขวา */
+  background-color: #ffffff; /* ปรับสีพื้นหลังตามที่คุณต้องการ */
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center; /* จัดข้อความกลางหน้า */
 }
 
-.profile-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
 
 .profile-name {
   font-size: 18px;
   font-weight: bold;
-  margin-top: -36.4px;
-  margin-left: 290px;
   margin-bottom: 10px;
   color: black;
 }
@@ -45,8 +33,6 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  margin-top: -36.3px;
-  margin-left: 290px;
   color: black;
 }
 
@@ -90,21 +76,13 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Bookinghistory.css */
-.data-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 10%;
-}
-
 /* แก้ไข CSS สำหรับปุ่มแก้ไข */
 .card-profile {
   display: flex;
   align-items: center;
   background-color: #fff;
   padding: 20px;
-  height: 300px;
+  height: 400px;
   width: 900px;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
   position: relative; /* เพิ่มแถบใต้การ์ดข้อมูล */
@@ -132,27 +110,63 @@ button:hover {
 }
 
 .card-profile-edit {
-  background-color: #28a745;
+  background-color: #000000;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 100px;
   position: absolute; /* ตั้งค่าให้ปุ่มอยู่ที่ด้านล่าง */
   bottom: 10px;
-  left: 50%; /* จัดตำแหน่งใต้ภาพโปรไฟล์ */
-  transform: translateX(-50%); /* จัดตำแหน่งใต้ภาพโปรไฟล์และให้อยู่ตรงกลาง */
+  left: 70.5%; /* จัดตำแหน่งใต้ภาพโปรไฟล์ */
 }
 
 .card-profile-edit:hover {
   background-color: #218838;
 }
 
-.profile-name-profile-card{
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: black;
+.card-profile-end {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 100px;
+  position: absolute; /* ตั้งค่าให้ปุ่มอยู่ที่ด้านล่าง */
+  bottom: 10px;
+  left: 80.5%; /* จัดตำแหน่งใต้ภาพโปรไฟล์ */
+}
+
+.card-profile-end:hover {
+  background-color: rgb(248, 3, 3);
+}
+
+.card-profile-img-input{
+  width: 100px;
+  height: 100px;
+}
+
+.card-profile-edit-to {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 100px;
+  position: absolute; /* ตั้งค่าให้ปุ่มอยู่ที่ด้านล่าง */
+  bottom: 10px;
+  left: 80.5%; /* จัดตำแหน่งใต้ภาพโปรไฟล์ */
+}
+
+.card-profile-edit-to:hover {
+  background-color: #218838;
+}
+.card-profile-edit-img{
+  margin-top: 10px;
 }

@@ -7,7 +7,7 @@ body {
   .box {
     background-color: #fff; /* สีพื้นหลังกล่อง */
     border-radius: 10px;
-    height: 350px; /* กำหนดความสูง */
+    height: auto; /* กำหนดความสูง */
     width: 700px;
     padding: 20px; /* เพิ่ม Padding สำหรับขอบของกล่อง */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาใต้กล่อง */
@@ -62,4 +62,11 @@ body {
   .addcom-button {
     margin-top: 10px;
     text-align: center; /* ให้ปุ่มอยู่ตรงกลาง */
+  }
+
+  .community-photo-add {
+    width: 100%;
+    margin-top: 10px;
+    height: auto;
+    border-radius: 4px;
   }

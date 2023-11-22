@@ -1,0 +1,39 @@
+.cursor-hover {
+    display: flex;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+    align-items: center;
+    background: rgb(255, 134, 20);
+    padding: 10px 20px;
+    height: 200px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
+    width: 100%;
+    margin-top: 100%;
+}
+
+.cursor-bar{
+    width: 300px; /* ปรับความกว้างของบาร์ตามที่คุณต้องการ */
+    height: 100px; /* ปรับความสูงของบาร์ตามที่คุณต้องการ */
+    justify-content: space-between; /* จัดตำแหน่งให้ในส่วนซ้ายและขวา */
+    border-radius: 10px;
+}
+
+.cursor-box2-img{
+    width: 100px;
+    height: 100px;
+}
+
+.cursor-box2-sut-img{
+    width: 80px;
+    background-color: aliceblue;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.cursor-box2-dgt-img{
+    width: 80px;
+    margin-left: 10px;
+    height: 80px;
+    border-radius: 50%;
+}

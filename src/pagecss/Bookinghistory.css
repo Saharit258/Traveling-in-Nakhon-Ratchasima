@@ -1,73 +1,24 @@
-/* Bookinghistory.css */
-.historyprofile-container {
+  .historyprofile-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
     align-items: center;
-    padding: 20px;
+    justify-content: center;
+    gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
+    margin: auto; /* ทำให้อยู่กลางจอ */
+    margin-top: -430px;
   }
-  
-  .historyprofile-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff; /* สีพื้นหลังของการ์ด Profile */
-    color: white; /* สีข้อความของการ์ด Profile */
-    border-radius: 10px;
-    padding: 20px;
+
+  .historyprofile-bar{
+    width: 900px; /* ปรับความกว้างของบาร์ตามที่คุณต้องการ */
+    height: 500px;
+    background-color: #ffffff; /* ปรับสีพื้นหลังตามที่คุณต้องการ */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .historyprofile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .historyprofile-name {
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    margin-bottom: 10px;
-  }
-  
-  hr {
-    width: 100%;
-    border: none;
-    border-top: 1px solid #ddd; /* สีเส้นใต้รายการเมนู */
-    margin: 10px 0;
-  }
-  
-  .manu {
-    font-size: 16px;
-    text-decoration: none;
-    color: #1877f2; /* สีข้อความของเมนู */
-    margin: 10px 0;
-  }
-  
-  button {
-    background-color: #1877f2;
-    color: white;
-    border: none;
-    padding: 10px 20px;
     border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+    margin-top: auto;
+  }
+
+  .hostory-taxt{
     margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #1153c9;
-  }
-  
-  .hostory {
-    text-align: center;
-    margin-top: -300px;
-    margin-right: 60%;
-  }
-  
-  .hostory-taxt {
-    font-size: 24px;
+    margin-left: 10px;
     font-weight: bold;
   }
-  

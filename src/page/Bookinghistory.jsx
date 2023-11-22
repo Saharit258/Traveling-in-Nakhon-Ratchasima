@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useUserAuth } from "../context/UserAuthContext";
 import { Button } from 'react-bootstrap';
 import Nav from '../navigation/Nav'
-import '../pagecss/ฺBookinghistory.css'
+import Manuprofile from './manupage/manuprofile'
+import '../pagecss/Bookinghistory.css'
 import Swal from 'sweetalert2'
 import NavProfile from '../navigation/NavProfile'
 
@@ -66,18 +67,9 @@ function Bookinghistory() {
   return (
     <>
       <Nav />
+      <Manuprofile/>
       <div className='historyprofile-container'>
-          <div className='historyprofile-card'>
-            <img src={todos[0]?.profile} className='historyprofile-img' alt='Profile' />
-            <p className='historyprofile-name'>{todos[0]?.name}</p>
-            <hr></hr>
-            <Link className='manu' to='/Profile'>บัญชีของฉัน</Link>
-            <Link className='manu' to='/'>คูปองของฉัน</Link>
-            <Link className='manu' to='/Reportproblem'>แจ้งปัญหา</Link>
-            <hr></hr>
-            <button onClick={Logout}>ออกจากระบบ</button>
-          </div>
-          <div className="hostory">
+          <div className="historyprofile-bar"> 
             <h2 className="hostory-taxt">ประวัติการจองของฉัน</h2>
           </div>
         </div>
