@@ -116,7 +116,7 @@ function Register() {
                 <div className="row">
                 <Form onSubmit={handleSubmit}>
                         <div className="box-register">
-                            <h2 className="errer-login">สมัครสมาชิค</h2>
+                            <h2 className="errer-login">สมัครสมาชิก</h2>
                             {error && <Alert variant='danger'>{error}</Alert>}
 
                             <Form.Group className="register-name" controlId='formBasicName'>
