@@ -2,99 +2,105 @@ import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { Form, Alert, Button } from 'react-bootstrap'
 import { useUserAuth } from "../context/UserAuthContext";
-import Nav from '../navigation/Nav';
-import '../pagecss/Login.css'
-import Swal from 'sweetalert2'
+import { doc, getDoc, collection } from 'firebase/firestore';
+import { firestore } from '../database/firebase';
+import Nav from "../navigation/Nav";
+import '../pagecss/login.css'
 
 function Login() {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loginType, setLoginType] = useState("user"); 
     const { logIn } = useUserAuth();
-
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
-
-        if (password.length < 8) {
-            setError("รหัสผ่านไม่ครบ 8 ตัว");
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'รหัสผ่านไม่ครบ 8 ตัว',
-              })
-            return;
-        }
-
-        if (!/^[^A-Za-z]+$/.test(password)) {
-            setError("รหัสผ่านต้องไม่มีตัวอักษร A-Z หรือ a-z");
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'รหัสผ่านต้องไม่มีตัวอักษร A-Z หรือ a-z',
-              })
-            return;
-        }
-
+    
         try {
-            await logIn(email, password);
-            Swal.fire({
-                icon: 'success',
-                title: 'เข้าสู่ระบบ',
-                showConfirmButton: false,
-              })    
-            navigate("/");
-        } catch(err) {
+            const userCredential = await logIn(email, password);
+            const user = userCredential.user;
+    
+            const userProfileCollectionRef = collection(firestore, 'users', user.uid, 'profiles');
+            const userProfileDocRef = doc(userProfileCollectionRef, user.uid);
+    
+            const userProfileSnapshot = await getDoc(userProfileDocRef);
+    
+            if (userProfileSnapshot.exists()) {
+                const userType = userProfileSnapshot.data().usertype;
+                console.log("User Type:", userType);
+    
+                if (loginType === "Partner" && userType === "Partner") {
+                    navigate("/Booking");
+                } else if (loginType === "user" && userType === "User") {
+                    navigate("/");
+                } else {
+                    setError("ประเภทการเข้าสู่ระบบไม่ถูกต้อง");
+                }
+            } else {
+                setError("ข้อมูลผู้ใช้ไม่ถูกต้อง");
+            }
+        } catch (err) {
             setError(err.message);
-            console.log(err);
+            console.error(err);
         }
     };
-
-
     return (
         <>
         <Nav/>
-        <div>
-            <div className="row-login">
-            <Form onSubmit={handleSubmit}>
-                    <div className="box-login">
-                        <h2 className="errer-login">เข้าสู่ระบบ</h2>
-                        {error && <Alert variant='danger'>{error}</Alert>}
+            <div className='body'>
+                <div className="input-box">
+                    <Form onSubmit={handleSubmit}>
+                        <div className='login-box'>
+                            <h2 className='login-box-h2'>ลงชื่อเข้าใช้</h2>
+                            {error && <Alert variant='danger'>{error}</Alert>}
 
-                        <Form.Group className="email-login" controlId='formBasicEmail'>
-                        <Form.Control 
-                            className="form-control"
-                            type='email'
-                            placeholder='อีเมล'
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        </Form.Group>
+                            <Form.Group controlId="loginType">
+                                    <Form.Control
+                                        as="select"
+                                        value={loginType}
+                                        onChange={(e) => setLoginType(e.target.value)}
+                                    >
+                                        <option value="User">User</option>
+                                        <option value="Partner">Partner</option>
+                                        
+                                    </Form.Control>
+                                </Form.Group>
 
-                        <Form.Group className="password-login" controlId='formBasicPassword'>
-                        <Form.Control 
-                            className="form-control"
-                            type='password'
-                            placeholder='รหัสผ่าน'
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        </Form.Group>
 
-                        <div className="button-login">
-                        <Button className="button" variant="primary" type="submit">เข้าสู่ระบบ</Button>
+                            <div className="login-in-input">
+                                <Form.Group className='login-box-input' controlId='formBasicEmail'>
+                                    <Form.Control
+                                        className='login-box-input-email'
+                                        type='email'
+                                        placeholder='อีเมล'
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className='login-box-input-password' controlId='formBasicPassword'>
+                                    <Form.Control
+                                        className='login-box-input-password'
+                                        type='password'
+                                        placeholder='รหัสผ่าน'
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                            </div>
+
+                            <div className="button-login">
+                                <Button className="button" variant="primary" type="submit">เข้าสู่ระบบ</Button>
+                            </div>
+
                         </div>
-                        <div className="login-to-register">
-                        ยังไม่มีบัญชี? <Link to="/Register" className="link"> สมัครสมาชิค</Link>
-                        </div>
-                    </div>
                     </Form>
-
+                </div>
             </div>
-        </div>
         </>
-    )
+    );
 }
 
-export default Login
+export default Login;
