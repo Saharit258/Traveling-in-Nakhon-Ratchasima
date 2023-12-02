@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Nav from '../navigation/Nav';
 import { collection, collectionGroup, getDocs, query } from 'firebase/firestore';
 import { firestore } from '../database/firebase';
+import '../pagecss/Promotion.css'
 
 function Promotion() {
   const [profiles, setProfiles] = useState([]);
@@ -26,16 +27,39 @@ function Promotion() {
   return (
     <>
       <Nav />
-      <div className='box-Promotion'>
-        <div className="box-Promotion-layer">
-          <div className="layer1">
-            <div className="layer1-box">โปรโมชันและสิทธิพิเศษ</div>
-          </div>
-          <div className="layer2">
-            <div className="layer1-box">โปรโมชันและสิทธิพิเศษ</div>
+      
+      
+      <div className="card">
+          <h2>โปรโมชันและสิทธิพิเศษ</h2>
+        </div>
+        
+      <div className='card-container'>
+        <div className='cards'>
+          <div className='image'> </div>
+          <div className='taitle'> <p>คูปองส่วนลด</p> </div>
+          <div className='des'>
+            <button>รับคูปอง</button> 
           </div>
         </div>
+
+        <div className='cards'>
+          <div className='image'> </div>
+          <div className='taitle'> <p>คูปองส่วนลด</p> </div>
+          <div className='des'>
+            <button>รับคูปอง</button> 
+          </div>
+        </div>
+
+        <div className='cards'>
+          <div className='image'> </div>
+          <div className='taitle'> <p>คูปองส่วนลด</p> </div>
+          <div className='des'>
+            <button>รับคูปอง</button> 
+          </div>
+        </div>  
+
       </div>
+      
     </>
   )
 }
