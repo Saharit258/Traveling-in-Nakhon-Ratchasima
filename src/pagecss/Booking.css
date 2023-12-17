@@ -7,7 +7,6 @@
 }
 
 .search-card-book {
-    position: absolute;
     border: 1px solid hsl(0, 0%, 100%);
     width: 70vw;
     height: 150px;
@@ -19,7 +18,6 @@
     padding: 55px;
     color: rgb(0, 0, 0);
     display: flex;
-    border-radius: 5px;
 }
 
 @keyframes animate {
@@ -69,4 +67,36 @@
 
 .cars-book{
     width: 50%;
+}
+
+.combox{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+}
+
+.lef{
+    border: 1px solid hsla(0, 0%, 73%, 0.349);
+    width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.fi{
+    width: 80%;
+    padding: 10px;
+    display: block;
+    grid-gap: 10px;
+}
+
+.book-item{
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาในภาพ */
+    border-radius: 8px; /* ทำมุมขอบเว้นเรียบ */
+    overflow: hidden; /* ซ่อนส่วนที่เกินขอบของรูปภาพ */
+    margin: 20px 0; /* 20px ด้านบนและด้านล่าง */
 }

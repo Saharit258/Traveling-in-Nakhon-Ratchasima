@@ -82,8 +82,10 @@ function Home() {
                         <span className="smoke-span">V</span>
                         <span className="smoke-span">E</span>
                         <span className="smoke-span">L</span>
+                        <span className="smoke-span-a">-</span>
                         <span className="smoke-span">I</span>
                         <span className="smoke-span">N</span>
+                        <span className="smoke-span-b">-</span>
                         <span className="smoke-span">K</span>
                         <span className="smoke-span">O</span>
                         <span className="smoke-span">R</span>
