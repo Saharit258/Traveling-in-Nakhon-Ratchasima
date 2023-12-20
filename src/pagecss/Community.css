@@ -1,76 +1,179 @@
 /* เพิ่มสไตล์นี้ในไฟล์ Community.css ของคุณ */
 
 .box-community {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .box-community-rox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .community-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    width: 800px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-  }
-  
-  .community-email {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    margin-top: -60px;
-    margin-left: 70px;
-  }
-  
-  .community-subject {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-  
-  .community-photo {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
-  .community-vdo {
-    margin-top: 5px;
-    width: 100%; /* ทำให้ iframe มีความกว้างเต็ม */
-    height: 400px; /* ปรับความสูงตามที่คุณต้องการ */
-    border: none; /* ลบเส้นขอบ */
-    border-radius: 8px; /* เพิ่มขอบมนเล็กน้อย */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเล็กน้อย */
-  }
-  
-  .community-button-add{
-    margin-top: 20px;
-    margin-left: 85%;
-  }
+.box-community-rox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
-  .community-button-add:hover { 
-    transform: scale(1.05);
-  }
-  
-  .community-time{
-    font-size: 10px;
-    margin-left: 70px;
-  }
+.community-card {
+  transition: transform 0.3s;
+  width: auto;
+  padding: 16px;
+  height: auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
 
-  .profile-imgg{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-  } 
+.community-email {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: -60px;
+  margin-left: 70px;
+}
 
-  
+.community-subject {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.community-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.community-vdo {
+  margin-top: 5px;
+  width: 100%; /* ทำให้ iframe มีความกว้างเต็ม */
+  height: 400px; /* ปรับความสูงตามที่คุณต้องการ */
+  border: none; /* ลบเส้นขอบ */
+  border-radius: 8px; /* เพิ่มขอบมนเล็กน้อย */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเล็กน้อย */
+}
+
+.community-button-add-1{
+  margin: auto;
+  border: 2px solid #6CFE00;
+  background-color: #6CFE00;
+  color: #000000;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.community-button-add-1:hover { 
+  background-color: #6CFE00;
+  border: 2px solid #6CFE00;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.community-time{
+  font-size: 10px;
+  margin-left: 70px;
+}
+
+.delete-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #f10d0d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 90%; /* ทำให้ปุ่มเลื่อนไปอยู่ทางขวาสุด */
+}
+
+.delete-button:hover {
+  background-color: #ff1f1f;
+}
+
+.profile-imgg{
+width: 50px;
+height: 50px;
+border-radius: 50%;
+object-fit: cover;
+margin-bottom: 10px;
+} 
+
+.loader {
+width: 48px;
+height: 48px;
+border: 5px solid #FFF;
+border-bottom-color: transparent;
+border-radius: 50%;
+display: inline-block;
+box-sizing: border-box;
+animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+} 
+
+.Search-community{
+  border: 1px solid hsla(0, 0%, 100%, 0.349);
+  text-align: center;
+}
+
+.community-sidebar{
+  background-color: #ffffff;
+  border: 1px solid hsla(0, 0%, 100%, 0.349);
+  width: 20%;
+  padding: 10px;
+  border-radius: 10px;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Community-product{
+  width: 100%;
+  padding: 10px;
+  margin-top: -30px;
+}
+
+.card-Community {
+  background-color: #ffffff;
+  border: 5px solid hsl(0, 0%, 80);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsl(0.1, 0.1%, 0.1%, 0.1);
+  padding: 60px;
+  width: 90%;
+  text-align: center;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-community-profile-img{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.community-name-profile{
+  margin-top: 10px;
+  font-size: 24;
+}
+
+.community-sidebar{
+  border: 1px solid hsla(0, 0%, 73%, 0.349);
+  width: 20%;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  height: 350px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}

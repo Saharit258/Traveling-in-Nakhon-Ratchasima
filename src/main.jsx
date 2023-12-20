@@ -22,6 +22,9 @@ import Sightseeing from './page/Sightseeing.jsx'
 import Bookinghistory from './page/Bookinghistory.jsx'
 import Reportproblem from './page/Reportproblem.jsx'
 
+import Map from './page/map.jsx'
+import Gpscar from './page/Gpscar.jsx'
+
 import Addcommunity from './page/manupage/Addcommunity.jsx'
 
 const router = createBrowserRouter([
@@ -46,6 +49,10 @@ const router = createBrowserRouter([
     element: <Todo />,
   },
   {
+    path: "/Gpscar",
+    element: <Gpscar />,
+  },
+  {
     path: "/Profile",
     element: <Profile />,
   },
@@ -64,6 +71,10 @@ const router = createBrowserRouter([
   {
     path: "/Promotion",
     element: <Promotion />,
+  },
+  {
+    path: "/Map",
+    element: <Map />,
   },
   {
     path: "/Sightseeing",

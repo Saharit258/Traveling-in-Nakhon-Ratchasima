@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react'
 import Nav from '../navigation/Nav'
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../database/firebase';
+import { useNavigate } from 'react-router-dom';
 import '../pagecss/Sightseeing.css'
 
 function Sightseeing() {
     const [famous, setFamous] = useState([]);
+    const navigate = useNavigate();
+
+    const handleConfirmhotellog = () => {
+        navigate('/Gpscar');
+      };
+      
 
     const fetchPost = async () => {
       try {
@@ -28,7 +35,7 @@ function Sightseeing() {
     <div className='Sightseeing'>
     <div className='box-Sightseeing'>
         <div>
-        <div className='box-Sightseeing-rox'>
+        <div onClick={handleConfirmhotellog} className='box-Sightseeing-rox'>
             {famous?.map((todo, i) => (
                 <div key={i} className='Sightseeing-card'>
                 <h3 className='Sightseeing-h3'>{todo.Timetable}</h3>
