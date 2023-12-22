@@ -1,4 +1,19 @@
-/* Bookinghistory.css */
+.box-container-Problem{
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+}
+
+.Problem-sidebar{
+  width: 20%;
+  padding: 10px;
+}
+
+.Problem-product{
+  width: 80%;
+  padding: 10px;
+}
+
 .problem-container {
       display: flex;
       flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
@@ -76,32 +91,30 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center; /* จัดให้อยู่ตรงกลางใน .problem-box-card */
-    margin-top: -100px;
+    text-align: center;
     margin-right: 200px;
     width: 800px;
     height: auto;
   }
   
   .problem-box-card h2 {
-    font-size: 24px; /* ขนาดตัวอักษรใหญ่ขึ้น */
-    margin: 0; /* กำหนดระยะห่างด้านบนและด้านล่างให้เป็น 0 เพื่อลบระยะห่างเริ่มต้น */
+    font-size: 24px; 
+    margin: 0; 
   }
   
   .problem-box-card Form {
-    margin-top: 20px; /* กำหนดระยะห่างด้านบนของฟอร์ม */
+    margin-top: 20px; 
   }
   
-  /* สไตล์ของปุ่ม Add */
   .problem-box-card .d-grid gap-2 button {
-    background-color: #007bff; /* สีพื้นหลังของปุ่ม */
-    color: #fff; /* สีข้อความในปุ่ม */
+    background-color: #007bff; 
+    color: #fff; 
     border: none;
-    border-radius: 5px; /* มีความโค้งมนตรัสให้ปุ่ม */
-    padding: 10px 20px; /* ปรับขนาดของปุ่ม */
+    border-radius: 5px; 
+    padding: 10px 20px; 
   }
   
   .problem-box-card .d-grid gap-2 button:hover {
-    background-color: #0056b3; /* เปลี่ยนสีเมื่อโฮเวอร์ */
+    background-color: #0056b3; 
   }
   

@@ -3,6 +3,7 @@ import './nav.css';
 import { useUserAuth } from '../context/UserAuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/logoapp.png';
+import { Button, NavDropdown } from 'react-bootstrap'; 
 
 import { collection, getDocs, doc } from 'firebase/firestore';
 import { firestore } from '../database/firebase'
@@ -76,6 +77,9 @@ function Nav() {
         <Link className='manu' to='/Sightseeing'>
           รถรับส่ง
         </Link>
+        <Link className='manu' to='/Ex'>
+          type
+        </Link>
       </div>
       <div className='menubar-log'>
         {user?.email ? (
@@ -84,6 +88,11 @@ function Nav() {
                     <div className='profile-nav-container' key={i}>
                     <img src={todo.profile} className='profile-nav' />
                     <h6 onClick={handleProfile} className='name-manu-log'>{todo.name}</h6>
+                    <NavDropdown className='manu'>
+                      <NavDropdown.Item href='/Profile'>บัญชีของฉัน</NavDropdown.Item>
+                      <NavDropdown.Item href='/Reportproblem'>คูปองของฉัน</NavDropdown.Item>
+                      <NavDropdown.Item href='/Reportproblem'>แจ้งปัญหา</NavDropdown.Item>
+                    </NavDropdown>
                     </div>
                 ))}
                 </div>

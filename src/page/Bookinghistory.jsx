@@ -58,7 +58,7 @@ function Bookinghistory() {
           querySnapshot.forEach((doc) => {
               userProfileData.push(doc.data());
           });
-          setTodos(userProfileData);  // กำหนดข้อมูลให้กับ state
+          setTodos(userProfileData);  
       } catch (err) {
           console.error("Error", err);
       }
@@ -67,12 +67,25 @@ function Bookinghistory() {
   return (
     <>
       <Nav />
-      <Manuprofile/>
-      <div className='historyprofile-container'>
-          <div className="historyprofile-bar"> 
-            <h2 className="hostory-taxt">ประวัติการจองของฉัน</h2>
+        <div className="box-container-History">
+          <div className="History-sidebar">
+              <div className='profile-card-manu'>
+                      <img src={todos[0]?.profile} className='profile-img-manu' alt='Profile' />
+                      <p className='profile-name-profile-card-manu'>{todos[0]?.name}</p>
+                  <hr></hr>
+                      <Link className='manu-manu' to='/Profile'>บัญชีของฉัน</Link>
+                      <Link className='manu-manu' to='/'>คูปองของฉัน</Link>
+                      <Link className='manu-manu' to='/Reportproblem'>แจ้งปัญหา</Link>
+                  <hr></hr>
+                      <button onClick={Logout}>ออกจากระบบ</button>
+              </div>
           </div>
-        </div>
+          <div className="History-product">
+          <div className="historyprofile-bar"> 
+              <h2 className="hostory-taxt">ประวัติการจองของฉัน</h2>
+            </div>
+          </div>
+      </div>
     </>
   );
 }

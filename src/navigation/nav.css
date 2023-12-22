@@ -67,7 +67,7 @@
   .profile-nav-container {
     display: flex;
     align-items: center;
-    background-color: #e8e8e8;
+    background-color: #ffffff;
     padding: 10px; /* ระยะห่างภายในกล่องครอบ */
     border-radius: 10px; /* ความโค้งของเส้นขอบของกล่องครอบ */
     margin-right: 10px; /* ระยะห่างระหว่างกล่องครอบและข้อความ */

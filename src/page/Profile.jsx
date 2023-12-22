@@ -126,125 +126,141 @@ function Profile() {
   return (
     <>
       <Nav />
-      <Manuprofile />
-
-      <div className="profile-container-card">
-        <div className="profile-container-card-bar">
-          {todos?.map((todo, i) => (
-            <div className="card-profile" key={i}>
-              <div className="card-profile-name">
-                <p className="profile-email">ชื่อ: {editid === user.uid
-                  ? (<>
-                    <input
-                      onChange={(e) => handleChange(e)}
-                      type="text"
-                      name="name"
-                      value={form.name ?? todo.name}
-                      placeholder="name"
-                    />
-                  </>)
-                  : (todo.name)
-                }</p>
-
-                <p className="profile-name">อีเมล: {editid === user.uid
-                  ? (<>
-                    <input
-                      onChange={(e) => handleChange(e)}
-                      type="text"
-                      name="email"
-                      value={form.email ?? todo.email}
-                      placeholder="email"
-                    />
-                  </>)
-                  : (todo.email)
-                }</p>
-
-                <p className="profile-address">เพศ: {editid === user.uid
-                  ? (<>
-                    <input
-                      onChange={(e) => handleChange(e)}
-                      type="text"
-                      name="sex"
-                      value={form.sex ?? todo.sex}
-                      placeholder="sex"
-                    />
-                  </>)
-                  : (todo.sex)
-                }</p>
-
-                <p className="profile-address">อายุ: {new Date().getFullYear() - new Date(todo.birthday).getFullYear()}</p>
-
-                <p className="profile-birthday">วันเดือนปีเกิด: {editid === user.uid
-                  ? (<>
-                    <input
-                      onChange={(e) => handleChange(e)}
-                      type="date"
-                      name="birthday"
-                      value={form.birthday ?? todo.birthday}
-                      placeholder="birthday"
-                    />
-                  </>)
-                  : (todo.birthday)
-                }</p>
-
-                <p className="profile-phonenumber">เบอร์โทร: {editid === user.uid
-                  ? (<>
-                    <input
-                      onChange={(e) => handleChange(e)}
-                      type="text"
-                      name="phonenumber"
-                      value={form.phonenumber ?? todo.phonenumber}
-                      placeholder="phonenumber"
-                    />
-                  </>)
-                  : (todo.phonenumber)
-                }</p>
-
-                <p className="profile-address">ที่อยู่: {editid === user.uid
-                  ? (<>
-                    <input
-                      onChange={(e) => handleChange(e)}
-                      type="text"
-                      name="address"
-                      value={form.address ?? todo.address}
-                      placeholder="address"
-                    />
-                  </>)
-                  : (todo.address)
-                }</p>
-              </div>
-              <div className="card-profile-proto">
-                <img src={todos[0]?.profile}  className="card-profile-img" alt="profile" />
-                {editid === user.uid
-                  ? (<>
-                    <p>รูป: {editid === user.uid
-                      ? (<>
-                        <input
-                          onChange={(e) => handleChange(e)}
-                          type="text"
-                          name="profile"
-                          className="card-profile-edit-img"
-                          value={img ?? form.profile ?? todo.profile}
-                          placeholder="profile"
-                        />
-                       <input type="file" className="card-profile-img-input" onChange={(e)=>handleUplosd(e)}/>
-                      </>)
-                      : (todo.profile)
-                    }</p></>)
-                  : (null)
-                }
-                {editid === user.uid
-                  ? (<>
-                    <button className="card-profile-edit" onClick={() => handleSave(user.uid)}>ตกลง</button>
-                    <button className="card-profile-end" >ยกเลิก</button>
-                  </>)
-                  : (<button className="card-profile-edit-to" onClick={() => setEditId(user.uid)}>แก้ไข</button>)
-                }
-              </div>
+      
+      <div className="box-container-Profile">
+        <div className="Profile-sidebar">
+            <div className='profile-card-manu'>
+                    <img src={todos[0]?.profile} className='profile-img-manu' alt='Profile' />
+                    <p className='profile-name-profile-card-manu'>{todos[0]?.name}</p>
+                <hr></hr>
+                    <Link className='manu-manu' to='/Profile'>บัญชีของฉัน</Link>
+                    <Link className='manu-manu' to='/'>คูปองของฉัน</Link>
+                    <Link className='manu-manu' to='/Reportproblem'>แจ้งปัญหา</Link>
+                <hr></hr>
+                    <button onClick={Logout}>ออกจากระบบ</button>
             </div>
-          ))}
         </div>
-      </div>
+        <div className="Profile-product">
+            <div className="profile-container-card-bar">
+            {todos?.map((todo, i) => (
+                <div className="card-profile" key={i}>
+                <div className="card-profile-name">
+                    <p className="profile-email">ชื่อ: {editid === user.uid
+                    ? (<>
+                        <input
+                        onChange={(e) => handleChange(e)}
+                        type="text"
+                        name="name"
+                        value={form.name ?? todo.name}
+                        placeholder="name"
+                        />
+                    </>)
+                    : (todo.name)
+                    }</p>
+
+                    <p className="profile-name">อีเมล: {editid === user.uid
+                    ? (<>
+                        <input
+                        onChange={(e) => handleChange(e)}
+                        type="text"
+                        name="email"
+                        value={form.email ?? todo.email}
+                        placeholder="email"
+                        />
+                    </>)
+                    : (todo.email)
+                    }</p>
+
+                    <p className="profile-address">เพศ: {editid === user.uid
+                    ? (<>
+                        <input
+                        onChange={(e) => handleChange(e)}
+                        type="text"
+                        name="sex"
+                        value={form.sex ?? todo.sex}
+                        placeholder="sex"
+                        />
+                    </>)
+                    : (todo.sex)
+                    }</p>
+
+                    <p className="profile-address">อายุ: {new Date().getFullYear() - new Date(todo.birthday).getFullYear()}</p>
+
+                    <p className="profile-birthday">วันเดือนปีเกิด: {editid === user.uid
+                    ? (<>
+                        <input
+                        onChange={(e) => handleChange(e)}
+                        type="date"
+                        name="birthday"
+                        value={form.birthday ?? todo.birthday}
+                        placeholder="birthday"
+                        />
+                    </>)
+                    : (todo.birthday)
+                    }</p>
+
+                    <p className="profile-phonenumber">เบอร์โทร: {editid === user.uid
+                    ? (<>
+                        <input
+                        onChange={(e) => handleChange(e)}
+                        type="text"
+                        name="phonenumber"
+                        value={form.phonenumber ?? todo.phonenumber}
+                        placeholder="phonenumber"
+                        />
+                    </>)
+                    : (todo.phonenumber)
+                    }</p>
+
+                    <p className="profile-address">ที่อยู่: {editid === user.uid
+                    ? (<>
+                        <input
+                        onChange={(e) => handleChange(e)}
+                        type="text"
+                        name="address"
+                        value={form.address ?? todo.address}
+                        placeholder="address"
+                        />
+                    </>)
+                    : (todo.address)
+                    }</p>
+                </div>
+                </div>
+            ))}
+            </div>
+        </div>
+        <div className="Profile-img">
+            <div className="card-profile-proto">
+                        <img src={todos[0]?.profile}  className="card-profile-img" alt="profile" />
+                        {editid === user.uid
+                        ? (<>
+                            <p>รูป: {editid === user.uid
+                            ? (<>
+                                <input
+                                onChange={(e) => handleChange(e)}
+                                type="text"
+                                name="profile"
+                                className="card-profile-edit-img"
+                                value={img ?? form.profile ?? todo.profile}
+                                placeholder="profile"
+                                />
+                            <input type="file" className="card-profile-img-input" onChange={(e)=>handleUplosd(e)}/>
+                            </>)
+                            : (todo.profile)
+                            }</p></>)
+                        : (null)
+                        }
+                        {editid === user.uid
+                        ? (<>
+                            <button className="card-profile-edit" onClick={() => handleSave(user.uid)}>ตกลง</button>
+                            <button className="card-profile-end" >ยกเลิก</button>
+                        </>)
+                        : (<button className="card-profile-edit-to" onClick={() => setEditId(user.uid)}>แก้ไข</button>)
+                        }
+                    </div>
+        </div>
+    </div>
+
     </>
   );
 }

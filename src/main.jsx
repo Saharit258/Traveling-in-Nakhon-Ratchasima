@@ -21,6 +21,7 @@ import Promotion from './page/Promotion.jsx'
 import Sightseeing from './page/Sightseeing.jsx'
 import Bookinghistory from './page/Bookinghistory.jsx'
 import Reportproblem from './page/Reportproblem.jsx'
+import Ex from './page/Ex.jsx'
 
 import Map from './page/map.jsx'
 import Gpscar from './page/Gpscar.jsx'
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/Gpscar",
     element: <Gpscar />,
+  },
+  {
+    path: "/Ex",
+    element: <Ex />,
   },
   {
     path: "/Profile",

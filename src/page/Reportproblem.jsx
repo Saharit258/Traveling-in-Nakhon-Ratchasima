@@ -85,34 +85,48 @@ function Reportproblem() {
   return (
     <>
       <Nav />
-      <Manuprofile/>
-      <div className='problem-container'>
-            <div className="problem-box-card">
-                <h2 className="problem-taxt">แจ้งปัญหา</h2>
-                <Form onSubmit={addProblems}>
-                            <Form.Group className="mb-3" controlId='formBasicName'>
-                                <Form.Control
-                                    type='text'
-                                    placeholder='เรื่อง'
-                                    onChange={(e) => setProblem(e.target.value)}
-                                />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId='formBasicEmail'>
-                                <Form.Control
-                                    as="textarea"
-                                    rows={8}
-                                    placeholder='รายระเอียด'
-                                    onChange={(e) => setProblemsusubject(e.target.value)}
-                                />
-                            </Form.Group>
-
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit">Add</Button>
-                            </div>
-                        </Form>
+        <div className="box-container-Problem">
+            <div className="Problem-sidebar">
+                <div className='profile-card-manu'>
+                        <img src={todos[0]?.profile} className='profile-img-manu' alt='Profile' />
+                        <p className='profile-name-profile-card-manu'>{todos[0]?.name}</p>
+                    <hr></hr>
+                        <Link className='manu-manu' to='/Profile'>บัญชีของฉัน</Link>
+                        <Link className='manu-manu' to='/'>คูปองของฉัน</Link>
+                        <Link className='manu-manu' to='/Reportproblem'>แจ้งปัญหา</Link>
+                    <hr></hr>
+                        <button onClick={Logout}>ออกจากระบบ</button>
                 </div>
-          </div>
+            </div>
+            <div className="Problem-product">
+            <div className="problem-box-card">
+                    <h2 className="problem-taxt">แจ้งปัญหา</h2>
+                    <Form onSubmit={addProblems}>
+                                <Form.Group className="mb-3" controlId='formBasicName'>
+                                    <Form.Control
+                                        type='text'
+                                        placeholder='เรื่อง'
+                                        onChange={(e) => setProblem(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId='formBasicEmail'>
+                                    <Form.Control
+                                        as="textarea"
+                                        rows={8}
+                                        placeholder='รายระเอียด'
+                                        onChange={(e) => setProblemsusubject(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <div className="d-grid gap-2">
+                                    <Button variant="primary" type="submit">แจ้ง</Button>
+                                </div>
+                            </Form>
+                    </div>
+            </div>
+        </div>
+
     </>
   );
 }

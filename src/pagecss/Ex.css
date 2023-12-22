@@ -1,0 +1,15 @@
+.box-container-History{
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+}
+
+.History-sidebar{
+  width: 20%;
+  padding: 10px;
+}
+
+.History-product{
+  width: 80%;
+  padding: 10px;
+}

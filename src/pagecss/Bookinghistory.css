@@ -1,20 +1,10 @@
-  .historyprofile-container {
-    display: flex;
-    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
-    margin: auto; /* ทำให้อยู่กลางจอ */
-    margin-top: -430px;
-  }
 
   .historyprofile-bar{
-    width: 900px; /* ปรับความกว้างของบาร์ตามที่คุณต้องการ */
-    height: 500px;
-    background-color: #ffffff; /* ปรับสีพื้นหลังตามที่คุณต้องการ */
+    width: auto; 
+    height: auto;
+    background-color: #ffffff; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    margin-top: auto;
   }
 
   .hostory-taxt{
