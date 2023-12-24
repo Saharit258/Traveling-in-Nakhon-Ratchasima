@@ -17,7 +17,7 @@
     display: flex;
 }
 
-.promotion-sidebar{   /* เลือกประเภทคูปอง */
+.promotion-sidebar{
     border: 1px solid hsla(0, 0%, 73%, 0.349);
     width: 20%;
     padding: 10px;

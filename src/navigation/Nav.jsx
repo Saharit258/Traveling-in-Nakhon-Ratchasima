@@ -76,6 +76,9 @@ function Nav() {
         <Link className='manu' to='/Sightseeing'>
           รถรับส่ง
         </Link>
+        <Link className='manu' to='/test'>
+          ทดสอบ
+        </Link>
       </div>
       <div className='menubar-log'>
         {user?.email ? (
