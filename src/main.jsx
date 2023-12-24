@@ -21,10 +21,13 @@ import Promotion from './page/Promotion.jsx'
 import Sightseeing from './page/Sightseeing.jsx'
 import Bookinghistory from './page/Bookinghistory.jsx'
 import Reportproblem from './page/Reportproblem.jsx'
+
 import Ex from './page/Ex.jsx'
 
 import Map from './page/map.jsx'
 import Gpscar from './page/Gpscar.jsx'
+
+import Test from './page/test.jsx'
 
 import Addcommunity from './page/manupage/Addcommunity.jsx'
 
@@ -92,6 +95,10 @@ const router = createBrowserRouter([
   {
     path: "/Reportproblem",
     element: <Reportproblem />,
+  },
+  {
+    path: "/Test",
+    element: <Test />,
   },
 ])
 

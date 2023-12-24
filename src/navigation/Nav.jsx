@@ -79,6 +79,9 @@ function Nav() {
         </Link>
         <Link className='manu' to='/Ex'>
           type
+          </Link>
+        <Link className='manu' to='/test'>
+          ทดสอบ
         </Link>
       </div>
       <div className='menubar-log'>

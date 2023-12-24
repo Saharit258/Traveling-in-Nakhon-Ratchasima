@@ -1,36 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from '../navigation/Nav';
-import { collection, collectionGroup, getDocs, query } from 'firebase/firestore';
+import { collection, addDoc, getDocs, } from 'firebase/firestore';
 import { firestore } from '../database/firebase';
-import '../pagecss/Promotion.css'
 import { Button } from 'react-bootstrap';
+import '../pagecss/Test.css'
 
-
-function Promotion() {
-  const [profiles, setProfiles] = useState([]);
-  
-  const fetchProfiles = async () => {
-    let arr = [];
-
-    const querySnapshot = await getDocs(query(collectionGroup(firestore, "profiles")));
-    querySnapshot.forEach((doc) => {
-      arr.push(doc.data());  
-    });
-    setProfiles(arr);
-    arr = [];
-
-    // console.log(profiles);
-  } // end fetchProfiles
-
-  useEffect(() => {
-    fetchProfiles();
-  }, []);
+function Test() {
 
   return (
     <>
       <Nav />
-      
-      
       <div>
 
        <div className="card">
@@ -86,9 +65,8 @@ function Promotion() {
             </div>
           </div>
         </div>
-      
     </>
-  )
+  );
 }
 
-export default Promotion;
+export default Test;
