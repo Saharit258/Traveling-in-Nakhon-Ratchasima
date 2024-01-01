@@ -49,7 +49,7 @@
   height: auto;
   background-color: #ffffff;
   border: 1px solid rgb(255, 255, 255);
-  border-radius: 10px;
+  border-radius: 5px;
   padding-bottom: 10px;
   overflow-x: auto;
 }
@@ -72,13 +72,11 @@
 
 .box-item-bar-txt {
   width: 980px;
-  height: 200px;
+  height: auto;
   margin-top: 10px;
   display: flex;
   margin-left: 10px;
   border-radius: 10px;
-  background-color: rgba(250, 235, 215, 0.267);
-  justify-content: space-between;
   
 }
 
@@ -86,20 +84,20 @@
   margin-top: 10px;
   margin-left: 10px;
   width: 490px;
-  height: 200px;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
 
 .box-item-bar-txt-1-p {
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 1;
   color: #000000;
   font-weight: bold;
 }
 
 .box-item-bar-txt-1-p-p {
-  font-size: 18px;
+  font-size: 15px;
   color: #434242;
 }
 
@@ -113,17 +111,15 @@
 
 .popular__card__header_button {
   margin: auto;
-  border-radius: 50%; 
-  border: 1px solid rgba(0, 0, 0, 0.255);
+  border-radius: 50%; /* ทำให้มีรูปร่างเป็นวงกลม */
+  border: 1px solid rgb(0, 0, 0);
   height: 50px;
-  width: 50px; 
+  width: 50px; /* เพิ่มความกว้างเพื่อให้เป็นวงกลมแทนสี่เหลี่ยม */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition: all 0.3s ease; 
-  background-color: #0000001e;
-  color: #000;
+  transition: all 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเป็น smooth */
 }
 
 .popular__card__header_button:hover {
@@ -257,4 +253,24 @@
   color: #000;
   border: 1px solid #7fffd4;
   background-color: #03f8a6;
+}
+
+.image-container {
+  display: flex;
+  overflow-x: auto;
+  max-width: auto; 
+}
+
+.item-image {
+  width: 200px;
+  height: 200px; 
+  object-fit: cover; 
+  margin-right: 5px; 
+}
+
+.box-item-bar-txt-1-famouss-name{
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
 }

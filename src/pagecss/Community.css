@@ -56,16 +56,16 @@
 
 .community-button-add-1{
   margin: auto;
-  border: 2px solid #6CFE00;
-  background-color: #6CFE00;
+  border: 2px solid #fe7200;
+  background-color: #ffffff;
   color: #000000;
   width: 80%;
   margin-top: 20px;
 }
 
 .community-button-add-1:hover { 
-  background-color: #6CFE00;
-  border: 2px solid #6CFE00;
+  background-color: #fe7200;
+  border: 2px solid #fe7200;
   color: #ffffff;
   transform: scale(1.05);
 }
@@ -94,6 +94,7 @@
 .profile-imgg{
 width: 50px;
 height: 50px;
+border: 1px solid #fe7200;
 border-radius: 50%;
 object-fit: cover;
 margin-bottom: 10px;

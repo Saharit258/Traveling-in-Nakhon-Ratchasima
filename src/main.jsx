@@ -10,6 +10,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './components/Login.jsx'
+import LoginP from './components/LoginP.jsx'
 import Register from './components/Register.jsx'
 import Home from './page/Home.jsx'
 import Booking from './page/Booking.jsx'
@@ -21,6 +22,7 @@ import Promotion from './page/Promotion.jsx'
 import Sightseeing from './page/Sightseeing.jsx'
 import Bookinghistory from './page/Bookinghistory.jsx'
 import Reportproblem from './page/Reportproblem.jsx'
+import Famouspage from './page/manupage/Famouspage.jsx'
 
 import Ex from './page/Ex.jsx'
 
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/Login",
     element: <Login />,
+  },
+  {
+    path: "/LoginP",
+    element: <LoginP />,
   },
   {
     path: "/Register",
@@ -63,6 +69,10 @@ const router = createBrowserRouter([
   {
     path: "/Profile",
     element: <Profile />,
+  },
+  {
+    path: "/Famouspage",
+    element: <Famouspage />,
   },
   {
     path: "/Famous",

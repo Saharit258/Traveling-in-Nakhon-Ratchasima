@@ -15,22 +15,35 @@ body, html {
 .input-box {
   background: transparent;
   border-radius: 8px;
-  border: 2px solid rgba(255, 255, 255, .2);
+  border: 2px solid rgba(255, 0, 0, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, .2);
   backdrop-filter: blur(5px);
   padding: 20px;
-  width: 400px;
+  width: 500px;
   height: auto;
+  margin-top: -100px;
+}
+
+.input-box-ty {
+  background: transparent;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  width: 500px;
+  height: auto;
+  margin-top: -100px;
 }
 
 .login-box-h2 {
   text-align: center;
-  color: #040404;
+  color: #ff7b00;
   font-size: 40px;
 }
 
 .login-in-input {
-  margin-top: 20px;
+  margin-top: 5%;
 }
 
 .login-box-input-email,
@@ -47,11 +60,107 @@ body, html {
   text-align: center;
 }
 
-.button {
+.button-login-1 {
   border: 1px solid #000000;
   background-color: #ffffff;
+  border: 1px solid #ff7b00;
   color: #000;
   width: 80%;
   height: 50px;
   border-radius: 5px;
+}
+
+.button-login-1:hover {
+  border: 1px solid #000000;
+  background-color: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #ffffff;
+  width: 80%;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.rl{
+  margin-left: 20%;
+  padding: 10px;
+}
+
+.rl-p{
+  margin-left: 20%;
+  padding: 10px;
+}
+
+.rl-l{
+  width: 115px;
+  height: 50px;
+  background-color: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #ffffff;
+}
+
+.rl-l:hover{
+  width: 115px;
+  height: 50px;
+  background-color: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #ffffff;
+}
+
+.rl-l-p{
+  width: 115px;
+  height: 50px;
+  background-color: #ffffff;
+  border: 1px solid #ff7b00;
+  color: #000000;
+}
+
+.rl-l-p:hover{
+  width: 115px;
+  height: 50px;
+  background-color: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #ffffff;
+}
+
+.rl-r{
+  margin-left: 20px;
+  width: 115px;
+  height: 50px;
+  background-color: #ffffff;
+  border: 1px solid #ff7b00;
+  color: #000;
+}
+
+.rl-r:hover{
+  margin-left: 20px;
+  width: 115px;
+  height: 50px;
+  background-color: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #f8f8f8;
+}
+
+.rl-r-p{
+  margin-left: 20px;
+  width: 115px;
+  height: 50px;
+  background-color: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #ffffff;
+}
+
+.rl-r-p:hover{
+  margin-left: 20px;
+  width: 115px;
+  height: 50px;
+  background-color: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #ffffff;
+}
+
+.li{
+  margin-top: 20px;
+  width: 100%;
+  height: 2px;
+  background-color: #0000008f;
 }

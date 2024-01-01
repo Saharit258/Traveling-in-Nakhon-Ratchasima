@@ -71,7 +71,7 @@
     padding: 10px; /* ระยะห่างภายในกล่องครอบ */
     border-radius: 10px; /* ความโค้งของเส้นขอบของกล่องครอบ */
     margin-right: 10px; /* ระยะห่างระหว่างกล่องครอบและข้อความ */
-    border: 1.2px solid #000000; /* เส้นสีดำตีรอบกล่อง */
+    border: 1.2px solid #ff5100; /* เส้นสีดำตีรอบกล่อง */
   }
   
   .profile-nav {
@@ -92,4 +92,26 @@
   .manu:hover{
     text-decoration: underline;
   }
+
+  .Out-Nav-P{
+    margin-left: -10px;
+    border: 1px solid #ff0000; 
+    background-color: #ff0000;
+    color: #ffffff;
+  }
+
+  .Out-Nav-P:hover{
+    border: 1px solid #ff0000; 
+    background-color: #ff000091;
+    color: #ffffff;
+  }
+
+  .nav-item {
+    font-size: 20px;
+    color: #616161;
+  }
+
+  .nav-item:hover{
+    color: #ff7255;
+}
   

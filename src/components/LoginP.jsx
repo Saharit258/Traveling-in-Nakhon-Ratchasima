@@ -7,16 +7,16 @@ import { firestore } from '../database/firebase';
 import Nav from "../navigation/Nav";
 import '../pagecss/login.css'
 
-function Login() {
+function LoginP() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const [loginType, setLoginType] = useState("user"); 
+    const [loginType, setLoginType] = useState("Partner"); 
     const { logIn } = useUserAuth();
     const navigate = useNavigate();
 
-    const LoginP = () => {
-        navigate('/LoginP');
+    const Login = () => {
+        navigate('/Login');
     };
 
     const handleSubmit = async (e) => {
@@ -27,16 +27,15 @@ function Login() {
             const userCredential = await logIn(email, password);
             const user = userCredential.user;
     
-            const userProfileCollectionRef = collection(firestore, 'users', user.uid, 'profiles');
-            const userProfileDocRef = doc(userProfileCollectionRef, user.uid);
+            const userProfileDocRef = doc(firestore, 'hotels', user.uid,);
     
             const userProfileSnapshot = await getDoc(userProfileDocRef);
     
             if (userProfileSnapshot.exists()) {
-                const userType = userProfileSnapshot.data().usertype;
-                console.log("User Type:", userType);
+                const usertype = userProfileSnapshot.data().usertype;
+                console.log("User Type:", usertype);
     
-                if (loginType === "user" && userType === "User") {
+                if (loginType === "Partner" && usertype === "Partner") {
                     navigate("/");
                 } else {
                     setError("ประเภทการเข้าสู่ระบบไม่ถูกต้อง");
@@ -53,16 +52,16 @@ function Login() {
         <>
         <Nav/>
             <div className='body'>
-                <div className="input-box">
+                <div className="input-box-ty">
                     <Form onSubmit={handleSubmit}>
                         <div className='login-box'>
-                            <h2 className='login-box-h2'>ลงชื่อเข้าใช้</h2>
+                            <h2 className='login-box-h2'>ลงชื่อเข้าใช้ผู้สนับสนุน</h2>
                             {error && <Alert variant='danger'>{error}</Alert>}
 
                             <div className="usertype">
-                                <div className="rl">
-                                    <button className="rl-l">ผู้ใช้งาน</button>
-                                    <button className="rl-r" onClick={LoginP}>ผู้สนับสนุน</button>
+                                <div className="rl-p">
+                                    <button className="rl-l-p" onClick={Login}>ผู้ใช้งาน</button>
+                                    <button className="rl-r-p">ผู้สนับสนุน</button>
                                 </div>
                             </div>
 
@@ -72,7 +71,7 @@ function Login() {
                                         value={loginType}
                                         onChange={(e) => setLoginType(e.target.value)}
                                     >
-                                        <option value="User">User</option>
+                                        <option value="Partner">Partner</option>
                                         
                                     </Form.Control>
                                 </Form.Group>
@@ -113,4 +112,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginP;

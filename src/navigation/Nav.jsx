@@ -77,12 +77,12 @@ function Nav() {
         <Link className='manu' to='/Sightseeing'>
           รถรับส่ง
         </Link>
-        <Link className='manu' to='/Ex'>
+        {/* <Link className='manu' to='/Ex'>
           type
           </Link>
         <Link className='manu' to='/test'>
           ทดสอบ
-        </Link>
+        </Link> */}
       </div>
       <div className='menubar-log'>
         {user?.email ? (
@@ -92,9 +92,12 @@ function Nav() {
                     <img src={todo.profile} className='profile-nav' />
                     <h6 onClick={handleProfile} className='name-manu-log'>{todo.name}</h6>
                     <NavDropdown className='manu'>
-                      <NavDropdown.Item href='/Profile'>บัญชีของฉัน</NavDropdown.Item>
-                      <NavDropdown.Item href='/Reportproblem'>คูปองของฉัน</NavDropdown.Item>
-                      <NavDropdown.Item href='/Reportproblem'>แจ้งปัญหา</NavDropdown.Item>
+                      <NavDropdown.Item bsPrefix="nav-item" href='/Profile'>บัญชีของฉัน</NavDropdown.Item>
+                      <NavDropdown.Item bsPrefix="nav-item" href='/Reportproblem'>คูปองของฉัน</NavDropdown.Item>
+                      <NavDropdown.Item bsPrefix="nav-item" href='/Reportproblem'>แจ้งปัญหา</NavDropdown.Item>
+                      <NavDropdown.Item bsPrefix="nav-item" onClick={logOut}>
+                        <button className="Out-Nav-P">ออกจากระบบ</button>
+                      </NavDropdown.Item>
                     </NavDropdown>
                     </div>
                 ))}

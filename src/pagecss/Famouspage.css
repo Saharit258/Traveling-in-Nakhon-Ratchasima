@@ -1,0 +1,76 @@
+.image-container-fpage {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 10px;
+    max-width: auto; 
+  }
+
+  .item-image-fpage {
+    width: 500px;
+    height: 400px; 
+    object-fit: cover; 
+    margin-right: 5px; 
+  }
+
+  .box-container-fpage{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .fpage-sidebar{
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fpage-product{
+    width: 20%;
+    padding: 10px;
+    display: grid;
+    border-radius: 5px;
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    grid-gap: 10px;
+    margin-left: 10px;
+}
+
+.box-fpage-left-1{
+    font-weight: bold;
+}
+
+.box-fpage-left-1-h1{
+    color: #000;
+    text-align: left;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.lf-c{
+    display: flex;
+    overflow-x: auto;
+    max-width: auto; 
+}
+
+.lf{
+    width: 50%;
+}
+
+.rf{
+    width: 50%;
+}
+
+.time-fpage{
+    text-align: center;
+}
+
+.fpage-b{
+    margin-left: 15px;
+}
+
+.box-item-bar-txt-1-p-p-fpage {
+    font-size: 18px;
+    color: #434242;
+  }
