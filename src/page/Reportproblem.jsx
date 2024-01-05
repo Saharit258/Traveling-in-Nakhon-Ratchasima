@@ -55,9 +55,8 @@ function Reportproblem() {
       try {
           const querySnapshot = await getDocs(profilesCollectionRef);
           const userProfileData = [];
-
           querySnapshot.forEach((doc) => {
-              userProfileData.push(doc.data());
+          userProfileData.push(doc.data());
           });
           setTodos(userProfileData);  // กำหนดข้อมูลให้กับ state
       } catch (err) {

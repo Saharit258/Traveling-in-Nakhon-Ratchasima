@@ -23,6 +23,7 @@ import Sightseeing from './page/Sightseeing.jsx'
 import Bookinghistory from './page/Bookinghistory.jsx'
 import Reportproblem from './page/Reportproblem.jsx'
 import Famouspage from './page/manupage/Famouspage.jsx'
+import Bookingcard from './page/manupage/Bookingcard.jsx'
 
 import Ex from './page/Ex.jsx'
 
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/Booking",
     element: <Booking />,
+  },
+  {
+    path: "/Bookingcard",
+    element: <Bookingcard />,
   },
   {
     path: "/Todo",

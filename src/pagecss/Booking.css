@@ -1,102 +1,112 @@
-.search-box{      
-    position: absolute;   /* ให้อยู่นอกสุด */
-    margin-top: 35%;
-    margin-left: 50%;
-    transform: translate(-50%, -50%);
-    
-}
-
 .search-card-book {
-    border: 1px solid hsl(0, 0%, 100%);
+    border: 2px solid hsla(0, 0%, 0%, 0.623);
     width: 70vw;
     height: 150px;
     background-color: #ffffff;
-    box-shadow: 5px 10px rgba(136, 136, 136, 0.26);
-    margin-top: 7%;
+    border-radius: 20px;
+    margin-top: 100px;
     margin-left: 50%;
     transform: translate(-50%, -50%);
     padding: 55px;
     color: rgb(0, 0, 0);
     display: flex;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes animate {
-    20% {
-        filter: blur(0);
-    }
-
-    100% {
-        filter: blur(20px);
-    }
-}
-
-.line-hotel{
-    width: 40%;
-}
-
-.chack-in{
-    width: 16%;
-}
-
-.chack-out{
-    width: 16%;
-}
-
-.chack-person{
-    text-align: center;
-    width: 8%;
-}
-
-.chack-sun{
-    text-align: center;
-    width: 8%;
-}
-
-.chack-button{
-    text-align: center;
-    width: 12%;
-}
-
-.gsearch-hotel{
-    width: 90%;
-}
-
-.birthday{
-    width: 90%;
-}
-
-.cars-book{
-    width: 50%;
-}
-
-.combox{
+.box-container-booking{
     width: 90vw;
     margin: 0 auto;
     display: flex;
 }
 
-.lef{
-    border: 1px solid hsla(0, 0%, 73%, 0.349);
+.booking-sidebar{
+    background-color: #ffffff;
+    border: 1px solid hsla(0, 0%, 0%, 0.349);
     width: 20%;
     padding: 10px;
-    border-radius: 5px;
-    display: flex;
+    border-radius: 10px;
+    height: auto;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    margin-bottom: 100px;
 }
 
-.fi{
+.booking-product{
     width: 80%;
     padding: 10px;
-    display: block;
-    grid-gap: 10px;
+    margin-top: -20px;
 }
 
-.book-item{
+.card-booking{
+    height: 220px;
+    padding: 10px;
+    border-radius: 20px;
+    width: auto;
+    border: 1px solid hsla(0, 0%, 0%, 0.349);
+    margin-top: 10px;
     display: flex;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาในภาพ */
-    border-radius: 8px; /* ทำมุมขอบเว้นเรียบ */
-    overflow: hidden; /* ซ่อนส่วนที่เกินขอบของรูปภาพ */
-    margin: 20px 0; /* 20px ด้านบนและด้านล่าง */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.item-image-booking {
+    width: 200px;
+    height: 200px; 
+    border-radius: 20px;
+    object-fit: cover; 
+    margin-right: 5px; 
+}
+
+.card-booking:hover{
+    height: 220px;
+    padding: 10px;
+    border-radius: 20px;
+    width: auto;
+    background: #fd72001f;
+    border: 1px solid hsla(19, 100%, 50%, 0.349);
+    margin-top: 10px;
+    display: flex;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-card-booking{
+    width: 70%;
+    padding: 10px;
+}
+
+.text-card2-booking{
+    text-align: end;
+    width: 30%;
+}
+
+.facility-booking{
+    display: flex;
+    margin-top: -20px;
+    padding: 10px;
+}
+
+.ft-card{
+    width: auto;
+    height: auto;
+    padding: 5px;
+    margin-left: 2px;
+    border: 1px solid hsla(0, 0%, 0%, 0.349);
+}
+
+.add-booking{
+    margin-top: -20px;
+    color: #0059ff;
+}
+
+.price-range{
+    margin-top: 5px;
+    display: flex;
+}
+
+.minPrice-booking{
+    width: 70px;
+}
+
+.price-booking{
+    margin-left: 10%;
+}
+

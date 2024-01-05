@@ -54,6 +54,17 @@
   overflow-x: auto;
 }
 
+.box-item-bar:hover {
+  width: auto;
+  margin-top: 10px;
+  height: auto;
+  background: #fd720011;
+  border: 1px solid hsla(19, 100%, 50%, 0.349);
+  border-radius: 5px;
+  padding-bottom: 10px;
+  overflow-x: auto;
+}
+
 .box-item-bar-img {
   width: 100%;
   height: 400px;
