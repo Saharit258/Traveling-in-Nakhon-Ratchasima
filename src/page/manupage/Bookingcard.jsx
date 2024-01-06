@@ -6,14 +6,16 @@ import { firestore } from '../../database/firebase';
 import Nav from '../../navigation/Nav';
 import '../../pagecss/Bookingcard.css';
 import { Modal, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 function Bookingcard() {
   const { logOut, user } = useUserAuth();
+  const navigate = useNavigate();
   const uid = new URLSearchParams(useLocation().search).get('uid');
   const [dataFromFirestore, setDataFromFirestore] = useState([]);
   const [roomHotel, setRoomHotel] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [selectedProblem, setSelectedProblem] = useState({});  
 
   const fetchProfilesHotel = async () => {
     const q = query(collection(firestore, 'hotels', uid, 'rooms'));
@@ -28,16 +30,14 @@ function Bookingcard() {
     fetchProfilesHotel();
   }, [user.uid]);
 
-
   const fetchPost = async () => {
     try {
-      const docRef = doc(firestore, 'hotels', uid, );
+      const docRef = doc(firestore, 'hotels', uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const fetchedData = { id: docSnap.id, ...docSnap.data() };
         setDataFromFirestore([fetchedData]);
-        
       } else {
         console.log('Document not found.', uid);
         setDataFromFirestore([]);
@@ -46,25 +46,65 @@ function Bookingcard() {
       console.error('Error fetching data:', error.message);
     }
   };
-  
 
   useEffect(() => {
     fetchPost();
   }, []);
 
-  const handleModalOpen = () => {
-    setShowModal(true);
+  const handleOpenModal = (item) => {
+    setSelectedProblem({
+      email: item.roomno,
+      type: item.type,
+      imgUrls: item.imgUrls,
+    });
   };
 
-  const handleModalClose = () => {
-    setShowModal(false);
+  const handleCloseModal = () => {
+    setSelectedProblem({});
+  };
+
+  const handleAddButtonClick = (id) => {
+    navigate(`/Bookingroomcard?uid=${id}`);
   };
 
   return (
     <>
       <Nav />
+
+      {dataFromFirestore.map((item, i) => (
+          <div key={i}>
+            <div className="image-container-fpage">
+              {item.imgUrls && item.imgUrls.length > 0 && (
+                item.imgUrls.map((img, imgIndex) => (
+                  <img
+                    key={imgIndex}
+                    src={img}
+                    alt=""
+                    className="item-image-fpage"
+                    onClick={() => handleImageClick(img)}
+                  />
+                ))
+              )}
+            </div>
+            <div className="card-bookingcard">
+              <div className="bookingcard-sidebar">
+                <h2 className='box-fpage-left-1'>{item.pname}</h2>
+              </div>
+              <div className="bookingcard-product">
+              <h4>สิ่งอำนวยความสะดวก</h4>
+                {item.facility && item.facility.length > 0 && (
+                  <ul>
+                    {item.facility.map((facility, index) => (
+                      <li key={index}>{facility}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+
       <div className='roombox'>
-        <h4>ห้องว่าง</h4>
         <div className='roomcard'>
           <div className='roomsome'>
             <table>
@@ -82,7 +122,7 @@ function Bookingcard() {
               <tbody>
                 {roomHotel?.map((item, i) => (
                   <tr key={i}>
-                    <td>{item.roomno}</td>
+                    <td className='roomno-booking' onClick={() => handleOpenModal(item)}>{item.roomno}</td>
                     <td>{item.type}</td>
                     <td>{item.people}</td>
                     <td>{item.price}</td>
@@ -96,7 +136,7 @@ function Bookingcard() {
                     </td>
                     <td>{item.roomstatus}</td>
                     <td>
-                      <Button className='booking-btn' onClick={handleModalOpen}>
+                      <Button className='booking-btn' onClick={() => handleAddButtonClick(item.id)}>
                         จองห้องพัก
                       </Button>
                     </td>
@@ -108,20 +148,31 @@ function Bookingcard() {
         </div>
       </div>
 
-      <Modal show={showModal} onHide={handleModalClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>หัวข้อโมดัล</Modal.Title>
-        </Modal.Header>
+      <Modal show={Object.keys(selectedProblem).length > 0} onHide={handleCloseModal} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header closeButton><h3>{selectedProblem.email}</h3></Modal.Header>
         <Modal.Body>
-          ข้อมูลภายในโมดัล
-        </Modal.Body>
+            {selectedProblem && selectedProblem.imgUrls && selectedProblem.imgUrls.length > 0 && (
+              <div>
+                <div className="image-container-fpage">
+                  {selectedProblem.imgUrls.map((img, imgIndex) => (
+                    <img
+                      key={imgIndex}
+                      src={img}
+                      alt=""
+                      className="img-booking-modal"
+                      onClick={() => handleImageClick(img)}
+                    />
+                  ))}
+                </div>
+                <p>{selectedProblem.type}</p>
+              </div>
+            )}
+          </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleModalClose}>
-            ปิด
-          </Button>
-          {/* Additional modal action buttons */}
+          <button className='tr-out-booking' onClick={handleCloseModal}>ยกเลิก</button>
         </Modal.Footer>
       </Modal>
+
     </>
   );
 }
