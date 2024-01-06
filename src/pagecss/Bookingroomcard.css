@@ -1,0 +1,32 @@
+.card-bookingroomcard{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    padding: 30px;
+}
+
+.brcard-leftside{
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brcard-rightside{
+    width: 80%;
+    padding: 10px;
+    display: grid;
+    border-radius: 5px;
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    grid-gap: 10px;
+    margin-left: 10px;
+}
+
+้.hotel-box-rightside {
+    border: 3px solid hsla(0, 0%, 73%, 0.349);
+    width: 20%;
+    
+   
+}
