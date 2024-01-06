@@ -89,6 +89,7 @@ function Bookingcard() {
             <div className="card-bookingcard">
               <div className="bookingcard-sidebar">
                 <h2 className='box-fpage-left-1'>{item.pname}</h2>
+                <p>{item.detail}</p>
               </div>
               <div className="bookingcard-product">
               <h4>สิ่งอำนวยความสะดวก</h4>
