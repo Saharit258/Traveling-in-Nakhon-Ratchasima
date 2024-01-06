@@ -1,3 +1,25 @@
+
+.hotelbox {
+    padding: 30px;
+    padding-left: 20px;
+}
+
+.hotelname {
+    color: #000000;
+    text-align: left;
+}
+
+.hotelimage {
+    width: 350px;
+    height: 200px; 
+    object-fit: cover; 
+    margin-right: 5px; 
+  }
+
+  .hoteldetail {
+    padding-top: 20px;
+  }
+
 .roombox {
     padding: 20px;
 }

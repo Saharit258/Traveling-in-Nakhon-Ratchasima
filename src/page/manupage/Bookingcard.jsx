@@ -31,13 +31,13 @@ function Bookingcard() {
 
   const fetchPost = async () => {
     try {
-      const docRef = doc(firestore, 'hotels', uid, );
+      const docRef = doc(firestore, 'hotels', uid,);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const fetchedData = { id: docSnap.id, ...docSnap.data() };
         setDataFromFirestore([fetchedData]);
-        
+
       } else {
         console.log('Document not found.', uid);
         setDataFromFirestore([]);
@@ -46,7 +46,7 @@ function Bookingcard() {
       console.error('Error fetching data:', error.message);
     }
   };
-  
+
 
   useEffect(() => {
     fetchPost();
@@ -63,8 +63,27 @@ function Bookingcard() {
   return (
     <>
       <Nav />
+      <div className='hotelbox'>
+        {dataFromFirestore.map((item) => (
+          <>
+            <h1 className='hotelname'>{item.pname}</h1>
+            <h5 className='hotelname'>{item.paddress}</h5>
+            {item.imgUrls.map((img, imgIndex) => (
+                    <img
+                        key={imgIndex}
+                        src={img}
+                        alt=""
+                        className="hotelimage"
+                        
+                    />
+                ))}
+            <p className='hoteldetail'>{item.detail}</p>
+          </>
+        ))}
+      </div>
+
       <div className='roombox'>
-        <h4>ห้องว่าง</h4>
+        <h4 className='hotelbox'>ห้องว่าง</h4>
         <div className='roomcard'>
           <div className='roomsome'>
             <table>
