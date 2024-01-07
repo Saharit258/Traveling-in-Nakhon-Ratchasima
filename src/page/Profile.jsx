@@ -126,6 +126,7 @@ function Profile() {
   return (
     <>
       <Nav />
+<<<<<<< Updated upstream
       <Manuprofile />
 
       <div className="profile-container-card">
@@ -241,6 +242,20 @@ function Profile() {
                   : (<button className="card-profile-edit-to" onClick={() => setEditId(user.uid)}>แก้ไข</button>)
                 }
               </div>
+=======
+      
+      <div className="box-container-Profile">
+        <div className="Profile-sidebar">
+            <div className='profile-card-manu'>
+                    <img src={todos[0]?.profile} className='profile-img-manu' alt='Profile' />
+                    <p className='profile-name-profile-card-manu'>{todos[0]?.name}</p>
+                <hr></hr>
+                    <Link className='manu-manu' to='/Profile'>บัญชีของฉัน</Link>
+                    <Link className='manu-manu' to='/Mycoupon'>คูปองของฉัน</Link>
+                    <Link className='manu-manu' to='/Reportproblem'>แจ้งปัญหา</Link>
+                <hr></hr>
+                    <button onClick={Logout}>ออกจากระบบ</button>
+>>>>>>> Stashed changes
             </div>
           ))}
         </div>

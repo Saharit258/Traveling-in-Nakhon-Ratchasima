@@ -1,0 +1,10 @@
+
+  .box-container-Coupon{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+  }
+  .Coupon-sidebar{
+    width: 20%;
+    padding: 10px;
+  }

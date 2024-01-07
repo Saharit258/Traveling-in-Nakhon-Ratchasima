@@ -21,6 +21,19 @@ import Promotion from './page/Promotion.jsx'
 import Sightseeing from './page/Sightseeing.jsx'
 import Bookinghistory from './page/Bookinghistory.jsx'
 import Reportproblem from './page/Reportproblem.jsx'
+<<<<<<< Updated upstream
+=======
+import Famouspage from './page/manupage/Famouspage.jsx'
+import Bookingcard from './page/manupage/Bookingcard.jsx'
+import Bookingroomcard from './page/manupage/Bookingroomcard.jsx'
+import Mycoupon from './page/mycoupon.jsx'
+
+import Ex from './page/Ex.jsx'
+
+import Map from './page/map.jsx'
+import Gpscar from './page/Gpscar.jsx'
+
+>>>>>>> Stashed changes
 import Test from './page/test.jsx'
 
 import Addcommunity from './page/manupage/Addcommunity.jsx'
@@ -43,6 +56,21 @@ const router = createBrowserRouter([
     element: <Booking />,
   },
   {
+<<<<<<< Updated upstream
+=======
+    path: "/Mycoupon",
+    element: <Mycoupon />,
+  },
+  {
+    path: "/Bookingcard",
+    element: <Bookingcard />,
+  },
+  {
+    path: "/Bookingroomcard",
+    element: <Bookingroomcard />,
+  },
+  {
+>>>>>>> Stashed changes
     path: "/Todo",
     element: <Todo />,
   },

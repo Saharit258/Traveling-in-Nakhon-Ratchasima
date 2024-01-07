@@ -4,9 +4,14 @@ import { collection, collectionGroup, getDocs, query } from 'firebase/firestore'
 import { firestore } from '../database/firebase';
 import '../pagecss/Promotion.css'
 import { Button } from 'react-bootstrap';
+import { useUserAuth } from '../context/UserAuthContext';
 
 
 function Promotion() {
+  const { user } = useUserAuth();
+  const [dataFromFirestore, setDataFromFirestore] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState('');
   const [profiles, setProfiles] = useState([]);
   
   const fetchProfiles = async () => {
@@ -24,6 +29,21 @@ function Promotion() {
 
   useEffect(() => {
     fetchProfiles();
+  }, []);
+
+  const fetchDataFromFirestore = async () => {
+    try {
+      const q = query(collection(firestore, 'promotions'));
+      const querySnapshot = await getDocs(q);
+      const fetchedData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setDataFromFirestore(fetchedData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataFromFirestore();
   }, []);
 
   return (
@@ -65,23 +85,16 @@ function Promotion() {
 
             <div className="promotion-product">
 
-              <div className="promotion-item">
-                <img src="https://f.ptcdn.info/777/054/000/ozrtiimdpKy4FUGapyR-o.jpg" className="img-promotion" alt="" />
-                <p>Promotion</p>
-                <Button className='button-promotion'>รับส่วนลด</Button>
-              </div>
+              {dataFromFirestore.map((item, i) => (
 
-              <div className="promotion-item">
-                <img src="https://f.ptcdn.info/777/054/000/ozrtiimdpKy4FUGapyR-o.jpg" className="img-promotion" alt="" />
-                <p>Promotion</p>
-                <Button className='button-promotion'>รับส่วนลด</Button>
-              </div>
+                    <div className="promotion-item" key={i}>
+                    <img src={item.image} className="img-promotion" alt="" />
+                    <p>{item.about}</p>
+                    <Button className='button-promotion'>รับส่วนลด</Button>
+                    </div>
 
-              <div className="promotion-item">
-                <img src="https://f.ptcdn.info/777/054/000/ozrtiimdpKy4FUGapyR-o.jpg" className="img-promotion" alt="" />
-                <p>Promotion</p>
-                <Button className='button-promotion'>รับส่วนลด</Button>
-              </div>
+              ))}
+
 
             </div>
           </div>
