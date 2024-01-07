@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useUserAuth } from '../../context/UserAuthContext';
-import { collection, getDocs, collectionGroup, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, collectionGroup, doc, getDoc, setDoc, addDoc } from 'firebase/firestore';
 import { firestore } from '../../database/firebase';
 import Nav from '../../navigation/Nav';
 import { Form, Button } from 'react-bootstrap';
@@ -12,6 +12,7 @@ function Bookingroomcard() {
     const [dataFromFirestore, setDataFromFirestore] = useState([]);
     const [dataFromFirestores, setDataFromFirestores] = useState([]);
     const [dataFromFirestoreshotel, setDataFromFirestoreshotel] = useState([]);
+    const [dataFromFirestoreshotelbooking, setDataFromFirestoreshotelbooking] = useState([]);
     const [loading, setLoading] = useState(true);
     const [todos, setTodos] = useState([]);
     const { user } = useUserAuth();
@@ -20,6 +21,8 @@ function Bookingroomcard() {
     const [checkOutDate, setCheckOutDate] = useState('');
     const [numberOfDays, setNumberOfDays] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
+
+    const [name, setName] = useState("");
 
     const handleCheckInDateChange = (e) => {
         setCheckInDate(e.target.value);
@@ -55,24 +58,32 @@ function Bookingroomcard() {
             const querySnapshot = await getDocs(collectionGroup(firestore, 'rooms'));
             querySnapshot.forEach((doc) => {
                 const profileData = doc.data();
-                arr.push({ id: doc.id, ...profileData });
+                if (profileData.uid === uid) {
+                    arr.push({ id: doc.id, ...profileData });
+                }
             });
             setDataFromFirestore(arr);
+            console.log('Data from Firestore:', arr);
         } catch (error) {
             console.error('Error fetching rooms:', error.message);
         }
     };
 
+    useEffect(() => {
+        fetchRooms().then(() => setLoading(false));
+    }, []);
+    
+
     const fetchPost = async () => {
         try {
             const docRef = doc(firestore, 'hotels', dataFromFirestore[0]?.ruid, 'rooms', uid);
             const docSnap = await getDoc(docRef);
-
+    
             if (docSnap.exists()) {
                 const fetchedData = { id: docSnap.id, ...docSnap.data() };
                 setDataFromFirestores([fetchedData]);
             } else {
-                console.log('Document not found.', uid);
+                console.log('Document not found.', dataFromFirestore[0]?.ruid);
                 setDataFromFirestores([]);
             }
         } catch (error) {
@@ -80,9 +91,16 @@ function Bookingroomcard() {
         }
     };
 
+    useEffect(() => {
+        if (dataFromFirestore.length > 0) {
+            fetchPost().then(() => setLoading(false));
+        }
+    }, [dataFromFirestore]);
+    
+
     const fetchPosthotel = async () => {
         try {
-            const docRef = doc(firestore, 'hotels', dataFromFirestore[0]?.ruid);
+            const docRef = doc(firestore, 'hotels', dataFromFirestores[0]?.ruid);
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
@@ -114,16 +132,6 @@ function Bookingroomcard() {
     };
 
     useEffect(() => {
-        fetchRooms().then(() => setLoading(false));
-    }, []);
-
-    useEffect(() => {
-        if (dataFromFirestore.length > 0) {
-            fetchPost().then(() => setLoading(false));
-        }
-    }, [dataFromFirestore]);
-
-    useEffect(() => {
         if (dataFromFirestore.length > 0) {
             fetchPosthotel().then(() => setLoading(false));
         }
@@ -133,6 +141,120 @@ function Bookingroomcard() {
         fetchPostuser();
     }, []);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const overlappingBookings = dataFromFirestoreshotelbooking.filter((booking) => {
+                const existingCheckInDate = new Date(booking.checkInDate);
+                const existingCheckOutDate = new Date(booking.checkOutDate);
+                const newCheckInDate = new Date(checkInDate);
+                const newCheckOutDate = new Date(checkOutDate);
+
+                return (
+                    (newCheckInDate >= existingCheckInDate && newCheckInDate < existingCheckOutDate) ||
+                    (newCheckOutDate > existingCheckInDate && newCheckOutDate <= existingCheckOutDate) ||
+                    (newCheckInDate <= existingCheckInDate && newCheckOutDate >= existingCheckOutDate)
+                );
+            });
+
+            if (overlappingBookings.length > 0) {
+                alert('Selected dates overlap with existing bookings. Please choose different dates.');
+            } else {
+                const userData = {
+                    email: todos[0]?.email,
+                    bookingtype: "what",
+                    name: todos[0]?.name,
+                    phonenumber: todos[0]?.phonenumber,
+                    checkInDate: checkInDate,
+                    checkOutDate: checkOutDate,
+                    numberOfDays: numberOfDays,
+                    totalPrice: totalPrice,
+                    uuid: user.uid,
+                    huid: dataFromFirestores[0]?.ruid,
+                    ruid: uid
+                };
+
+                const userBookingCollectionRef = collection(firestore, 'users', user.uid, 'bookings');
+                const userBookingDocRef = await addDoc(userBookingCollectionRef, userData);
+
+                console.log("Booking information stored successfully with ID:", userBookingDocRef.id);
+
+                alert(userBookingDocRef.id);
+            }
+        } catch (err) {
+            console.error("Error", err);
+        }
+    };
+    
+
+    const handleSubmits = async (e) => {
+        e.preventDefault();
+    
+        try {
+            const overlappingBookings = dataFromFirestoreshotelbooking.filter((booking) => {
+                const existingCheckInDate = new Date(booking.checkInDate);
+                const existingCheckOutDate = new Date(booking.checkOutDate);
+                const newCheckInDate = new Date(checkInDate);
+                const newCheckOutDate = new Date(checkOutDate);
+    
+                return (
+                    (newCheckInDate >= existingCheckInDate && newCheckInDate < existingCheckOutDate) ||
+                    (newCheckOutDate > existingCheckInDate && newCheckOutDate <= existingCheckOutDate) ||
+                    (newCheckInDate <= existingCheckInDate && newCheckOutDate >= existingCheckOutDate)
+                );
+            });
+    
+            if (overlappingBookings.length > 0) {
+                alert('Selected dates overlap with existing bookings. Please choose different dates.');
+            } else {
+                const userData = {
+                    email: todos[0]?.email,
+                    bookingtype: "what",
+                    name: todos[0]?.name,
+                    phonenumber: todos[0]?.phonenumber,
+                    checkInDate: checkInDate,
+                    checkOutDate: checkOutDate,
+                    numberOfDays: numberOfDays,
+                    totalPrice: totalPrice,
+                    uuid: user.uid,
+                    huid: dataFromFirestores[0]?.ruid,
+                    ruid: uid
+                };
+    
+                const userBookingCollectionRef = collection(firestore, 'hotels', dataFromFirestores[0]?.ruid, 'hbookings');
+                const userBookingDocRef = await addDoc(userBookingCollectionRef, userData);
+    
+                console.log("Booking information stored successfully with ID:", userBookingDocRef.id);
+    
+                alert(userBookingDocRef.id);
+            }
+        } catch (err) {
+            console.error("Error", err);
+        }
+    };
+    
+
+    const fetchbooking = async () => {
+        try {
+            const arr = [];
+            const querySnapshot = await getDocs(collectionGroup(firestore, 'hbookings'));
+            querySnapshot.forEach((doc) => {
+                const profileData = doc.data();
+                arr.push({ id: doc.id, ...profileData });
+            });
+            setDataFromFirestoreshotelbooking(arr);
+        } catch (error) {
+            console.error('Error fetching rooms:', error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchbooking();
+      }, []);
+    
+    
+
     return (
         <>
             <Nav />
@@ -141,15 +263,25 @@ function Bookingroomcard() {
             ) : dataFromFirestores.map((item) => (
                 <div className='box-con-booking-c' key={item.id}>
                     <div className='box-con-booking'>
-                        {dataFromFirestoreshotel.map((item2) => (
-                            <div className="bookingroom-c-sidebar" key={item2.id}>
-                                <h2>{item2.pname}</h2>
-                                <span>{item2.address} {item2.tambol} อำเภอ{item2.amper} {item2.zipcode}</span>
-                            </div>
-                        ))}
+                        <div className="bookingroom-c-sidebar">
+                            <h2>{item.roomno}</h2>
+                            <p>{item.type}</p>
+                        </div>
+                    {/* {dataFromFirestoreshotel.length > 0 ? (
+                        <div className="bookingroom-c-sidebar">
+                            <h2>{dataFromFirestoreshotel[0].pname}</h2>
+                            <span>{dataFromFirestoreshotel[0].address} {dataFromFirestoreshotel[0].tambol} อำเภอ{dataFromFirestoreshotel[0].amper} {dataFromFirestoreshotel[0].zipcode}</span>
+                        </div>
+                    ) : (
+                        <p>Loading hotel information...</p>
+                    )} */}
+
                         {todos.map((item3) => (
                             <div className="bookingroom-c-product" key={item.id}>
-                                <Form onSubmit={handleFormSubmit}>
+                                <Form onSubmit={(e) => {
+                                            handleSubmits(e);
+                                            handleSubmit(e);
+                                        }}>
                                     <Form.Group className="register-name" controlId='formBasicName'>
                                         <Form.Control
                                             className="form-control"
@@ -182,6 +314,7 @@ function Bookingroomcard() {
                                             type='Name'
                                             placeholder='ชื่อ-นามสกุล'
                                             value={item3.name}
+                                            onChange={(e) => setName(e.target.value)}
                                         />
                                     </Form.Group>
 
@@ -193,6 +326,8 @@ function Bookingroomcard() {
                                             value={item3.email}
                                         />
                                     </Form.Group>
+
+
 
                                     <Form.Group className="register-phone" controlId='formBasicName'>
                                         <Form.Control
@@ -223,8 +358,28 @@ function Bookingroomcard() {
                                         />
                                     </Form.Group>
 
-                                    <h1>แสดงผลของจำนวนวัน: {numberOfDays}</h1>
-                                    <h1>ราคา: {totalPrice}</h1>
+                                    <Form.Group className="register-phone" controlId='formBasicName'>
+                                        <Form.Control
+                                            className="form-control"
+                                            type='Phonenumber'
+                                            placeholder='เบอร์โทรศัพท์'
+                                            value={numberOfDays}
+                                            onChange={(e) => setTotalPrice(e.target.value)}
+                                        />
+                                    </Form.Group>
+
+                                    <Form.Group className="register-phone" controlId='formBasicName'>
+                                        <Form.Control
+                                            className="form-control"
+                                            type='Phonenumber'
+                                            placeholder='เบอร์โทรศัพท์'
+                                            value={totalPrice}
+                                        />
+                                    </Form.Group>
+
+                                    <div className="button-submit-signup">
+                                        <Button variant="primary" type="submit">ลงชื่อเข้าใช้</Button>
+                                    </div>
                                 </Form>
 
                                 <div className="button-submit-signup">

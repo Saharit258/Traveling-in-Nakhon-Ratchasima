@@ -25,6 +25,7 @@ function Booking() {
       const querySnapshot = await getDocs(q);
       const fetchedData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setDataFromFirestore(fetchedData);
+      console.log("ddd",fetchedData)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -32,7 +33,6 @@ function Booking() {
 
   useEffect(() => {
     fetchDataFromFirestore();
-    fetchProfiles();
   }, []);
 
   const fetchProfiles = async () => {
@@ -40,6 +40,7 @@ function Booking() {
       const querySnapshot = await getDocs(collectionGroup(firestore, 'rooms'));
       const arr = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setRoom(arr);
+      console.log("data",arr)
     } catch (error) {
       console.error('Error fetching profiles:', error);
     }
