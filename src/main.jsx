@@ -36,6 +36,8 @@ import Test from './page/test.jsx'
 
 import Addcommunity from './page/manupage/Addcommunity.jsx'
 
+import Partnerhome from './partner/Partnerhome.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/Register",
     element: <Register />,
+  },
+  {
+    path: "/Partnerhome",
+    element: <Partnerhome />,
   },
   {
     path: "/Booking",

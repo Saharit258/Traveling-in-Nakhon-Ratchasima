@@ -114,4 +114,13 @@
   .nav-item:hover{
     color: #ff7255;
 }
+
+.menubar-partner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(255, 184, 61);
+  padding: 10px 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
   

@@ -159,7 +159,7 @@ function Bookingroomcard() {
             });
 
             if (overlappingBookings.length > 0) {
-                alert('Selected dates overlap with existing bookings. Please choose different dates.');
+                alert('วันที่ที่เลือกซ้อนทับกับการจองที่มีอยู่ โปรดเลือกวันที่อื่น');
             } else {
                 const userData = {
                     email: todos[0]?.email,
@@ -177,8 +177,6 @@ function Bookingroomcard() {
 
                 const userBookingCollectionRef = collection(firestore, 'users', user.uid, 'bookings');
                 const userBookingDocRef = await addDoc(userBookingCollectionRef, userData);
-
-                console.log("Booking information stored successfully with ID:", userBookingDocRef.id);
 
                 alert(userBookingDocRef.id);
             }
@@ -206,7 +204,6 @@ function Bookingroomcard() {
             });
     
             if (overlappingBookings.length > 0) {
-                alert('Selected dates overlap with existing bookings. Please choose different dates.');
             } else {
                 const userData = {
                     email: todos[0]?.email,
@@ -224,8 +221,6 @@ function Bookingroomcard() {
     
                 const userBookingCollectionRef = collection(firestore, 'hotels', dataFromFirestores[0]?.ruid, 'hbookings');
                 const userBookingDocRef = await addDoc(userBookingCollectionRef, userData);
-    
-                console.log("Booking information stored successfully with ID:", userBookingDocRef.id);
     
                 alert(userBookingDocRef.id);
             }
@@ -377,8 +372,8 @@ function Bookingroomcard() {
                                         />
                                     </Form.Group>
 
-                                    <div className="button-submit-signup">
-                                        <Button variant="primary" type="submit">ลงชื่อเข้าใช้</Button>
+                                    <div className="button-submit-signup-divbooking">
+                                        <button variant="primary" className="button-submit-signup-booking" type="submit">จองที่พัก</button>
                                     </div>
                                 </Form>
 

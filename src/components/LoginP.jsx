@@ -36,7 +36,7 @@ function LoginP() {
                 console.log("User Type:", usertype);
     
                 if (loginType === "Partner" && usertype === "Partner") {
-                    navigate("/");
+                    navigate("/Partnerhome");
                 } else {
                     setError("ประเภทการเข้าสู่ระบบไม่ถูกต้อง");
                 }
