@@ -1,0 +1,28 @@
+.box-con-booking-c{
+    margin-top: 10px;
+}
+
+.box-con-booking{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+}
+
+.bookingroom-c-sidebar{
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bookingroom-c-product{
+    width: 70%;
+    padding: 10px;
+    display: grid;
+    border-radius: 5px;
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    grid-gap: 10px;
+    margin-left: 10px;
+}
