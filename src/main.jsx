@@ -25,6 +25,7 @@ import Reportproblem from './page/Reportproblem.jsx'
 import Famouspage from './page/manupage/Famouspage.jsx'
 import Bookingcard from './page/manupage/Bookingcard.jsx'
 import Bookingroomcard from './page/manupage/Bookingroomcard.jsx'
+import Mycoupon from './page/Mycoupon.jsx'
 
 import Ex from './page/Ex.jsx'
 
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: "/Booking",
     element: <Booking />,
+  },
+  {
+    path: "/Mycoupon",
+    element: <Mycoupon />,
   },
   {
     path: "/Bookingcard",

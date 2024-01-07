@@ -74,7 +74,7 @@ function Bookinghistory() {
                       <p className='profile-name-profile-card-manu'>{todos[0]?.name}</p>
                   <hr></hr>
                       <Link className='manu-manu' to='/Profile'>บัญชีของฉัน</Link>
-                      <Link className='manu-manu' to='/'>คูปองของฉัน</Link>
+                      <Link className='manu-manu' to='/Mycoupon'>คูปองของฉัน</Link>
                       <Link className='manu-manu' to='/Reportproblem'>แจ้งปัญหา</Link>
                   <hr></hr>
                       <button onClick={Logout}>ออกจากระบบ</button>
