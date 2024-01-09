@@ -1,14 +1,15 @@
-.card {
-    border: 5px solid hsl(0, 0%, 80);
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px hsl(0.1, 0.1%, 0.1%, 0.1);
-    padding: 60px;
-    width: 70%;
-    text-align: center;
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.card-pro {
+  background-color: #ffffff;
+  border: 5px solid hsl(0, 0%, 80);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsl(0.1, 0.1%, 0.1%, 0.1);
+  padding: 60px;
+  width: 90%;
+  text-align: center;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .box-container-promotion{
@@ -17,7 +18,7 @@
     display: flex;
 }
 
-.promotion-sidebar{   /* เลือกประเภทคูปอง */
+.promotion-sidebar{
     border: 1px solid hsla(0, 0%, 73%, 0.349);
     width: 20%;
     padding: 10px;

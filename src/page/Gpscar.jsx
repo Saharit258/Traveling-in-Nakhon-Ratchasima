@@ -10,7 +10,7 @@ const Gpscar = () => {
   const [dataFromFirestore, setDataFromFirestore] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [mapCenter, setMapCenter] = useState([]);
+  const [mapCenter, setMapCenter] = useState([14.877688, 102.014071]);
 
   const fetchDataFromFirestore = async () => {
     try {
@@ -50,35 +50,32 @@ const Gpscar = () => {
     popupAnchor: [0, -32],
   });
 
-
   return (
     <>
       <Nav/>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/leaflet/dist/leaflet.css"
-          integrity="sha512-q6sqqxbl6n6RNq3kY5gKkP8C4JF8sWQe0mz4uJgk1fptpV2K5PN6nxahb2jIm/eLNT8lBuRz5Ebhye/OV5IKKg=="
-          crossOrigin=""
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet/dist/leaflet.css"
+        integrity="sha512-q6sqqxbl6n6RNq3kY5gKkP8C4JF8sWQe0mz4uJgk1fptpV2K5PN6nxahb2jIm/eLNT8lBuRz5Ebhye/OV5IKKg=="
+        crossOrigin=""
+      />
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      <MapContainer center={mapCenter} zoom={12} style={{ height: '650px', width: '100%' }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-          {dataFromFirestore.map((item) => (
-                    <MapContainer center={mapCenter.length > 0 ? mapCenter : [item.lat, item.lon]} zoom={12} style={{ height: '650px', width: '100%' }}>
-                      <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      />
-                      {dataFromFirestore.map((position, index) => (
-                        position.lat && position.lon && (
-                          <Marker position={[position.lat, position.lon]} key={index} icon={usersProfileIcon}>
-                            <Popup>{position.name}</Popup>
-                          </Marker>
-                        )
-                      ))}
-                  </MapContainer>
-          ))}
+        {dataFromFirestore.map((position, index) => (
+          position.lat && position.lon && (
+            <Marker position={[14.877688, 102.014071]} key={index} icon={usersProfileIcon}>
+              <Popup>{position.name}</Popup>
+            </Marker>
+          )
+        ))}
+      </MapContainer>
     </>
   );
 };
 
-export default Gpscar
+export default Gpscar;

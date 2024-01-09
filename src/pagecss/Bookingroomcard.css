@@ -28,9 +28,98 @@
 }
 
 .button-submit-signup-divbooking{
+    margin-top: 39px;
     margin-left: 25%;
 }
 
 .button-submit-signup-booking{
     width: 500px;
+}
+
+@import 'react-big-calendar/lib/css/react-big-calendar.css';  
+
+.content-header{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.header-content{
+    margin-right: 150px;
+}
+
+.rbc-calendar {
+   margin: 10px;
+}
+.calender-main {
+    width: 90%;
+    height: 80vh;
+    margin-bottom: 50px;
+ }
+
+.sidebar-taxt-booking{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-taxt-booking-h2-r{
+    text-align: right;
+}
+
+.bookingroom-c-calendar{
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+}
+
+.from-booking-g{
+    display: flex;
+    justify-content: space-between;
+}
+
+.from-booking{
+    width: 400px; 
+}
+
+.dfsdf{
+    padding: 20px;
+}
+
+.register-name-price{
+    margin-top: 10px;
+}
+
+.register-name-priced{
+    margin-top: 10px;
+    display: flex;
+}
+
+.form-control-priced{
+    width: 950px;
+}
+
+.ewef{
+    margin-top: 20px;
+    align-items: center;
+}
+
+.bhjbj{
+    width: 200px;
+}
+
+.ss{
+    align-items: center;
+    text-align: center;
+}
+
+.form-control-priced-in{
+    width: 907px;
+}
+
+.form-control-priced-out{
+    width: 912px;
+}
+.form-control-priced-name{
+    width: 970px;
 }

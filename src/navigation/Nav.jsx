@@ -93,6 +93,7 @@ function Nav() {
                     <h6 onClick={handleProfile} className='name-manu-log'>{todo.name}</h6>
                     <NavDropdown className='manu'>
                       <NavDropdown.Item bsPrefix="nav-item" href='/Profile'>บัญชีของฉัน</NavDropdown.Item>
+                      <NavDropdown.Item bsPrefix="nav-item" href='/Bookinghistory'>ประวัติการจอง</NavDropdown.Item>
                       <NavDropdown.Item bsPrefix="nav-item" href='/Mycoupon'>คูปองของฉัน</NavDropdown.Item>
                       <NavDropdown.Item bsPrefix="nav-item" href='/Reportproblem'>แจ้งปัญหา</NavDropdown.Item>
                       <NavDropdown.Item bsPrefix="nav-item" onClick={logOut}>

@@ -1,0 +1,22 @@
+.pay-card{
+    margin-top: 10px;
+    margin-bottom: 1000px;
+}
+
+.box-pay{
+    margin: 0 auto;
+    width: 1200px;
+    height: auto;
+    border: 1px solid hsl(0, 0%, 0%);
+    border-radius: 5px;
+}
+
+.pay-card-box{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.pay-text{
+    text-align: center;
+    margin-bottom: 20px;
+}

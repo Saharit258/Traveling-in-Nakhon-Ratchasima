@@ -40,6 +40,11 @@ function Famous() {
     fetchDataFromFirestore();
   }, []);
 
+  useEffect(() => {
+    const defaultDistricts = ["เมืองนครราชสีมา"];
+    setSelectedDistricts(defaultDistricts);
+  }, []);
+
   const isStoreOpen = (startTime, closingTime) => {
     if (startTime && closingTime) {
       const currentDate = new Date();
@@ -82,7 +87,7 @@ function Famous() {
   );
 
   const AddfamousPage = () => {
-      navigate('/Todo');
+    navigate('/Todo');
   };
 
   const navigateToMap = () => {
@@ -115,184 +120,182 @@ function Famous() {
 
   return (
     <>
-    <div className="body-fm">
-      <Nav />
-
-      <div className="card-Famous">
+      <div className="body-fm">
+        <Nav />
+        <div className="card-Famous">
           <h2>ร้านอาหารและสถานที่แนะนำ</h2>
         </div>
 
-      <div className="box-container-famous">
+        <div className="box-container-famous">
+          <div className="famous-sidebar">
+            <div className="Search-famous">
+              <div className="search-famous">
+                <input
+                  type="text"
+                  id="search"
+                  value={searchTerm}
+                  onChange={handleSearch}
+                  placeholder="Search"
+                />
+                <FontAwesomeIcon className='icon-search' icon={faSearch} />
+              </div>
 
-      <div className="famous-sidebar">
-      <div className="Search-famous">
-        <div className="search-famous">
-          <input
-            type="text"
-            id="search"
-            value={searchTerm}
-            onChange={handleSearch}
-            placeholder="Search"
-          />
-          <FontAwesomeIcon className='icon-search' icon={faSearch} />
+              <hr></hr>
+
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="restaurantType"
+                    value=""
+                    checked={selectedType === ''}
+                    onChange={() => setSelectedType('')}
+                  />
+                  ทั้งหมด
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="restaurantType"
+                    value="คาเฟ่"
+                    checked={selectedType === 'คาเฟ่'}
+                    onChange={() => setSelectedType('คาเฟ่')}
+                  />
+                  คาเฟ่
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="restaurantType"
+                    value="ร้านอาหาร"
+                    checked={selectedType === 'ร้านอาหาร'}
+                    onChange={() => setSelectedType('ร้านอาหาร')}
+                  />
+                  ร้านอาหาร
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="restaurantType"
+                    value="สถานที่เที่ยว"
+                    checked={selectedType === 'สถานที่เที่ยว'}
+                    onChange={() => setSelectedType('สถานที่เที่ยว')}
+                  />
+                  สถานที่เที่ยว
+                </label>
+              </div>
+
+              <hr></hr>
+
+              <h4>อำเภอ</h4>
+
+              <div>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="restaurantType"
+                    value="เมืองนครราชสีมา"
+                    onChange={handleDistrictCheckboxChange}
+                    checked={selectedDistricts.includes("เมืองนครราชสีมา")}
+                  />
+                  เมืองนครราชสีมา
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="restaurantType"
+                    value="วังน้ำเขียว"
+                    onChange={handleDistrictCheckboxChange}
+                    checked={selectedDistricts.includes("วังน้ำเขียว")}
+                  />
+                  วังน้ำเขียว
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="restaurantType"
+                    value="พิมาย"
+                    onChange={handleDistrictCheckboxChange}
+                    checked={selectedDistricts.includes("พิมาย")}
+                  />
+                  พิมาย
+                </label>
+              </div>
+
+              <hr></hr>
+              <h4>ค้นหาจากแผนที่</h4>
+              <div className="map-famous">
+                <Button className="famous-button-map" onClick={navigateToMap}>
+                  ดูแผนที่
+                </Button>
+              </div>
+            </div>
           </div>
 
-          <hr></hr>
+          <div className="Famous-product">
+            {isLoading && <p className='loading-famous'><div className="spinner-border" role="status"><span className="sr-only"></span></div></p>}
 
-            <div>
-                  <label>
-                    <input
-                      type="radio"
-                      name="restaurantType"
-                      value=""
-                      checked={selectedType === ''}
-                      onChange={() => setSelectedType('')}
-                    />
-                    ทั้งหมด
-                  </label>
-                </div>
-
-                <div>
-                  <label>
-                    <input
-                      type="radio"
-                      name="restaurantType"
-                      value="คาเฟ่"
-                      checked={selectedType === 'คาเฟ่'}
-                      onChange={() => setSelectedType('คาเฟ่')}
-                    />
-                    คาเฟ่
-                  </label>
-                </div>
-
-                <div>
-                  <label>
-                    <input
-                      type="radio"
-                      name="restaurantType"
-                      value="ร้านอาหาร"
-                      checked={selectedType === 'ร้านอาหาร'}
-                      onChange={() => setSelectedType('ร้านอาหาร')}
-                    />
-                    ร้านอาหาร
-                  </label>
-                </div>
-
-                <div>
-                  <label>
-                    <input
-                      type="radio"
-                      name="restaurantType"
-                      value="สถานที่เที่ยว"
-                      checked={selectedType === 'สถานที่เที่ยว'}
-                      onChange={() => setSelectedType('สถานที่เที่ยว')}
-                    />
-                    สถานที่เที่ยว
-                  </label>
-                </div>
-
-                <hr></hr>
-
-                <h4>อำเภอ</h4>  
-
-                    <div>
-                          <label>
-                              <input
-                                  type="checkbox"
-                                  name="restaurantType"
-                                  value="เมืองนครราชสีมา"
-                                  onChange={handleDistrictCheckboxChange}
-                                  checked={selectedDistricts.includes("เมืองนครราชสีมา")}
-                              />
-                              เมืองนครราชสีมา
-                          </label>
+            {!isLoading && (
+              <div>
+                {filteredData.map((item, index) => (
+                  <div key={index} onClick={() => handleAddButtonClick(item.id)}>
+                    <div className="box-item-bar">
+                      <div className="image-container">
+                        {item.imgUrls.map((img, imgIndex) => (
+                          <img
+                            key={imgIndex}
+                            src={img}
+                            alt=""
+                            className="item-image"
+                            onClick={() => handleImageClick(img)}
+                          />
+                        ))}
                       </div>
-
-                      <div>
-                          <label>
-                              <input
-                                  type="checkbox"
-                                  name="restaurantType"
-                                  value="วังน้ำเขียว"
-                                  onChange={handleDistrictCheckboxChange}
-                                  checked={selectedDistricts.includes("วังน้ำเขียว")}
-                              />
-                              วังน้ำเขียว
-                          </label>
-                      </div>
-
-                      <div>
-                          <label>
-                              <input
-                                  type="checkbox"
-                                  name="restaurantType"
-                                  value="พิมาย"
-                                  onChange={handleDistrictCheckboxChange}
-                                  checked={selectedDistricts.includes("พิมาย")}
-                              />
-                              พิมาย
-                          </label>
-                      </div>
-          <hr></hr>
-          <h4>ค้นหาจากแผนที่</h4>
-          <div className="map-famous">
-              <Button className="famous-button-map" onClick={navigateToMap}>
-                ดูแผนที่
-              </Button>
-          </div>
-        </div>
-       </div>
-
-       <div className="Famous-product">
-              {isLoading && <p className='loading-famous'><div className="spinner-border" role="status"><span className="sr-only"></span></div></p>}
-
-              {!isLoading && (
-                <div>
-                  {filteredData.map((item, index) => (
-                    <div key={index} onClick={() => handleAddButtonClick(item.id)}>
-                      <div className="box-item-bar">
-                        <div className="image-container">
-                          {item.imgUrls.map((img, imgIndex) => (
-                            <img
-                              key={imgIndex}
-                              src={img}
-                              alt=""
-                              className="item-image"
-                              onClick={() => handleImageClick(img)}
-                            />
-                          ))}
-                        </div>
-                        <div className="box-item-bar-txt">
-                          <div className="box-item-bar-txt-1">
-                            <h1 className="box-item-bar-txt-1-famouss-name">{item.name}</h1>
-                            <p className="box-item-bar-txt-1-p">
-                              {' '}
-                              <span className={`box-item-bar-txt-1-p-p ${isStoreOpen(item.time, item.closingTime) ? 'open' : 'closed'}`}>
-                                {item.time} - {item.closingTime}
-                                {isStoreOpen(item.time, item.closingTime) ? ' (เปิดอยู่)' : ' (ปิดแล้ว)'}
-                              </span>
-                            </p>
-                            <p className="box-item-bar-txt-1-p">
-                              <span className="box-item-bar-txt-1-p-p">{item.add} ตำบล{item.district} อำเภอ{item.districts} {item.codezo}</span>
-                            </p>
-                          </div>
+                      <div className="box-item-bar-txt">
+                        <div className="box-item-bar-txt-1">
+                          <h1 className="box-item-bar-txt-1-famouss-name">{item.name}</h1>
+                          <p className="box-item-bar-txt-1-p">
+                            {' '}
+                            <span className={`box-item-bar-txt-1-p-p ${isStoreOpen(item.time, item.closingTime) ? 'open' : 'closed'}`}>
+                              {item.time} - {item.closingTime}
+                              {isStoreOpen(item.time, item.closingTime) ? ' (เปิดอยู่)' : ' (ปิดแล้ว)'}
+                            </span>
+                          </p>
+                          <p className="box-item-bar-txt-1-p">
+                            <span className="box-item-bar-txt-1-p-p">{item.add} ตำบล{item.district} อำเภอ{item.districts} {item.codezo}</span>
+                          </p>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              )}
+                  </div>
+                ))}
+              </div>
+            )}
 
             {showFullImage && (
-                      <div className="full-image-overlay" onClick={closeFullImage}>
-                        <div className="full-image-container">
-                          <img src={fullImageUrl} className="full-image-container-img" alt="Full Size" />
-                        </div>
-                      </div>
-                    )}
-      </div>
-
-      </div>
+              <div className="full-image-overlay" onClick={closeFullImage}>
+                <div className="full-image-container">
+                  <img src={fullImageUrl} className="full-image-container-img" alt="Full Size" />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

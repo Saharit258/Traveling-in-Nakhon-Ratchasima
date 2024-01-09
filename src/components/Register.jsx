@@ -73,7 +73,7 @@ function Register() {
         }
 
         try {
-            // Sign up the user
+
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             const profile_image = 'https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=740&t=st=1695823555~exp=1695824155~hmac=18698f7d46090413fa1a239f3f23784ebbd40fa40f2906e69b476de21a61fa07'

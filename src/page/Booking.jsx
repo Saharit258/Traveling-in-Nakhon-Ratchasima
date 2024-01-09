@@ -18,6 +18,7 @@ function Booking() {
   const [Room, setRoom] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: 0, max: 10000 });
   const [selectedFacilities, setSelectedFacilities] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchDataFromFirestore = async () => {
     try {
@@ -25,7 +26,6 @@ function Booking() {
       const querySnapshot = await getDocs(q);
       const fetchedData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setDataFromFirestore(fetchedData);
-      console.log("ddd",fetchedData)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -40,7 +40,6 @@ function Booking() {
       const querySnapshot = await getDocs(collectionGroup(firestore, 'rooms'));
       const arr = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setRoom(arr);
-      console.log("data",arr)
     } catch (error) {
       console.error('Error fetching profiles:', error);
     }
@@ -72,13 +71,24 @@ function Booking() {
     navigate(`/Bookingcard?uid=${id}`);
   };
 
+  const filteredData = dataFromFirestore.filter((item) =>
+    item.pname.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
   return (
     <>
       <Nav />
       <div className="search-card-book">
         <div className="line-hotel">
           <p>ชื่อที่พัก/สถานที่</p>
-          <input type="search" id="gsearch" className="gsearch-hotel" />
+          <input
+            type="search"
+            id="gsearch"
+            className="gsearch-hotel"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
         <div className="chack-in">
           <p>เช็คอิน</p>
@@ -110,7 +120,7 @@ function Booking() {
           <button>ตกลง</button>
         </div>
       </div>
-
+  
       <div className="box-container-booking">
         <div className="booking-sidebar">
           <div className="map-famous">
@@ -174,7 +184,7 @@ function Booking() {
               </div>
             ))}
           </div>
-
+  
           <hr />
           <h4>อำเภอ</h4>
           <div>
@@ -195,7 +205,7 @@ function Booking() {
           </div>
         </div>
         <div className="booking-product">
-          {dataFromFirestore
+          {filteredData
             .filter(
               (item) =>
                 Room.some(

@@ -6,6 +6,11 @@ import { firestore } from '../../database/firebase';
 import Nav from '../../navigation/Nav';
 import { Form, Button } from 'react-bootstrap';
 import '../../pagecss/Bookingroomcard.css';
+import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import moment from 'moment';
 
 function Bookingroomcard() {
     const uid = new URLSearchParams(useLocation().search).get('uid');
@@ -23,6 +28,8 @@ function Bookingroomcard() {
     const [totalPrice, setTotalPrice] = useState(0);
 
     const [name, setName] = useState("");
+
+    const navigate = useNavigate();
 
     const handleCheckInDateChange = (e) => {
         setCheckInDate(e.target.value);
@@ -63,7 +70,6 @@ function Bookingroomcard() {
                 }
             });
             setDataFromFirestore(arr);
-            console.log('Data from Firestore:', arr);
         } catch (error) {
             console.error('Error fetching rooms:', error.message);
         }
@@ -141,29 +147,33 @@ function Bookingroomcard() {
         fetchPostuser();
     }, []);
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
             const overlappingBookings = dataFromFirestoreshotelbooking.filter((booking) => {
-                const existingCheckInDate = new Date(booking.checkInDate);
-                const existingCheckOutDate = new Date(booking.checkOutDate);
-                const newCheckInDate = new Date(checkInDate);
-                const newCheckOutDate = new Date(checkOutDate);
-
-                return (
-                    (newCheckInDate >= existingCheckInDate && newCheckInDate < existingCheckOutDate) ||
-                    (newCheckOutDate > existingCheckInDate && newCheckOutDate <= existingCheckOutDate) ||
-                    (newCheckInDate <= existingCheckInDate && newCheckOutDate >= existingCheckOutDate)
-                );
+                if (booking.ruid === uid) {
+                    const existingCheckInDate = new Date(booking.checkInDate);
+                    const existingCheckOutDate = new Date(booking.checkOutDate);
+                    const newCheckInDate = new Date(checkInDate);
+                    const newCheckOutDate = new Date(checkOutDate);
+    
+                    return (
+                        (newCheckInDate >= existingCheckInDate && newCheckInDate < existingCheckOutDate) ||
+                        (newCheckOutDate > existingCheckInDate && newCheckOutDate <= existingCheckOutDate) ||
+                        (newCheckInDate <= existingCheckInDate && newCheckOutDate >= existingCheckOutDate)
+                    );
+                }
+                return false;
             });
-
+    
             if (overlappingBookings.length > 0) {
                 alert('วันที่ที่เลือกซ้อนทับกับการจองที่มีอยู่ โปรดเลือกวันที่อื่น');
             } else {
                 const userData = {
                     email: todos[0]?.email,
-                    bookingtype: "what",
+                    bookingtype: "จอง",
                     name: todos[0]?.name,
                     phonenumber: todos[0]?.phonenumber,
                     checkInDate: checkInDate,
@@ -172,13 +182,17 @@ function Bookingroomcard() {
                     totalPrice: totalPrice,
                     uuid: user.uid,
                     huid: dataFromFirestores[0]?.ruid,
-                    ruid: uid
+                    ruid: uid,
+                    pay: "รอการจ่ายเงิน",
+                    roomno: dataFromFirestores[0]?.roomno
                 };
-
+    
                 const userBookingCollectionRef = collection(firestore, 'users', user.uid, 'bookings');
                 const userBookingDocRef = await addDoc(userBookingCollectionRef, userData);
-
+    
                 alert(userBookingDocRef.id);
+
+                navigate(`/Expend?uid=${userBookingDocRef.id}`);
             }
         } catch (err) {
             console.error("Error", err);
@@ -191,23 +205,26 @@ function Bookingroomcard() {
     
         try {
             const overlappingBookings = dataFromFirestoreshotelbooking.filter((booking) => {
-                const existingCheckInDate = new Date(booking.checkInDate);
-                const existingCheckOutDate = new Date(booking.checkOutDate);
-                const newCheckInDate = new Date(checkInDate);
-                const newCheckOutDate = new Date(checkOutDate);
+                if (booking.ruid === uid) {
+                    const existingCheckInDate = new Date(booking.checkInDate);
+                    const existingCheckOutDate = new Date(booking.checkOutDate);
+                    const newCheckInDate = new Date(checkInDate);
+                    const newCheckOutDate = new Date(checkOutDate);
     
-                return (
-                    (newCheckInDate >= existingCheckInDate && newCheckInDate < existingCheckOutDate) ||
-                    (newCheckOutDate > existingCheckInDate && newCheckOutDate <= existingCheckOutDate) ||
-                    (newCheckInDate <= existingCheckInDate && newCheckOutDate >= existingCheckOutDate)
-                );
+                    return (
+                        (newCheckInDate >= existingCheckInDate && newCheckInDate < existingCheckOutDate) ||
+                        (newCheckOutDate > existingCheckInDate && newCheckOutDate <= existingCheckOutDate) ||
+                        (newCheckInDate <= existingCheckInDate && newCheckOutDate >= existingCheckOutDate)
+                    );
+                }
+                return false;
             });
     
             if (overlappingBookings.length > 0) {
             } else {
                 const userData = {
                     email: todos[0]?.email,
-                    bookingtype: "what",
+                    bookingtype: "จอง",
                     name: todos[0]?.name,
                     phonenumber: todos[0]?.phonenumber,
                     checkInDate: checkInDate,
@@ -216,7 +233,9 @@ function Bookingroomcard() {
                     totalPrice: totalPrice,
                     uuid: user.uid,
                     huid: dataFromFirestores[0]?.ruid,
-                    ruid: uid
+                    ruid: uid,
+                    pay: "รอการจ่ายเงิน",
+                    roomno: dataFromFirestores[0]?.roomno
                 };
     
                 const userBookingCollectionRef = collection(firestore, 'hotels', dataFromFirestores[0]?.ruid, 'hbookings');
@@ -248,6 +267,46 @@ function Bookingroomcard() {
         fetchbooking();
       }, []);
     
+
+      const localizer = momentLocalizer(moment);
+
+      const events = [
+        {
+            title: 'Check-In',
+            start: new Date('2024-01-10'),
+            end: new Date('2024-01-10'),
+            allDay: true,
+            className: 'red-event',
+        },
+        {
+            title: 'Check-Out',
+            start: new Date('2024-01-15'),
+            end: new Date('2024-01-15'),
+            allDay: true,
+            className: 'red-event',
+        },
+    ];
+
+    const eventStyleGetter = (event) => {
+        const startDate = moment('2024-01-10').startOf('day');
+        const endDate = moment('2024-01-15').endOf('day');
+        const eventDate = moment(event.start).startOf('day');
+
+        const style = {
+            backgroundColor:
+                eventDate.isBetween(startDate, endDate, null, '[]') ? 'red' : 'blue',
+            borderRadius: '5px',
+            opacity: 0.8,
+            color: 'white',
+            border: '1px solid #ccc',
+            display: 'block',
+            textAlign: 'center',
+        };
+
+        return {
+            style,
+        };
+    };
     
 
     return (
@@ -259,133 +318,168 @@ function Bookingroomcard() {
                 <div className='box-con-booking-c' key={item.id}>
                     <div className='box-con-booking'>
                         <div className="bookingroom-c-sidebar">
-                            <h2>{item.roomno}</h2>
-                            <p>{item.type}</p>
-                        </div>
-                    {/* {dataFromFirestoreshotel.length > 0 ? (
-                        <div className="bookingroom-c-sidebar">
-                            <h2>{dataFromFirestoreshotel[0].pname}</h2>
-                            <span>{dataFromFirestoreshotel[0].address} {dataFromFirestoreshotel[0].tambol} อำเภอ{dataFromFirestoreshotel[0].amper} {dataFromFirestoreshotel[0].zipcode}</span>
-                        </div>
-                    ) : (
-                        <p>Loading hotel information...</p>
-                    )} */}
+                            <div className="sidebar-taxt-booking">
+                                <h2 className="sidebar-taxt-booking-h2">ห้อง{item.roomno}</h2>
+                                <h2 className="sidebar-taxt-booking-h2-r">{item.type}</h2>
+                            </div>
+                            <div className="bookingroom-c-calendar">
+                            <Calendar
+                                    localizer={localizer}
+                                    events={events}
+                                    views={['month']}
+                                    style={{ height: 200 }}
+                                    eventStyleGetter={eventStyleGetter}
+                                />
+                                </div>
 
+                            <div className='ewef'>
+
+                                <h3>จำนวนวันและราคา</h3>
+
+                            <input         
+                                className="form-control"
+                                type='Phonenumber'
+                                placeholder='เบอร์โทรศัพท์'
+                                value={numberOfDays}
+                                onChange={(e) => setTotalPrice(e.target.value)}/>
+                            </div>
+
+                            <div className='ss'>
+                                <button className='bhjbj' onClick={calculateNumberOfDays} >ยืนยันวัน</button>
+                            </div>
+
+
+                            <div className='ewef'>
+
+                                <input         
+                                            className="form-control"
+                                            type='Phonenumber'
+                                            placeholder='เบอร์โทรศัพท์'
+                                            value={totalPrice}/>
+                                </div>
+
+                                <div className='ss'>
+                                    <button className='bhjbj' onClick={calculateTotalPrice} >ยืนยันวัน</button>
+                                </div>
+
+                            
+
+                        </div>
+
+                        <div className="bookingroom-c-product">
                         {todos.map((item3) => (
-                            <div className="bookingroom-c-product" key={item.id}>
+                            <div className='dfsdf' key={item.id}>
                                 <Form onSubmit={(e) => {
                                             handleSubmits(e);
                                             handleSubmit(e);
                                         }}>
-                                    <Form.Group className="register-name" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='Name'
-                                            placeholder={item.roomno}
-                                            value={item.roomno}
-                                        />
-                                    </Form.Group>
 
-                                    <Form.Group className="register-name" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='Name'
-                                            placeholder={item.type}
-                                            value={item.type}
-                                        />
-                                    </Form.Group>
+                                    <div className="from-booking-g">
+                                        <h4>ห้องพัก:</h4>
+                                        <Form.Group className="from-booking-name" controlId='formBasicName'>
+                                            <Form.Control
+                                                className="from-booking"
+                                                type='Name'
+                                                placeholder={item.roomno}
+                                                value={item.roomno}
+                                            />
+                                        </Form.Group>
 
-                                    <Form.Group className="register-name" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='Name'
-                                            value={item.price}
-                                        />
-                                    </Form.Group>
+                                        <h4 className="from-booking-namde">ประเภท:</h4>
+                                        <Form.Group className="from-booking-name-e" controlId='formBasicName'>
+                                            <Form.Control
+                                                className="from-booking"
+                                                type='Name'
+                                                placeholder={item.type}
+                                                value={item.type}
+                                            />
+                                        </Form.Group>
+                                    </div>
 
-                                    <Form.Group className="register-name" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='Name'
-                                            placeholder='ชื่อ-นามสกุล'
-                                            value={item3.name}
-                                            onChange={(e) => setName(e.target.value)}
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group className="register-name" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='Email'
-                                            placeholder='อีเมล'
-                                            value={item3.email}
-                                        />
-                                    </Form.Group>
+                                    <div className="register-name-priced">
+                                        <h4>ราคา:</h4>
+                                        <Form.Group className="register-name" controlId='formBasicName'>
+                                            <Form.Control
+                                                className="form-control-priced"
+                                                type='Name'
+                                                value={item.price}
+                                            />
+                                        </Form.Group>
+                                    </div>
 
 
+                                    <div className="register-name-priced">
+                                        <h4>ชื่อ:</h4>
+                                        <Form.Group className="register-name" controlId='formBasicName'>
+                                            <Form.Control
+                                                className="form-control-priced-name"
+                                                type='Name'
+                                                placeholder='ชื่อ-นามสกุล'
+                                                value={item3.name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </div>
 
+                                    <div className="register-name-priced">
+                                        <h4>อีเมล:</h4>
+                                        <Form.Group className="register-name" controlId='formBasicName'>
+                                            <Form.Control
+                                                className="form-control-priced"
+                                                type='Email'
+                                                placeholder='อีเมล'
+                                                value={item3.email}
+                                            />
+                                        </Form.Group>
+                                    </div>
+
+
+                                    <div className="register-name-priced">
+                                        <h4>เบอร์:</h4>
+                                        <Form.Group className="register-phone" controlId='formBasicName'>
+                                            <Form.Control
+                                                className="form-control-priced"
+                                                type='Phonenumber'
+                                                placeholder='เบอร์โทรศัพท์'
+                                                value={item3.phonenumber}
+                                            />
+                                        </Form.Group>
+                                    </div>
+
+
+                                    <div className="register-name-priced">
+                                    <h4>วันเข้าพัก:</h4>
                                     <Form.Group className="register-phone" controlId='formBasicName'>
                                         <Form.Control
-                                            className="form-control"
-                                            type='Phonenumber'
-                                            placeholder='เบอร์โทรศัพท์'
-                                            value={item3.phonenumber}
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group className="register-phone" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
+                                            className="form-control-priced-in"
                                             type='date'
                                             placeholder='วันเข้า'
                                             value={checkInDate}
                                             onChange={handleCheckInDateChange}
                                         />
                                     </Form.Group>
+                                    </div>
 
+                                    <div className="register-name-priced">
+                                    <h4>วันที่ออก:</h4>
                                     <Form.Group className="register-phone" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='date'
-                                            placeholder='วันออก'
-                                            value={checkOutDate}
-                                            onChange={handleCheckOutDateChange}
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group className="register-phone" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='Phonenumber'
-                                            placeholder='เบอร์โทรศัพท์'
-                                            value={numberOfDays}
-                                            onChange={(e) => setTotalPrice(e.target.value)}
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group className="register-phone" controlId='formBasicName'>
-                                        <Form.Control
-                                            className="form-control"
-                                            type='Phonenumber'
-                                            placeholder='เบอร์โทรศัพท์'
-                                            value={totalPrice}
-                                        />
-                                    </Form.Group>
+                                            <Form.Control
+                                                className="form-control-priced-out"
+                                                type='date'
+                                                placeholder='วันออก'
+                                                value={checkOutDate}
+                                                onChange={handleCheckOutDateChange}
+                                            />
+                                        </Form.Group>
+                                        </div>
 
                                     <div className="button-submit-signup-divbooking">
                                         <button variant="primary" className="button-submit-signup-booking" type="submit">จองที่พัก</button>
                                     </div>
                                 </Form>
-
-                                <div className="button-submit-signup">
-                                        <button onClick={calculateNumberOfDays}>ยืนยันวัน</button>
-                                    </div>
-
-                                    <div className="button-submit-signup">
-                                        <button onClick={calculateTotalPrice}>ยืนยันราคา</button>
-                                    </div>
                             </div>
                         ))}
+                        </div>
                     </div>
                 </div>
             ))}
