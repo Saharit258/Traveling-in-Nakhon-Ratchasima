@@ -65,8 +65,8 @@ function Roomadd() {
                 <tr>
                   <th>เลขห้อง</th>
                   <th>ประเภทห้อง</th>
+                  <th>จำนวนคน</th>
                   <th>ราคา</th>
-                  <th>สถานะ</th>
                   <th>ดูรายละเอียดที่พัก</th>
                 </tr>
               </thead>
@@ -75,8 +75,8 @@ function Roomadd() {
                   <tr key={i}>
                     <td>{item.roomno}</td>
                     <td>{item.type}</td>
+                    <td>{item.people}</td>
                     <td>{item.price}</td>
-                    <td>{item.roomstatus}</td>
                     <td>
                       <button className="room-view-icon" onClick={() => handleAddButtonClick(item.id)}>ดูรายละเอียดห้อง</button>
                       <button className="room-cancle-icon" onClick={() => deleteRoom(item.id)}>ลบห้อง</button>

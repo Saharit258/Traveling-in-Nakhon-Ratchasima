@@ -125,7 +125,6 @@ function Addcommunity() {
 
   return (
     <>
-      <Nav />
       <div>
         <div className="box">
           <h1>สร้างโพสต์</h1>

@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import ProtectedRoute from './auth/ProtectedRoute.jsx';
+
 import Login from './components/Login.jsx'
 import LoginP from './components/LoginP.jsx'
 import Register from './components/Register.jsx'
@@ -29,14 +31,10 @@ import Mycoupon from './page/Mycoupon.jsx'
 import Expend from './page/manupage/Expend.jsx'
 import Gpshotel from './page/Gpshotel.jsx'
 import Usecoupon from './page/Usecoupon.jsx'
-
 import Ex from './page/Ex.jsx'
-
 import Map from './page/map.jsx'
 import Gpscar from './page/Gpscar.jsx'
-
 import Test from './page/test.jsx'
-
 import Addcommunity from './page/manupage/Addcommunity.jsx'
 
 import Partnerhome from './partner/Partnerhome.jsx'
@@ -48,7 +46,53 @@ import AddRoom from './partner/AddRoom.jsx'
 import Hotel from './partner/Hotel.jsx'
 import Property from './page/Property.jsx'
 
+import LoginAdmin from './admin/LoginAdmin.jsx'
+import HomeAdmin from './admin/HomeAdmin.jsx'
+import HotelAdmin from './admin/HotelAdmin.jsx'
+import UserAdmin from './admin/UserAdmin.jsx'
+import ShowproblemAdmin from './admin/ShowproblemAdmin.jsx'
+import CalendarAdmin from './admin/CalenderAdmin.jsx'
+import CommunityAdmin from './admin/CommunityAdmin.jsx'
+import FamousAdmin from './admin/FamousAdmin.jsx'
+import FamousAdminAdd from './admin/FamousAdminAdd.jsx'
+
 const router = createBrowserRouter([
+  {
+    path: "/LoginAdmin",
+    element: <LoginAdmin />,
+  },
+  {
+    path: "/HomeAdmin",
+    element: <ProtectedRoute><HomeAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/HotelAdmin",
+    element: <ProtectedRoute><HotelAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/UserAdmin",
+    element: <ProtectedRoute><UserAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/ShowproblemAdmin",
+    element: <ProtectedRoute><ShowproblemAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/CalendarAdmin",
+    element: <ProtectedRoute><CalendarAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/CommunityAdmin",
+    element: <ProtectedRoute><CommunityAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/FamousAdmin",
+    element: <ProtectedRoute><FamousAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/FamousAdminAdd",
+    element: <ProtectedRoute><FamousAdminAdd /></ProtectedRoute>
+  },
   {
     path: "/",
     element: <Home />,

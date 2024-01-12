@@ -1,0 +1,112 @@
+.horizontal-bars-container {
+    display: flex;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
+    margin: auto; /* ทำให้อยู่กลางจอ */
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.horizontal-bar {
+    width: 300px; /* ปรับความกว้างของบาร์ตามที่คุณต้องการ */
+    height: 100px; /* ปรับความสูงของบาร์ตามที่คุณต้องการ */
+    justify-content: space-between; /* จัดตำแหน่งให้ในส่วนซ้ายและขวา */
+    background-color: #ffffff; /* ปรับสีพื้นหลังตามที่คุณต้องการ */
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.horizontal-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontal-ba-p {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.horizontal-ba-h2 {
+    font-size: 34px;
+    margin-left: 40px;
+    margin-top: -5px;
+    color: #007bff;
+}
+
+.horizontal-ba-icon {
+    font-size: 60px; /* ปรับขนาดไอคอนตามที่คุณต้องการ */
+    margin-left: 220px; /* กำหนดระยะห่างซ้ายของไอคอน */
+    margin-top: -70px;
+    justify-content: flex-end;
+    color: #007bff; /* สีของไอคอน */
+}
+
+.horizontal-bars2-container {
+    display: flex;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
+    margin: auto; /* ทำให้อยู่กลางจอ */
+    margin-top: 20px;
+}
+
+.horizontal-bar2 {
+    width: 610px; /* ปรับความกว้างของบาร์ตามที่คุณต้องการ */
+    height: 430px; /* ปรับความสูงของบาร์ตามที่คุณต้องการ */
+    justify-content: space-between; /* จัดตำแหน่งให้ในส่วนซ้ายและขวา */
+    background-color: #ffffff; /* ปรับสีพื้นหลังตามที่คุณต้องการ */
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.horizontal-pin1 {
+    width: 20px;
+    height: 40px;
+}
+
+.horizontal-box2 {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 400px;
+    height: 500px;
+}
+
+.horizontal-box2-1 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 400px;
+    height: 500px;
+}
+
+.horizontal-bars3-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
+    margin: auto; /* ทำให้อยู่กลางจอ */
+    margin-top: 20px;
+    padding-bottom: 50px; /*ปรับพื้นที่ใต้จอ*/
+}
+
+.horizontal-bar3 {
+    width: 1230px; /* ปรับความกว้างของบาร์ตามที่คุณต้องการ */
+    height: 600px; /* ปรับความสูงของบาร์ตามที่คุณต้องการ */
+    background-color: #ffffff; /* ปรับสีพื้นหลังตามที่คุณต้องการ */
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.horizontal-box2-img{
+    width: 100px; /* ปรับความกว้างของบาร์ตามที่คุณต้องการ */
+    height: 100px; /* ปรับความสูงของบาร์ตามที่คุณต้องการ */
+    border-radius: 50%;
+}
+

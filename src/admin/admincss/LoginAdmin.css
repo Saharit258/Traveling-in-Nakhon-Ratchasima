@@ -1,0 +1,60 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+.body-ad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('src/assets/img.jpg');
+    background-size: cover;
+  }
+  
+  .input-box {
+    background: transparent;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    width: 400px;
+    height: auto;
+  }
+  
+  .login-box-h2-ad {
+    text-align: center;
+    color: #ffffff;
+    font-size: 40px;
+  }
+  
+  .login-in-input {
+    margin-top: 20px;
+  }
+  
+  .login-box-input-email,
+  .login-box-input-password {
+    height: 40px;
+    width: 100%;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+  
+  .button-login {
+
+    margin-top: 150px; 
+    text-align: center;
+  }
+  
+  .button-login-1 {
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+  }
+  
