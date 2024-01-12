@@ -27,6 +27,8 @@ import Bookingcard from './page/manupage/Bookingcard.jsx'
 import Bookingroomcard from './page/manupage/Bookingroomcard.jsx'
 import Mycoupon from './page/Mycoupon.jsx'
 import Expend from './page/manupage/Expend.jsx'
+import Gpshotel from './page/Gpshotel.jsx'
+import Usecoupon from './page/Usecoupon.jsx'
 
 import Ex from './page/Ex.jsx'
 
@@ -38,6 +40,13 @@ import Test from './page/test.jsx'
 import Addcommunity from './page/manupage/Addcommunity.jsx'
 
 import Partnerhome from './partner/Partnerhome.jsx'
+import Bookingpartner from './partner/Bookingpartner.jsx'
+import Bookingpartners from './partner/Bookingpartners.jsx'
+import Probiemp from './partner/Probiemp.jsx'
+import Roomadd from './partner/Roomadd.jsx'
+import AddRoom from './partner/AddRoom.jsx'
+import Hotel from './partner/Hotel.jsx'
+import Property from './page/Property.jsx'
 
 const router = createBrowserRouter([
   {
@@ -57,16 +66,52 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
+    path: "/Hotel",
+    element: <Hotel />,
+  },
+  {
+    path: "/Roomadd",
+    element: <Roomadd />,
+  },
+  {
+    path: "/AddRoom",
+    element: <AddRoom />,
+  },
+  {
+    path: "/Property",
+    element: <Property />,
+  },
+  {
     path: "/Partnerhome",
     element: <Partnerhome />,
+  },
+  {
+    path: "/Probiemp",
+    element: <Probiemp />,
+  },
+  {
+    path: "/Usecoupon",
+    element: <Usecoupon />,
   },
   {
     path: "/Booking",
     element: <Booking />,
   },
   {
+    path: "/Bookingpartner",
+    element: <Bookingpartner />,
+  },
+  {
+    path: "/Bookingpartners",
+    element: <Bookingpartners />,
+  },
+  {
     path: "/Expend",
     element: <Expend />,
+  },
+  {
+    path: "/Gpshotel",
+    element: <Gpshotel />,
   },
   {
     path: "/Mycoupon",

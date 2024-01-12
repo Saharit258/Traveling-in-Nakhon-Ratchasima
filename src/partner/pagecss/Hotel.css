@@ -1,0 +1,252 @@
+.card-bookingcard{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 30px;
+  }
+  
+  .image-container-hotel {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 10px;
+    max-width: auto; 
+    padding: 20px;
+  }
+  
+  .item-image-hotel {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover; 
+    margin-right: 5px; 
+  }
+  
+  
+  .bookingcard-sidebar{
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    width: 50%;
+    padding: 25px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bookingcard-product{
+    width: 50%;
+    padding: 25px;
+    display: grid;
+    border-radius: 5px;
+    border: 2px solid hsla(0, 0%, 73%, 0.349);
+    grid-gap: 10px;
+    margin-left: 10px;
+  }
+  
+  .box-property {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .hotel-card {
+      padding: 16px;
+      margin: 16px;
+      width: 800px;
+    }
+  
+    .property-button-add{
+      width: auto;
+      margin-top: 20px;
+      margin-left: 85%;
+      background-color: #2B4D50;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .property-profile-img{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    } 
+  
+    .property-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      margin-top: -60px;
+      margin-left: 70px;
+    }
+  
+    .property-form {
+      margin-top: 30px;
+    }
+  
+    .flexbox {
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .community-photo-add {
+      width: 100%;
+      margin-top: 10px;
+      height: auto;
+      border-radius: 4px;
+    }
+  
+    .box-prop {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+  
+    .property-profile-img{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    } 
+  
+    .property-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      margin-top: -60px;
+      margin-left: 70px;
+    }
+  
+    .property-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px;
+      width: 800px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+  
+    .property-form {
+      margin-top: 30px;
+    }
+  
+    .flexbox {
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .community-photo-add {
+      width: 100%;
+      margin-top: 10px;
+      height: auto;
+      border-radius: 4px;
+    }
+  
+    .center {
+      text-align: center; 
+      margin-top: 50px;
+    }
+  
+    .center-2 {
+      text-align: center;
+    }
+  
+    .flexbox {
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .checkbox {
+      margin-left: 10px;
+    }
+  
+    .hotel-photo {
+      width: 100%;
+      height: 300px;
+    }
+  
+    .edit-hotel-btn{
+      text-align: center;
+      width: 100px;
+      height: 40px;
+      color: #ffffff;
+      border-radius: 3px;
+      background-color: #000000;
+      margin-top: 20px;
+      margin-bottom: 50px;
+      margin-left: 600px;
+    }
+    
+    .edit-hotel-btn:hover{
+      text-align: center;
+      width: 100px;
+      color: #000000;
+      background-color: #ffd000;
+    }
+  
+    .save-hotel-btn{
+      text-align: center;
+      width: 100px;
+      height: 40px;
+      color: #ffffff;
+      border-radius: 3px;
+      background-color: #000000;
+      margin-top: 20px;
+      margin-bottom: 50px;
+      margin-left: 600px;
+    }
+  
+    .save-hotel-btn:hover{
+      text-align: center;
+      width: 100px;
+      color: #000000;
+      background-color: #ffd000;
+    }
+    
+    .end-hotel-btn{
+      text-align: center;
+      width: 100px;
+      height: 40px;
+      color: #ffffff;
+      border-radius: 3px;
+      background-color: #000000;
+      margin-left:5% ;
+    }
+  
+    .end-hotel-btn:hover{
+      text-align: center;
+      width: 100px;
+      color: #000000;
+      background-color: #ffd000;
+    }
+  
+    .editroom-card {
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 4px;
+      margin: auto;
+      width: 100%;
+    }
+  
+    .editdetail-card {
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 4px;
+      margin: auto;
+      width: 100%;
+      height: 100px;
+    }

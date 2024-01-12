@@ -138,17 +138,15 @@ function Bookingroomcard() {
     };
 
     useEffect(() => {
-        if (dataFromFirestore.length > 0) {
-            fetchPosthotel().then(() => setLoading(false));
-        }
+        fetchPosthotel();
     }, [dataFromFirestore]);
 
     useEffect(() => {
         fetchPostuser();
     }, []);
+    
 
-
-    const handleSubmit = async (e) => {
+    const handleSubmits = async (e) => {
         e.preventDefault();
     
         try {
@@ -187,10 +185,10 @@ function Bookingroomcard() {
                     roomno: dataFromFirestores[0]?.roomno
                 };
     
-                const userBookingCollectionRef = collection(firestore, 'users', user.uid, 'bookings');
+                const userBookingCollectionRef = collection(firestore, 'hotels', dataFromFirestores[0]?.ruid, 'hbookings');
                 const userBookingDocRef = await addDoc(userBookingCollectionRef, userData);
     
-                alert(userBookingDocRef.id);
+                alert("การจองสำเร็จ ",userBookingDocRef.id);
 
                 navigate(`/Expend?uid=${userBookingDocRef.id}`);
             }
@@ -199,55 +197,7 @@ function Bookingroomcard() {
         }
     };
     
-
-    const handleSubmits = async (e) => {
-        e.preventDefault();
-    
-        try {
-            const overlappingBookings = dataFromFirestoreshotelbooking.filter((booking) => {
-                if (booking.ruid === uid) {
-                    const existingCheckInDate = new Date(booking.checkInDate);
-                    const existingCheckOutDate = new Date(booking.checkOutDate);
-                    const newCheckInDate = new Date(checkInDate);
-                    const newCheckOutDate = new Date(checkOutDate);
-    
-                    return (
-                        (newCheckInDate >= existingCheckInDate && newCheckInDate < existingCheckOutDate) ||
-                        (newCheckOutDate > existingCheckInDate && newCheckOutDate <= existingCheckOutDate) ||
-                        (newCheckInDate <= existingCheckInDate && newCheckOutDate >= existingCheckOutDate)
-                    );
-                }
-                return false;
-            });
-    
-            if (overlappingBookings.length > 0) {
-            } else {
-                const userData = {
-                    email: todos[0]?.email,
-                    bookingtype: "จอง",
-                    name: todos[0]?.name,
-                    phonenumber: todos[0]?.phonenumber,
-                    checkInDate: checkInDate,
-                    checkOutDate: checkOutDate,
-                    numberOfDays: numberOfDays,
-                    totalPrice: totalPrice,
-                    uuid: user.uid,
-                    huid: dataFromFirestores[0]?.ruid,
-                    ruid: uid,
-                    pay: "รอการจ่ายเงิน",
-                    roomno: dataFromFirestores[0]?.roomno
-                };
-    
-                const userBookingCollectionRef = collection(firestore, 'hotels', dataFromFirestores[0]?.ruid, 'hbookings');
-                const userBookingDocRef = await addDoc(userBookingCollectionRef, userData);
-    
-                alert(userBookingDocRef.id);
-            }
-        } catch (err) {
-            console.error("Error", err);
-        }
-    };
-    
+    console.log("dataFromFirestoreshotel", dataFromFirestoreshotel)
 
     const fetchbooking = async () => {
         try {
@@ -371,7 +321,6 @@ function Bookingroomcard() {
                             <div className='dfsdf' key={item.id}>
                                 <Form onSubmit={(e) => {
                                             handleSubmits(e);
-                                            handleSubmit(e);
                                         }}>
 
                                     <div className="from-booking-g">

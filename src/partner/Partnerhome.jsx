@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useUserAuth } from "../context/UserAuthContext";
-import { collectionGroup, getDocs, query, deleteDoc, doc } from 'firebase/firestore';
+import { collectionGroup, getDocs, query, deleteDoc, doc, collection } from 'firebase/firestore';
 import { Button } from 'react-bootstrap';
 import { firestore } from '../database/firebase';
 import NavPartner from '../navigation/NavPartner'
 import { useNavigate } from 'react-router-dom';
-import '../pagecss/Home.css';
+import '../partner/pagecss/Partnerhome.css';
 import { Chart } from 'chart.js';
 import 'chart.js/auto';
 
 import { FiEye, FiUsers } from "react-icons/fi";
 import { FaHotel, FaMountain } from "react-icons/fa";
+import { TbPigMoney } from "react-icons/tb";
+import { ImConfused } from "react-icons/im";
 
 function Partnerhome() {
     const { logOut, user } = useUserAuth();
     const [profiles, setProfiles] = useState([]);
+    const [profilesp, setProfilesp] = useState([]);
+    const [profilesps, setProfilesps] = useState([]);
     const [profilesPart, setProfilesPart] = useState([]);
     const navigate = useNavigate();
     const [userProfiles, setUserProfiles] = useState([]);   
     const [userProfilesPart, setUserProfilesPart] = useState([]);
     const [userCommunity, setUserCommunity] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const handleLogout = async () => { 
         try {
@@ -33,7 +38,7 @@ function Partnerhome() {
     const fetchProfiles = async () => {
         const arr = [];
     
-        const querySnapshot = await getDocs(query(collectionGroup(firestore, 'rooms')));
+        const querySnapshot = await getDocs(query(collection(firestore, 'hotels' , user.uid , 'rooms')));
         querySnapshot.forEach((doc) => {
             const profileData = doc.data();
     
@@ -44,6 +49,40 @@ function Partnerhome() {
         setProfiles(arr);
         setUserProfiles(arr);
     };
+
+    const fetchProfilesp = async () => {
+        const arr = [];
+    
+        const querySnapshot = await getDocs(query(collection(firestore, 'hotels', user.uid, 'hbookings')));
+        querySnapshot.forEach((doc) => {
+            const profileData = doc.data();
+    
+            arr.push({ id: doc.id, ...profileData });
+        });
+    
+        const totalPriceSum = arr.reduce((sum, profile) => sum + (profile.totalPrice || 0), 0);
+    
+        setProfilesp(arr);
+        setTotalPrice(totalPriceSum);
+    };
+
+    const fetchProfilesps = async () => {
+        const arr = [];
+    
+        const querySnapshot = await getDocs(query(collection(firestore, 'hotels', user.uid, 'hbookings')));
+        querySnapshot.forEach((doc) => {
+            const profileData = doc.data();
+    
+            if (profileData.bookingtype === 'จอง') {
+                arr.push({ id: doc.id, ...profileData });
+            }
+        });
+    
+        setProfilesps(arr);
+        setTotalPrice(totalPriceSum);
+    };
+    
+    
 
     const fetchProfilesPartner = async () => {
         const arr = [];
@@ -76,6 +115,8 @@ function Partnerhome() {
         fetchProfiles();
         fetchProfilesPartner();
         fetchProfilesCommunity();
+        fetchProfilesp();
+        fetchProfilesps();
     }, []);
 
     useEffect(() => {
@@ -131,9 +172,9 @@ function Partnerhome() {
 
     useEffect(() => {
         const chartData = {
-            labels: ['Users', 'Partners'],
+            labels: ['จอง', 'เข้าพัก'],
             datasets: [{
-                data: [userProfiles.length, userProfilesPart.length],
+                data: [profilesps.length, profilesp.length],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
@@ -156,7 +197,7 @@ function Partnerhome() {
             type: 'pie',
             data: chartData,
         });
-    }, [userProfiles, userProfilesPart]);
+    }, [profilesps, profilesp]);
 
     return (
         <div>
@@ -167,28 +208,28 @@ function Partnerhome() {
                     <div className="horizontal-box">
                         <p className="horizontal-ba-p">จำนวนห้องพัก</p>
                         <h1 className="horizontal-ba-h2">{userProfiles.length}</h1>
-                        <FiEye className="horizontal-ba-icon" />
-                    </div>
-                </div>
-                <div className="horizontal-bar">
-                    <div className="horizontal-box">
-                        <p className="horizontal-ba-p">Partners(จำนวนการจอง)</p>
-                        <h1 className="horizontal-ba-h2">{userProfilesPart.length}</h1>
                         <FaHotel className="horizontal-ba-icon" />
                     </div>
                 </div>
                 <div className="horizontal-bar">
                     <div className="horizontal-box">
-                        <p className="horizontal-ba-p">Total Users(จำนวนห้องว่าง)</p>
-                        <h1 className="horizontal-ba-h2">{userProfilesPart.length + userProfiles.length}</h1>
+                        <p className="horizontal-ba-p">จำนวนการจอง</p>
+                        <h1 className="horizontal-ba-h2">{profilesps.length}</h1>
+                        <ImConfused className="horizontal-ba-icon" />
+                    </div>
+                </div>
+                <div className="horizontal-bar">
+                    <div className="horizontal-box">
+                        <p className="horizontal-ba-p">จำนวนการเข้าพัก</p>
+                        <h1 className="horizontal-ba-h2">{profilesp.length}</h1>
                         <FiUsers className="horizontal-ba-icon" />
                     </div>
                 </div>
                 <div className="horizontal-bar">
                     <div className="horizontal-box">
-                        <p className="horizontal-ba-p">Famous(จำนวนรีวิว)</p>
-                        <h1 className="horizontal-ba-h2">{userCommunity.length}</h1>
-                        <FaMountain className="horizontal-ba-icon" />
+                        <p className="horizontal-ba-p">จำนวนเงินทั้งหมด</p>
+                        <h1 className="horizontal-ba-h2-p">{totalPrice}</h1>
+                        <TbPigMoney className="horizontal-ba-icon" />
                     </div>
                 </div>
             </div>

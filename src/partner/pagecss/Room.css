@@ -1,0 +1,80 @@
+.box-addroom {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.room-button-add{
+    font-size: 14px;
+    color: #35b9b1 ;
+    border-color: #35b9b1;
+    border-radius: 4px;
+    border: 2px solid;
+    background-color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 87%;
+    cursor: pointer;
+  }
+  .con-addroom-btn {
+    background-color: #35b9b1;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .room-view-icon {
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 6px;
+    margin-right: 6px;
+    font-size: 15px;
+  }
+
+  .room-cancle-icon {
+    border: 1px solid #ddd;
+    color: #ffffff;
+    border-radius: 6px;
+    background-color: #CB4335;
+    padding: 6px;
+    
+  }
+
+  .room-text {
+    margin-bottom: 20px;
+    color: black;
+    align-items: center;
+    text-align: left;
+  }
+
+  .table-card{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 30px;
+    margin: 20px;
+    width: 95%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .thead {
+    background-color: rgb(255, 184, 61);
+    color: #000000;
+    width: 100%;
+    padding: 6px;
+}

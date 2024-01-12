@@ -123,6 +123,11 @@ function Profile() {
     });
   };
 
+      const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-GB');
+    };
+
   return (
     <>
       <Nav />
@@ -197,7 +202,7 @@ function Profile() {
                         placeholder="birthday"
                         />
                     </>)
-                    : (todo.birthday)
+                    : (formatDate(todo.birthday))
                     }</p>
 
                     <p className="profile-phonenumber">เบอร์โทร: {editid === user.uid

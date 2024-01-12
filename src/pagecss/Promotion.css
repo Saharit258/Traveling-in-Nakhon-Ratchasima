@@ -1,4 +1,4 @@
-.card-pro {
+.card-promotion {
   background-color: #ffffff;
   border: 5px solid hsl(0, 0%, 80);
   border-radius: 10px;
@@ -13,61 +13,61 @@
 }
 
 .box-container-promotion{
-    width: 90vw;
-    margin: 0 auto;
-    display: flex;
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
 }
 
-.promotion-sidebar{
-    border: 1px solid hsla(0, 0%, 73%, 0.349);
-    width: 20%;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.promotion-sidebar{   /* เลือกประเภทคูปอง */
+  border: 1px solid hsla(0, 0%, 73%, 0.349);
+  width: 20%;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .promotion-product{
-    width: 80%;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+  width: 80%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 .promotion-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาในภาพ */
-    border-radius: 8px; /* ทำมุมขอบเว้นเรียบ */
-    overflow: hidden; /* ซ่อนส่วนที่เกินขอบของรูปภาพ */
-    margin: 20px 0; /* 20px ด้านบนและด้านล่าง */
-  }
-  
-  .img-promotion {
-    margin-top: 10px;
-    max-height: 200px;
-    max-width: 400px;
-    width: auto;
-    height: auto;
-    border-radius: 8px 8px 0 0; /* ทำมุมขอบของภาพด้านบน */
-  }
-  
-  .button-promotion {
-    margin-top: 10px;
-    background-color: #4caf50; /* สีพื้นหลังของปุ่ม */
-    color: #fff; /* สีตัวอักษร */
-    padding: 10px 20px; /* ขนาดของปุ่ม */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .button-promotion:hover {
-    background-color: #45a049; /* สีพื้นหลังของปุ่มเมื่อโฮเวอร์ */
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาในภาพ */
+  border-radius: 8px; /* ทำมุมขอบเว้นเรียบ */
+  overflow: hidden; /* ซ่อนส่วนที่เกินขอบของรูปภาพ */
+  margin: 20px 0; /* 20px ด้านบนและด้านล่าง */
+}
+
+.img-promotion {
+  margin-top: 10px;
+  max-height: 200px;
+  max-width: auto;
+  width: auto;
+  height: auto;
+  border-radius: 8px 8px 0 0; /* ทำมุมขอบของภาพด้านบน */
+}
+
+.button-promotion {
+  margin-top: 10px;
+  background-color: #4caf50; /* สีพื้นหลังของปุ่ม */
+  color: #fff; /* สีตัวอักษร */
+  padding: 10px 20px; /* ขนาดของปุ่ม */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button-promotion:hover {
+  background-color: #45a049; /* สีพื้นหลังของปุ่มเมื่อโฮเวอร์ */
+}

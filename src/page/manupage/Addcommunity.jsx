@@ -130,7 +130,6 @@ function Addcommunity() {
         <div className="box">
           <h1>สร้างโพสต์</h1>
           <Form onSubmit={addcommunity}>
-            {/* Your form elements here */}
             <Form.Group className="addcom-subject" controlId="formBasicEmail">
               <Form.Control
                 type="subject"

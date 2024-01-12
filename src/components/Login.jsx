@@ -53,7 +53,7 @@ function Login() {
         <>
         <Nav/>
             <div className='body'>
-                <div className="input-box">
+                <div className="input-box-ty">
                     <Form onSubmit={handleSubmit}>
                         <div className='login-box'>
                             <h2 className='login-box-h2'>ลงชื่อเข้าใช้</h2>

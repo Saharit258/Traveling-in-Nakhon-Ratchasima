@@ -128,6 +128,16 @@ function Famous() {
 
         <div className="box-container-famous">
           <div className="famous-sidebar">
+          <h4>ค้นหาจากแผนที่</h4>
+              <div className="map-famous">
+                <button className="famous-button-map" onClick={navigateToMap}>
+                  ดูแผนที่
+                </button>
+              </div>
+
+              <hr></hr>
+
+              
             <div className="Search-famous">
               <div className="search-famous">
                 <input
@@ -237,13 +247,6 @@ function Famous() {
                 </label>
               </div>
 
-              <hr></hr>
-              <h4>ค้นหาจากแผนที่</h4>
-              <div className="map-famous">
-                <Button className="famous-button-map" onClick={navigateToMap}>
-                  ดูแผนที่
-                </Button>
-              </div>
             </div>
           </div>
 

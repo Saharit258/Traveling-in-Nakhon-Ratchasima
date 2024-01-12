@@ -17,6 +17,53 @@
 }
 
 .pay-text{
-    text-align: center;
     margin-bottom: 20px;
+    width: 50%;
+}
+
+.pay-text-1{
+    margin-bottom: 20px;
+    width: 30%;
+}
+
+.pay-qr-card{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+}
+
+.sid-card{
+    border: 1px solid hsla(0, 0%, 73%, 0.349);
+    background: #ffffff;
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.pro-card{
+    width: 40%;
+    padding: 10px;
+    border: 3px solid hsl(101, 100%, 50%);
+    background: #ffffff;
+    margin-bottom: 50px;
+}
+
+.form-control-pay{
+    margin-top: 10px;
+    width: 500px;
+}
+
+.button-pay-1{
+    text-align: center;
+}
+
+.button-pay-2{
+    width: 400px;
+    background: #62ff00;
+}
+
+.button-pay-2:hover{
+    width: 400px;
+    background: #35880180;
 }

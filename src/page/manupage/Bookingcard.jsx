@@ -16,6 +16,8 @@ function Bookingcard() {
   const [roomHotel, setRoomHotel] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [selectedProblem, setSelectedProblem] = useState({});  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 
   const fetchProfilesHotel = async () => {
     const q = query(collection(firestore, 'hotels', uid, 'rooms'));
@@ -87,11 +89,11 @@ function Bookingcard() {
               )}
             </div>
             <div className="card-bookingcard">
-              <div className="bookingcard-sidebar">
+              <div className="bookingcard-sidebar-1">
                 <h2 className='box-fpage-left-1'>{item.pname}</h2>
                 <p>{item.detail}</p>
               </div>
-              <div className="bookingcard-product">
+              <div className="bookingcard-product-1">
               <h4>สิ่งอำนวยความสะดวก</h4>
                 {item.facility && item.facility.length > 0 && (
                   <ul>

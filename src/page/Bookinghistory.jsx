@@ -8,16 +8,17 @@ import '../pagecss/Bookinghistory.css'
 import Swal from 'sweetalert2'
 import NavProfile from '../navigation/NavProfile'
 
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, collectionGroup } from 'firebase/firestore';
 import { firestore } from '../database/firebase'
+
+import { format } from 'date-fns';
 
 function Bookinghistory() {
   const { logOut, user } = useUserAuth();
   const [todos, setTodos] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [booking, setBooking] = useState([]);
-  const [dataFromFirestoreshotel, setDataFromFirestoreshotel] = useState([]);
-  const [roomss, setRooms] = useState([]);
+  const [dataFromFirestore, setDataFromFirestore] = useState([]);
 
   const navigate = useNavigate();
 
@@ -38,11 +39,9 @@ function Bookinghistory() {
   useEffect(() => {
       const checkAuthStatus = () => {
           if (!user) {
-              // ถ้ายังไม่ได้เข้าสู่ระบบ
               setIsAuthenticated(false);
               navigate('/');  
           } else {
-              // ถ้าเข้าสู่ระบบแล้ว
               setIsAuthenticated(true);
               fetchPost();  
           }
@@ -88,33 +87,35 @@ function Bookinghistory() {
   useEffect(() => {
     fetchPosthotels();
   }, [user]);
-  
 
-  const fetchPosthotel = async () => {
-    try {
-        const docRef = doc(firestore, 'hotels', booking[0]?.huid);
-        const docSnap = await getDoc(docRef);
+        const fetchRooms = async () => {
+          try {
+              const arr = [];
+              const querySnapshot = await getDocs(collectionGroup(firestore, 'hbookings'));
+              querySnapshot.forEach((doc) => {
+                  const profileData = doc.data();
+                  if (profileData.uuid === user.uid) {
+                      arr.push({ id: doc.id, ...profileData });
+                  }
+              });
+              setDataFromFirestore(arr);
+          } catch (error) {
+              console.error('Error fetching rooms:', error.message);
+          }
+      };
 
-        if (docSnap.exists()) {
-            const fetchedData = { id: docSnap.id, ...docSnap.data() };
-            setDataFromFirestoreshotel([fetchedData]);
-        } else {
-            console.log('Document not found.', uid);
-            setDataFromFirestoreshotel([]);
-        }
-    } catch (error) {
-        console.error('Error fetching post data:', error.message);
-    }
-};
-
-useEffect(() => {
-  fetchPosthotel();
-}, [booking]);
+      useEffect(() => {
+          fetchRooms(); 
+      }, [user.uid]);
 
 const handleAddButtonClick = (id) => {
   navigate(`/Expend?uid=${id}`);
 };
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return format(date, 'dd/MM/yyyy');
+};
 
 
   return (
@@ -140,15 +141,16 @@ const handleAddButtonClick = (id) => {
           <h2 className="hostory-taxt">ประวัติการจองของฉัน</h2>
           <div className="historyprofile-bar"> 
               <div className="bookinghistory-box">
-                {booking.map((item, i) => (
+                {dataFromFirestore.map((item, i) => (
                   <div className="history-card" key={i} onClick={() => handleAddButtonClick(item.id)}>
-                    <h2>{dataFromFirestoreshotel[0]?.pname}</h2>
+                    <h2>{item.pname}</h2>
                     <h5>ห้องเลขที่: {item.roomno}</h5>
                     <h5>ชื่อ: {item.name}</h5>
-                    <h5>วันที่เข้า: {item.checkInDate}</h5>
-                    <h5>วันที่ออก: {item.checkOutDate}</h5>
+                    <h5>วันที่เข้า: {formatDate(item.checkInDate)}</h5>
+                    <h5>วันที่ออก: {formatDate(item.checkOutDate)}</h5>
                     <h5>ราคา: {item.totalPrice}</h5>
-                    <h5>สภานะ: {item.pay}</h5>
+                    <h5>การจ่ายเงิน: {item.pay}</h5>
+                    <h5>สถานะ: {item.bookingtype}</h5>
                   </div>
                 ))}
               </div>

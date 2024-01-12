@@ -16,9 +16,25 @@ function Booking() {
   const [selectedDistricts, setSelectedDistricts] = useState([]);
   const [dataFromFirestore, setDataFromFirestore] = useState([]);
   const [Room, setRoom] = useState([]);
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 10000 });
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 });
   const [selectedFacilities, setSelectedFacilities] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      if (!user) {
+        setIsAuthenticated(false);
+        alert("ยังไม่ได้สมัคร")
+        navigate('/login');
+      } else {
+        setIsAuthenticated(true);
+        await fetchPost();
+      }
+    };
+
+    checkAuthStatus();
+  }, [user, navigate]);
 
   const fetchDataFromFirestore = async () => {
     try {
@@ -34,6 +50,8 @@ function Booking() {
   useEffect(() => {
     fetchDataFromFirestore();
   }, []);
+
+  console.log("data" , dataFromFirestore)
 
   const fetchProfiles = async () => {
     try {
@@ -74,6 +92,10 @@ function Booking() {
   const filteredData = dataFromFirestore.filter((item) =>
     item.pname.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const navigateToMap = () => {
+    navigate('/Gpshotel');
+  };
 
 
   return (
@@ -124,7 +146,7 @@ function Booking() {
       <div className="box-container-booking">
         <div className="booking-sidebar">
           <div className="map-famous">
-            <Button className="famous-button-map">ดูแผนที่</Button>
+            <button className="famous-button-map" onClick={navigateToMap}>ดูแผนที่</button>
           </div>
           <hr />
           <h4>ราคา</h4>
@@ -134,7 +156,7 @@ function Booking() {
               id="priceRange"
               name="priceRange"
               min="0"
-              max="10000"
+              max="100000"
               value={priceRange.max}
               onChange={(e) =>
                 handlePriceChange({ min: 0, max: parseInt(e.target.value, 10) })
@@ -188,7 +210,7 @@ function Booking() {
           <hr />
           <h4>อำเภอ</h4>
           <div>
-            {['เมืองนครราชสีมา', 'วังน้ำเขียว'].map((district, index) => (
+            {['เมืองนครราชสีมา', 'วังน้ำเขียว', 'ปากช่อง'].map((district, index) => (
               <div key={index}>
                 <label>
                   <input

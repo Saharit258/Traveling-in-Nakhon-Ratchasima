@@ -17,12 +17,10 @@ function Nav() {
   useEffect(() => {
     const checkAuthStatus = () => {
         if (!user) {
-            // ถ้ายังไม่ได้เข้าสู่ระบบ
-            setIsAuthenticated(false); // หรือไปที่หน้า login ตามที่คุณต้องการ
+            setIsAuthenticated(false); 
         } else {
-            // ถ้าเข้าสู่ระบบแล้ว
             setIsAuthenticated(true);
-            fetchPost();  // เมื่อมีการเข้าสู่ระบบแล้วให้ดึงข้อมูล
+            fetchPost();  
         }
     };
 
@@ -39,7 +37,7 @@ function Nav() {
         querySnapshot.forEach((doc) => {
             userProfileData.push(doc.data());
         });
-        setTodos(userProfileData);  // กำหนดข้อมูลให้กับ state
+        setTodos(userProfileData);  
     } catch (err) {
         console.error("Error", err);
     }
@@ -52,6 +50,10 @@ function Nav() {
       console.log(err.message);
     }
   };
+
+  const add = () => {
+    navigate('/Property');
+  }
 
   return (
     <nav className='menubar'>
@@ -85,6 +87,9 @@ function Nav() {
         </Link> */}
       </div>
       <div className='menubar-log'>
+        <div className="eenev">
+              <button onClick={add} className="eenev-p" >ลงทะเบียนที่พัก</button>
+        </div>
         {user?.email ? (
                 <div className='box-nav-profile'>
                 {todos?.map((todo, i) => (
