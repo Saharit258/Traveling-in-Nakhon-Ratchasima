@@ -128,7 +128,7 @@ function CommunityAdmin() {
           </div>
 
 
-          <div className="Community-product">
+          <div className="Community-product-aa">
             {isLoading && <p className='loading-famous' ><div class="spinner-border" role="status">
                             <span class="sr-only"></span>
                           </div></p>}
@@ -145,13 +145,15 @@ function CommunityAdmin() {
                                 <h3 key={j} className='community-email'>{profile.name}</h3>
                               ))}
                               <p className='community-time'>{todo?.time}</p>
-                              <button className="delete-button" onClick={() => handleDelete(todo.id)}>Delete</button>
+                              <button className="delete-button-aa" onClick={() => handleDelete(todo.id)}>Delete</button>
                               <hr></hr>
                               <p className='community-subject'>{todo.subject}</p>
                               {todo.mapaddcom && (
                                 <a className='community-subject' href={todo.mapaddcom}>{todo.mapaddcom}</a>
                               )}
-                              <img className='community-photo' src={todo.photo} />
+                              <div className="img-aa">
+                              <img className='community-photo-aa' src={todo.photo} />
+                              </div>
                               {todo.vdo && (
                                 <iframe className='community-vdo' src={todo.vdo} title="Community Video"></iframe>
                               )}

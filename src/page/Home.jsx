@@ -92,51 +92,80 @@ function Home() {
                         <span className="smoke-span">A</span>
                         <span className="smoke-span">T</span>
                     </div>
+                    
+                </div>
 
-                    <div className="search-card">
-                        <div className="line-hotel">
-                            <p>ชื่อที่พัก/สถานที่</p>
-                            <input type="search" id="gsearch" className="gsearch-hotel"></input>
-                            </div>
-                        <div className="chack-in">
-                            <p>เช็คอิน</p>
-                            <input type="date" id="birthday" className="birthday"></input>
-                        </div>
-                        <div className="chack-out">                            
-                            <p>เช็คเอาท์</p>
-                            <input type="date" id="birthday" className="birthday"></input>
-                        </div>
-                        <div className="chack-person">
-                            <p>ผู้ใหญ่</p>
-                            <select className="cars" id="cars">
-                                <option value="volvo">1</option>
-                                <option value="saab">2</option>
-                                <option value="opel">3</option>
-                                <option value="audi">4</option>
-                            </select>
-                        </div>
-                        <div className="chack-sun">
-                        <p>เด็ก</p>
-                            <select className="cars" id="cars">
-                                <option value="volvo">1</option>
-                                <option value="saab">2</option>
-                                <option value="opel">3</option>
-                                <option value="audi">4</option>
-                            </select>
-                        </div>
-                        <div className="chack-button">
-                            <button>ตกลง</button>
-                        </div>
+                
+                <div className="card-title">
+                   <div className="card-home-1">
+                   <div className="img-title-box">
+                        <img  className="img-title" src="https://static.vecteezy.com/system/resources/previews/000/354/613/original/plan-map-vector-icon.jpg" alt="" />
                     </div>
+                    <div className="text-title">
+                        <h2>สถานที่แนะนำ</h2>
+                            <p>
+                            สามารถค้นหาข้อมูลสถานที่แนะนำ ไม่ว่าจะเป็นร้านอาหาร คาเฟ่ และสถานที่ท่องเที่ยวต่างๆ ที่อยู่ภายในจังหวัดนครราชสีมา
+                            </p>
+                    </div>
+                   </div>
+
+                   <div className="card-home-1">
+                   <div className="img-title-box">
+                        <img  className="img-title" src="https://firebasestorage.googleapis.com/v0/b/hotel-001-b5265.appspot.com/o/Imgs%2Fbooking-hotel-vector-37410546.jpg?alt=media&token=9908af24-68bd-4fb6-88a2-e2a9295ba3f5" alt="" />
+                    </div>
+                    <div className="text-title">
+                        <h2>ที่พัก</h2>
+                            <p>
+                            หากท่านต้องการที่จะเที่ยวและพักผ่อนในจังหวัดนครราชสีมา ก็ยังมีที่พักที่หลากหลายให้ท่านได้เลือกจอง
+                            </p>
+                    </div>
+                   </div>
+
+                   <div className="card-home-1">
+                   <div className="img-title-box">
+                        <img  className="img-title" src="https://img2.thaipng.com/20180405/dgw/kisspng-bus-computer-icons-clip-art-bus-5ac66872cc4930.6683861215229523068368.jpg" alt="" />
+                    </div>
+                    <div className="text-title">
+                        <h2>รถประจำทาง</h2>
+                            <p>
+                            มีข้อมูลรถประจำทางบอก สำหรับผู้ที่อยากเดินทางภายในจังหวัดด้วยตัวเองหรือผู้ที่ไม่มีรถส่วนตัว
+                            </p>
+                    </div>
+                   </div>
+
+                   <div className="card-home-1">
+                   <div className="img-title-box">
+                        <img  className="img-title" src="https://img.favpng.com/1/25/14/partnership-computer-icons-business-partner-png-favpng-t8szH0CJ00qsXe0SSuegkQn9H.jpg" alt="" />
+                    </div>
+                    <div className="text-title">
+                        <h2>พาร์ทเนอร์</h2>
+                            <p>
+                            สำหรับผู้ที่อยากจะเป็นส่วนหนึ่งกับทางเว็บของเรา สามารถลงทะเบียนที่พักของท่านและร่วมแคมเปญต่างๆได้
+                            </p>
+                    </div>
+                   </div>
 
                 </div>
 
-
+                <div className="about-card">
+                    <div className="about-text">
+                    <h2>เกี่ยวกับเรา</h2>
+                        <p>
+                        เว็บแอพพลิเคชันนี้เป็นส่วนหนึ่งของรายวิชาโครงงานเทคโนโลยีดิจิทัล 2 ซึ่งเป็นเว็บแอพพลิเคชันเกี่ยวกับการส่งเสริมและพัฒนา <br />
+                        การท่องเที่ยวในจังหวัดนครราชสีมา สามารถจองห้องพัก ค้นหาสถานที่ท่องเที่ยว ร้านอาหารคาเฟ่ต่างๆ และมีตารางรถให้ดูเพื่อ <br />
+                        การตัดสินใจในการเดินทางท่องเที่ยว
+                        </p>
+                    </div>
+                </div>
+              
                    
 
 
             <Cursor/>
         </div>
+
+                
+
     )
 }
 

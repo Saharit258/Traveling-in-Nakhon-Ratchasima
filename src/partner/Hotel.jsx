@@ -183,7 +183,7 @@ function Hotel() {
 
             <div className='bookingcard-product'>
               <h4>รายละเอียดที่พักของคุณ</h4>
-              <div><b>ชื่อที่พัก</b> : {renderFormField('name', 'ชื่อที่พัก')}</div>
+              <div><b>ชื่อที่พัก</b> : {renderFormField('pname', 'ชื่อที่พัก')}</div>
               <div><b>ประเภทที่พัก</b> : {renderFormField('type', 'ประเภทที่พัก')}</div>
               <div><b>ที่อยู่</b> : {renderFormField('address', 'บ้านเลขที่ หมู่ ถนน')}</div>
               <div><b>ตำบล</b> : {renderFormField('tambol', 'ตำบล')}</div>
@@ -194,7 +194,7 @@ function Hotel() {
                 <b>สิ่งอำนวยความสะดวก</b> :<br />
                 {editid === user.uid ? (
                   <>
-                    {["ขี่ม้า", "สปา", "อาหารเช้า"].map((option, index) => (
+                    {["ขี่ม้า", "สปา", "อาหารเช้า", "ร้านอาหาร", "Wi-Fi", "รถรับส่ง"].map((option, index) => (
                       <div key={index}>
                         <input
                           type="checkbox"

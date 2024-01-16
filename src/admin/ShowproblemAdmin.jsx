@@ -5,6 +5,7 @@ import { firestore } from '../database/firebase';
 import Swal from 'sweetalert2';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
+import './admincss/ShowproblemAdmin.css'
 
 function ShowproblemAdmin() {
   const [problems, setProblems] = useState([]);
@@ -75,7 +76,7 @@ function ShowproblemAdmin() {
                     <td>{problem.problem}</td>
                     <td>{problem.time}</td>
                     <td>
-                      <button className="problemmp" onClick={() => handleOpenModal(problem)}>เพิ่มเติม</button>
+                      <button className="problemmp-admin" onClick={() => handleOpenModal(problem)}>เพิ่มเติม</button>
                     </td>
                   </tr>
                 ))}

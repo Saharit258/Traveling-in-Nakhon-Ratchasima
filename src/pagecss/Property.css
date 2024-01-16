@@ -1,0 +1,27 @@
+.property-aas{
+    margin-top: 20px;
+}
+
+.property-sss{
+    margin: auto;
+    border: 2px solid hsla(33, 100%, 50%, 0.349);
+    width: 700px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.h-property{
+    color: #ff8400;
+}
+
+.property-button{
+    border: 1px solid hsl(0, 0%, 0%);
+    background: #ffffff00;
+    color: black;
+}
+
+.property-button:hover{
+    border: 1px solid hsl(35, 100%, 50%);
+    background: #ff8000;
+    color: rgb(255, 255, 255);
+}

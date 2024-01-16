@@ -2,14 +2,13 @@
     display: flex;
     flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
     align-items: center;
-    background: rgb(255, 134, 20);
+    background: rgb(255, 180, 52);
     padding: 10px 20px;
-    height: 200px;
+    height: 210px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin: 0;
     gap: 10px; /* ปรับระยะห่างระหว่างบาร์ตามที่คุณต้องการ */
     width: 100%;
-    margin-top: 100%;
 }
 
 .cursor-bar{
@@ -36,4 +35,25 @@
     margin-left: 10px;
     height: 80px;
     border-radius: 50%;
+}
+
+.cursor-card{
+    margin-top: 1%;
+    margin-left: 10%;
+    width: 90%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    /* background: #000000; */
+}
+
+.cursor-card2{
+    width: 300px;
+    height: auto;
+    /* background: #ff0202; */
+    padding: 10px;
+    display: grid;
+    align-items: center;
+    margin-left: 10%;
 }

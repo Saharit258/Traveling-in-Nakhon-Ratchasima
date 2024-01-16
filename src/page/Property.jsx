@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { collection, doc, setDoc, getDoc, query, getDocs } from 'firebase/firestore';
 import { firestore } from '../database/firebase'
+import '../pagecss/Property.css'
 
 function Property() {
     const storageKey = 'users';
@@ -105,8 +106,10 @@ function Property() {
         <>
             <div>
                 <div className="row">
+                    <div className="property-aas">
+                        <div className="property-sss">
                     <div className="col-md-6 mx-auto">
-                        <h2 className="mb-3">ลงทะเบียนที่พักของท่าน</h2>
+                        <h2 className="h-property">ลงทะเบียนที่พักของท่าน</h2>
                         {error && <Alert variant='danger'>{error}</Alert>}
 
                         <Form onSubmit={handleSubmit}>
@@ -159,12 +162,11 @@ function Property() {
                             </Form.Group>
 
                             <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit">ลงทะเบียน</Button>
+                                <button className="property-button" variant="primary" type="submit">ลงทะเบียน</button>
                             </div>
                         </Form>
-                        <div className="p-4 box mt-3 text-center">
-                            มีบัญชีอยู่แล้ว? <Link to="/Login">เข้าสู่ระบบ</Link>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

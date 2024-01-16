@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: url("https://firebasestorage.googleapis.com/v0/b/hotel-001-b5265.appspot.com/o/Imgs%2F123456.jpg?alt=media&token=deb01d97-0e29-49c1-b673-8bd5b7d051f6");
 }
 
 .box-container-promotion{

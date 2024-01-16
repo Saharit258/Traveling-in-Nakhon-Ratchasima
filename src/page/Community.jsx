@@ -128,6 +128,7 @@ function Community() {
           </div>
 
 
+<div className="cummu-coo">
           <div className="Community-product">
             {isLoading && <p className='loading-famous' ><div class="spinner-border" role="status">
                             <span class="sr-only"></span>
@@ -150,7 +151,9 @@ function Community() {
                               {todo.mapaddcom && (
                                 <a className='community-subject' href={todo.mapaddcom}>{todo.mapaddcom}</a>
                               )}
-                              <img className='community-photo' src={todo.photo} />
+                              <div className="img-ccco">
+                                <img className='community-photo' src={todo.photo} />
+                              </div>
                               {todo.vdo && (
                                 <iframe className='community-vdo' src={todo.vdo} title="Community Video"></iframe>
                               )}
@@ -159,8 +162,8 @@ function Community() {
                         </div>
                       </div>
                     </div>
-
       )}
+          </div>
           </div>
         </div>
     </>

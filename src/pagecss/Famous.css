@@ -208,6 +208,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: url("https://firebasestorage.googleapis.com/v0/b/hotel-001-b5265.appspot.com/o/Imgs%2F1234.jpg?alt=media&token=40ce6fab-1d68-45d5-bdef-4b7dbb15bdfb");
 }
 
 .box-container-famous{

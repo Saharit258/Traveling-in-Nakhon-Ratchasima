@@ -82,6 +82,7 @@ function Famouspage() {
             <div className="fpage-sidebar">
                 <h1 className="box-fpage-left-1-h1">{item.name}</h1>
                 <span className="box-item-bar-txt-1-p-p-fpage">{item.add} ตำบล{item.district} อำเภอ{item.districts} {item.codezo}</span>
+                <p>{item.ad}</p>
             </div>
             <div className="fpage-product">
                 <h4 className="box-fpage-left-1">เวลาเปิดปิดร้าน</h4>
