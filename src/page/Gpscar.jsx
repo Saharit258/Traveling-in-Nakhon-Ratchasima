@@ -1,47 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { useLocation } from 'react-router-dom';
 import L from 'leaflet';
 import Nav from '../navigation/Nav';
-import { collection, getDocs, query } from 'firebase/firestore';
+import { collection, getDocs, query, doc, getDoc } from 'firebase/firestore';
 import { firestore } from '../database/firebase';
 import '../pagecss/map.css';
 
 const Gpscar = () => {
   const [dataFromFirestore, setDataFromFirestore] = useState([]);
+  const [dataFromFirestoress, setDataFromFirestoress] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [mapCenter, setMapCenter] = useState([14.877688, 102.014071]);
+  const location = useLocation();
+  const uid = new URLSearchParams(location.search).get('uid');
+  const [fetchPostInterval, setFetchPostInterval] = useState(null);
 
-  const fetchDataFromFirestore = async () => {
+  const fetchPost = async () => {
     try {
-      const q = query(collection(firestore, 'Sightseeings'));
-      const querySnapshot = await getDocs(q);
-      const fetchedData = querySnapshot.docs.map((doc) => doc.data());
-      setDataFromFirestore(fetchedData);
+      const docRef = doc(firestore, 'gps', uid);
+      const docSnap = await getDoc(docRef);
 
-      if (fetchedData.length > 0) {
-        const totalLat = fetchedData.reduce((acc, position) => acc + position.lat, 0);
-        const totalLon = fetchedData.reduce((acc, position) => acc + position.lon, 0);
-        const avgLat = totalLat / fetchedData.length;
-        const avgLon = totalLon / fetchedData.length;
-        setMapCenter([avgLat, avgLon]);
+      if (docSnap.exists()) {
+        const fetchedData = { id: docSnap.id, ...docSnap.data() };
+        setDataFromFirestoress((prevData) => [fetchedData]);
+      } else {
+        console.log('Document not found.', uid);
+        setDataFromFirestoress([]);
       }
     } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
+      console.error('Error fetching data:', error.message);
     }
   };
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      await fetchDataFromFirestore();
       setLoading(false);
     };
 
+    const intervalId = setInterval(() => {
+      fetchPost();
+    }, 5000);
+
+    setFetchPostInterval(intervalId);
+
     fetchData();
-  }, []);
+
+    return () => {
+      clearInterval(fetchPostInterval);
+    };
+  }, [uid, fetchPostInterval]);
 
   const usersProfileIcon = new L.Icon({
     iconUrl: "https://www.clipartmax.com/png/middle/2-22665_free-vector-graphic-%E0%B8%A3%E0%B8%96-%E0%B8%95%E0%B8%B9%E0%B9%89-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B9%E0%B8%99-png.png",
@@ -52,7 +62,7 @@ const Gpscar = () => {
 
   return (
     <>
-      <Nav/>
+      <Nav />
       <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet/dist/leaflet.css"
@@ -66,10 +76,14 @@ const Gpscar = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        {dataFromFirestore.map((position, index) => (
-          position.lat && position.lon && (
-            <Marker position={[14.877688, 102.014071]} key={index} icon={usersProfileIcon}>
-              <Popup>{position.name}</Popup>
+        {dataFromFirestoress.map((position) => (
+          position.latitude && position.longitude && (
+            <Marker
+              key={position.id}
+              position={[position.latitude, position.longitude]}
+              icon={usersProfileIcon}
+            >
+              <Popup>{position.latitude}</Popup>
             </Marker>
           )
         ))}

@@ -1,3 +1,18 @@
+.card-promotion-a {
+  background-color: #ffffff;
+  border: 5px solid hsl(0, 0%, 80);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsl(0.1, 0.1%, 0.1%, 0.1);
+  padding: 60px;
+  width: 90%;
+  text-align: center;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url("https://firebasestorage.googleapis.com/v0/b/hotel-001-b5265.appspot.com/o/Imgs%2F123.jpg?alt=media&token=f4db3c11-2ebc-4b3a-9756-76c2f828773c&fbclid=IwAR29DtKCF3efmE4KXVGlVLgBRwbgDi3CUTsMQUnVUjhpuniEUw44JA73crs");
+}
+
 .box-Sightseeing {
     display: flex;
     flex-direction: column;

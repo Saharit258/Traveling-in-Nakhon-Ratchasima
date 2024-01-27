@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../navigation/Nav';
+import Nav from './NavAdmin';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../database/firebase';
 import { useNavigate } from 'react-router-dom';
-import '../pagecss/Sightseeing.css';
 
 function Sightseeing() {
   const [famous, setFamous] = useState([]);

@@ -114,7 +114,6 @@ function Famous() {
   };
 
   const handleAddButtonClick = (id) => {
-    console.log('Clicked on Add button for UID:', id);
     navigate(`/Famouspage?uid=${id}`);
   };
 

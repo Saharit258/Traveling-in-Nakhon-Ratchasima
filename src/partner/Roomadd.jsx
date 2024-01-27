@@ -99,7 +99,6 @@ function Roomadd() {
               <p>เลขห้อง: {selectedRoom.roomno}</p>
               <p>ประเภทห้อง: {selectedRoom.type}</p>
               <p>ราคา: {selectedRoom.price}</p>
-              <p>สถานะ: {selectedRoom.roomstatus}</p>
             </div>
           )}
         </Modal.Body>

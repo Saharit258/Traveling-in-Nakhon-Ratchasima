@@ -43,10 +43,10 @@ function NavAdmin() {
       <Link className='manu' to='/CalendarAdmin'>
         ปฎิทิน
       </Link>
-      <Link className='manu' to='/Promotion'>
+      <Link className='manu' to='/PromotionAdmin'>
         โปรโมชั่น
       </Link>
-      <Link className='manu' to='/Sightseeing'>
+      <Link className='manu' to='/SightseeingAdmin'>
         รถประจำทาง
       </Link>
       <div className='manu-log'>
