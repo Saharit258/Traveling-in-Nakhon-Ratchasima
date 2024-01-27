@@ -1,5 +1,54 @@
 .box-todo-famous{
     margin: auto;
-    width: 700px;
+    width: 90%;
     height: auto;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.addcera{
+    border: 1px solid hsla(0, 0%, 0%, 0.349);
+    padding: 20px;
+    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.sss{
+    margin-top: 5%;
+}
+
+.sdsa{
+    height: 20px;
+    margin-bottom: 20px;
+}
+
+.card-Famous-adminoo {
+    background-color: #ffffff;
+    border: 1px solid hsl(0, 0%, 0%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0.1, 0.1%, 0.1%, 0.1);
+    padding: 60px;
+    width: 90%;
+    text-align: center;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.d-grid-gap-2-1{
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid hsl(0, 0%, 0%);
+    color: #000;
+}
+
+.d-grid-gap-2-1:hover{
+    width: 100%;
+    background: #66ff00;
+    border: 1px solid hsl(101, 100%, 50%);
+    color: #ffffff;
 }

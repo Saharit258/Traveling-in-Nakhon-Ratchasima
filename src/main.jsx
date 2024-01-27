@@ -57,6 +57,8 @@ import FamousAdmin from './admin/FamousAdmin.jsx'
 import FamousAdminAdd from './admin/FamousAdminAdd.jsx'
 import PromotionAdmin from './admin/PromotionAdmin.jsx'
 import SightseeingAdmin from './admin/SightseeingAdmin.jsx'
+import AddcarAdmin from './admin/AddcarAdmin.jsx'
+import AddpromptionAdmin from './admin/AddpromptionAdmin.jsx'
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
   {
     path: "/HomeAdmin",
     element: <ProtectedRoute><HomeAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/AddpromptionAdmin",
+    element: <ProtectedRoute><AddpromptionAdmin /></ProtectedRoute>
+  },
+  {
+    path: "/AddcarAdmin",
+    element: <ProtectedRoute><AddcarAdmin /></ProtectedRoute>
   },
   {
     path: "/SightseeingAdmin",

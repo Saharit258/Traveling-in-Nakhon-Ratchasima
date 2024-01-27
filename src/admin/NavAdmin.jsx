@@ -25,8 +25,8 @@ function NavAdmin() {
 
       <NavDropdown className='manu' title='ที่พัก'>
         <NavDropdown.Item href='/HotelAdmin'>ที่พักทั้งหมด</NavDropdown.Item>
-        <NavDropdown.Item href='/Confirmhotel'>ที่พักรอการยืนยัน</NavDropdown.Item>
-        <NavDropdown.Item href='/Hotelhistory'>ประวัติ</NavDropdown.Item>
+        {/* <NavDropdown.Item href='/Confirmhotel'>ที่พักรอการยืนยัน</NavDropdown.Item>
+        <NavDropdown.Item href='/Hotelhistory'>ประวัติ</NavDropdown.Item> */}
       </NavDropdown>
 
       <NavDropdown className='manu' title='ผู้ใช้'>

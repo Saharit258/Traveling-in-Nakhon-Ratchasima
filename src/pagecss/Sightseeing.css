@@ -65,3 +65,16 @@
     }
   }
   
+  .car-admindd{
+    width: 200px;
+    background: #fff;
+    border: 1px solid hsl(0, 0%, 1%);
+    color: #000;
+  }
+
+  .car-admindd:hover{
+    width: 200px;
+    background: #ff9900;
+    border: 1px solid hsl(29, 100%, 50%);
+    color: #000;
+  }

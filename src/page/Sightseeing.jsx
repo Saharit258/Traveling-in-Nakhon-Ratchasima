@@ -95,6 +95,16 @@ function Sightseeing() {
               </label>
             </div>
 
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  value="เขาใหญ่"
+                />
+                เขาใหญ่
+              </label>
+            </div>
+
             
           </div>
           <div className="promotion-product">

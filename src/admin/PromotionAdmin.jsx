@@ -6,6 +6,7 @@ import { collection, collectionGroup, getDocs, query, addDoc } from 'firebase/fi
 import { firestore } from '../database/firebase';
 import { Button as BootstrapButton } from 'react-bootstrap';
 import { useUserAuth } from '../context/UserAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Promotion() {
   const { user } = useUserAuth();
@@ -15,6 +16,7 @@ function Promotion() {
   const [filteredData, setFilteredData] = useState([]);
   const [showImageModal, setShowImageModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
+  const navigate = useNavigate();
 
   const fetchProfiles = async () => {
     let arr = [];
@@ -101,6 +103,10 @@ function Promotion() {
     setShowImageModal(false);
   };
 
+  const handleConfirmhotellogadd = () => {
+    navigate("/AddpromptionAdmin");
+  };
+
   return (
     <>
       <Nav />
@@ -137,6 +143,15 @@ function Promotion() {
                 เซ็ตอาหารมื้อเย็น
               </label>
             </div>
+
+            <hr></hr>
+
+            <h2>เพิ่มโปรโมชั่น</h2>
+
+            <div>
+              <button className='car-admindd' onClick={handleConfirmhotellogadd}>เพิ่ม</button>
+            </div>
+
           </div>
 
           <div className="promotion-product">

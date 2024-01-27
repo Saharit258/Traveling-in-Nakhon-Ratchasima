@@ -52,9 +52,8 @@
   
   .login-button:hover,
   .register-button:hover {
-    background: rgb(248,255,4);
-    background: linear-gradient(90deg, rgba(248,255,4,1) 0%, rgba(190,235,39,1) 45%, rgba(0,255,65,1) 100%);
-    color: #fff;
+    background: rgb(255, 117, 4);
+    color: #000000;
   }
   
   .box-nav-profile {

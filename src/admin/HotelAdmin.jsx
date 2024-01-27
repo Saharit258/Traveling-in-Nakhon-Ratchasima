@@ -154,8 +154,8 @@ function HotelAdmin() {
                                 <br />
                                 </div>
                                 <div className='button-problemp'>
-                                <button className='button-problemp-ko' type="submit">ตกลง</button>
-                                <button className='button-problemp-no' onClick={handleCloseModal}>ยกเลิก</button>
+                                <button className='button-problemp-ko' type="submit"><div className='tart-button-as'>ตกลง</div></button>
+                                <button className='button-problemp-no' onClick={handleCloseModal}><div className='tart-button-as'>ยกเลิก</div></button>
                                 </div>
                               </form>
                             </Modal.Body>

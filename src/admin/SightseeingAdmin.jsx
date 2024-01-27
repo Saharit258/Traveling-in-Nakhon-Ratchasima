@@ -42,6 +42,10 @@ function Sightseeing() {
     }
   };
 
+  const handleConfirmhotellogadd = () => {
+    navigate("/AddcarAdmin");
+  };
+
   useEffect(() => {
     fetchPost();
   }, [selectedCartypes]);
@@ -92,6 +96,24 @@ function Sightseeing() {
                 />
                 ปากช่อง
               </label>
+            </div>
+
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  value="เขาใหญ่"
+                />
+                เขาใหญ่
+              </label>
+            </div>
+
+            <hr></hr>
+
+            <h2>เพิ่มรถประจำทาง</h2>
+
+            <div>
+              <button className='car-admindd' onClick={handleConfirmhotellogadd}>เพิ่ม</button>
             </div>
 
             

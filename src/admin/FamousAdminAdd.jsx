@@ -80,8 +80,11 @@ function FamousAdminAdd() {
   return (
     <>
       <Nav />
+      <div className="card-Famous-adminoo">
+          <h2>เพิ่มสถานที่ท่องเที่ยวและร้านอาหาร</h2>
+        </div>
+
       <div className='box-todo-famous'>
-        <h1>Famous-App</h1>
 
         <div>
           <input type="file" multiple onChange={(e) => handleFileChange(e)} /><br />
@@ -257,11 +260,12 @@ function FamousAdminAdd() {
             />
           </Form.Group>
 
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="submit">เพิ่ม</Button>
+          <div className="d-grid-gap-2">
+            <button className="d-grid-gap-2-1" variant="primary" type="submit">เพิ่ม</button>
           </div>
         </Form>
       </div>
+      <div className='sdsa'></div>
     </>
   )
 }

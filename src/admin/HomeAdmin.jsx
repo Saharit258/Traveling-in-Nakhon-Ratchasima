@@ -197,28 +197,28 @@ function HomeAdmin() {
             <div className="horizontal-bars-container">
                 <div className="horizontal-bar">
                     <div className="horizontal-box">
-                        <p className="horizontal-ba-p">Users</p>
+                        <p className="horizontal-ba-p">ผู้ใช้</p>
                         <h1 className="horizontal-ba-h2">{userProfiles.length}</h1>
                         <FiEye className="horizontal-ba-icon" />
                     </div>
                 </div>
                 <div className="horizontal-bar">
                     <div className="horizontal-box">
-                        <p className="horizontal-ba-p">Partners</p>
+                        <p className="horizontal-ba-p">ผู้สนับสนุน</p>
                         <h1 className="horizontal-ba-h2">{userProfilesParts.length}</h1>
                         <FaHotel className="horizontal-ba-icon" />
                     </div>
                 </div>
                 <div className="horizontal-bar">
                     <div className="horizontal-box">
-                        <p className="horizontal-ba-p">Hotel</p>
+                        <p className="horizontal-ba-p">โรงแรม</p>
                         <h1 className="horizontal-ba-h2">{userHotel?.length || 0}</h1>
                         <FiUsers className="horizontal-ba-icon" />
                     </div>
                 </div>
                 <div className="horizontal-bar">
                     <div className="horizontal-box">
-                        <p className="horizontal-ba-p">Famous</p>
+                        <p className="horizontal-ba-p">สถานที่เที่ยว</p>
                         <h1 className="horizontal-ba-h2">{userCommunity.length}</h1>
                         <FaMountain className="horizontal-ba-icon" />
                     </div>
